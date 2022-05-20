@@ -7,3 +7,8 @@ const otherSolution = (arr) => {
   if (arr.length === 1) return arr[0];
   return arr[0] + solution(arr.slice(1, arr.length));
 };
+
+const stringSumSolution = (arr) => {
+  if (arr.length === 1) return arr[0].length;
+  return arr[0].length + solution(arr.slice(1, arr.length));
+};
