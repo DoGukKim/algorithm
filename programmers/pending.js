@@ -12,4 +12,3 @@ const result = solution([
   ["bluesunglasses", "eyewear"],
   ["green_turban", "headgear"],
 ]);
-console.log(result);
