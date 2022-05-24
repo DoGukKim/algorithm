@@ -11,8 +11,14 @@
       // const solution = () => {};
       // const result = solution();
       // console.log(result);
-      const solution = () => {};
-      const result = solution();
+      const solution = (n, memo = new Map()) => {
+        if (n === 0 || n === 1) return n;
+        if (!memo.has(n)) {
+          memo.set(n, solution(n - 2, memo) + solution(n - 1, memo));
+        }
+        return memo.get(n);
+      };
+      const result = solution(3);
       console.log(result);
     </script>
   </body>
