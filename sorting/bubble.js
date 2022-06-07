@@ -1,16 +1,16 @@
 const bubbleSort = (array) => {
-  let isSorted = false;
+  let isSwap = false;
 
   do {
-    isSorted = false;
+    isSwap = false;
     for (let i = 0; i < array.length; i++) {
       if (array[i] > array[i + 1]) {
         //swap
         [array[i], array[i + 1]] = [array[i + 1], array[i]];
-        isSorted = true;
+        isSwap = true;
       }
     }
-  } while (isSorted);
+  } while (isSwap);
 
   return array;
 };
