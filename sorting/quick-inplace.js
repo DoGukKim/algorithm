@@ -1,4 +1,4 @@
-const quickSort = (
+const ver1QuickSort = (
   originalArray,
   inputLowIndex = 0,
   inputHighIndex = originalArray.length - 1,
@@ -40,52 +40,45 @@ const quickSort = (
   return array;
 };
 
-// const result = quickSort([0, 5, 2, 1, 6, 3]);
-// console.log(result);
-
 // otherVersion
 
-let items = [0, 5, 2, 1, 6, 3];
-function swap(items, leftIndex, rightIndex) {
-  let temp = items[leftIndex];
-  items[leftIndex] = items[rightIndex];
-  items[rightIndex] = temp;
-}
-function partition(items, left, right) {
-  let pivot = items[Math.floor((right + left) / 2)], //middle element
-    i = left, //left pointer
-    j = right; //right pointer
-  while (i <= j) {
-    while (items[i] < pivot) {
-      i++;
+const swap = (arr, leftIndex, rightIndex) => {
+  let temp = arr[leftIndex];
+  arr[leftIndex] = arr[rightIndex];
+  arr[rightIndex] = temp;
+};
+
+const partition = (arr, left, right) => {
+  const pivot = arr[Math.floor((right + left) / 2)];
+  let l = left;
+  let r = right;
+
+  while (l <= r) {
+    while (arr[l] < pivot) {
+      l++;
     }
-    while (items[j] > pivot) {
-      j--;
+    while (arr[r] > pivot) {
+      r--;
     }
-    if (i <= j) {
-      swap(items, i, j); //sawpping two elements
-      i++;
-      j--;
+    if (l <= r) {
+      swap(arr, l, r);
+      l++;
+      r--;
     }
   }
-  return i;
-}
 
-function quickSort(items, left, right) {
-  let index;
-  if (items.length > 1) {
-    index = partition(items, left, right); //index returned from partition
+  return l;
+};
+
+const quickSort = (arr, left = 0, right = arr.length - 1) => {
+  let index = partition(arr, left, right);
+  if (arr.length > 1) {
     if (left < index - 1) {
-      //more elements on the left side of the pivot
-      quickSort(items, left, index - 1);
+      quickSort(arr, left, index - 1);
     }
     if (index < right) {
-      //more elements on the right side of the pivot
-      quickSort(items, index, right);
+      quickSort(arr, index, right);
     }
   }
-  return items;
-}
-
-// const result = quickSort(items, (left = 0), (right = items.length - 1));
-// console.log(result);
+  return arr;
+};
