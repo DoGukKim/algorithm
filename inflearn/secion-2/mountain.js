@@ -1,21 +1,4 @@
-const findLongStr = (arr) => {
-  let result = arr[0];
-  for (let i = 0; i < arr.length; i++) {
-    if (result.length < arr[i].length) result = arr[i];
-  }
-  return result;
-};
-
-const deleteDuplicatedStr = (s) => {
-  let result = "";
-  for (let i = 0; i < s.length; i++) {
-    const uniqueStrIndex = s.indexOf(s[i]);
-    if (i === uniqueStrIndex) result += s[i];
-  }
-  return result;
-};
-
-const 봉우리의합 = (arr) => {
+const mountain = (arr) => {
   let result = 0;
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length; j++) {
@@ -29,7 +12,8 @@ const 봉우리의합 = (arr) => {
   }
   return result;
 };
-const result = 봉우리의합([
+
+mountain([
   [5, 3, 7, 2, 3],
   [3, 7, 1, 6, 1],
   [7, 2, 5, 3, 4],
