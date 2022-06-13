@@ -15,14 +15,6 @@ const solution = (arr) => {
   return answer;
 };
 
-const result = solution([
-  [1, 4],
-  [2, 3],
-  [3, 5],
-  [4, 6],
-  [5, 7],
-]);
-
 // 반례 - 끝나는 시간이 같음
 // const result = solution([
 //     [3, 3],
@@ -50,6 +42,7 @@ function solution(meeting) {
 // 재풀이
 const solution = (arr) => {
   let result = 0;
+
   arr.sort((a, b) => {
     if (a[1] === b[1]) return a[0] - b[0];
     else return a[1] - b[1];
@@ -57,7 +50,7 @@ const solution = (arr) => {
 
   let endPoint = 0;
 
-  for (let i = 0; i < arr.length; i++) {
+  for (i = 0; i < arr.length; i++) {
     if (arr[i][0] >= endPoint) {
       result++;
       endPoint = arr[i][1];
@@ -66,3 +59,11 @@ const solution = (arr) => {
 
   return result;
 };
+
+const result = solution([
+  [1, 4],
+  [2, 3],
+  [3, 5],
+  [4, 6],
+  [5, 7],
+]);

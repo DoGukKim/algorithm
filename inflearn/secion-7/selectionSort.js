@@ -6,6 +6,9 @@ const solution = (arr) => {
     }
     [arr[i], arr[min]] = [arr[min], arr[i]];
   }
+
   return arr;
 };
+
+// input
 const result = solution([13, 5, 11, 7, 23, 15]);

@@ -1,22 +1,27 @@
 const solution = (size, arr) => {
-  let memory = [];
+  const memory = Array.from({ length: size }, () => 0);
+
   for (let i = 0; i < arr.length; i++) {
-    const element = arr[i];
-    const isCashed = memory.find((i) => i === element);
-    if (isCashed) {
-      const remove = memory.filter((i) => i !== element);
-      memory = [element, ...remove];
+    const cashIndex = memory.indexOf(arr[i]);
+    if (cashIndex === -1) {
+      for (let j = memory.length - 1; j >= 1; j--) {
+        memory[j] = memory[j - 1];
+      }
     } else {
-      memory.unshift(element);
+      for (let i = cashIndex; i >= 1; i--) {
+        memory[i] = memory[i - 1];
+      }
     }
+    memory[0] = arr[i];
   }
-  return memory.slice(0, 5);
+
+  return memory;
 };
+
+// input
 const result = solution(5, [1, 2, 3, 2, 6, 2, 3, 5, 7]);
-console.log(result);
 
 // 다른 풀이
-
 const otherSolution = (size, arr) => {
   let result = Array.from({ length: size }, () => 0);
 

@@ -21,4 +21,3 @@ const mergeSort = (arr) => {
 };
 
 const result = mergeSort([9, 5, 2, 3, 7, 8, 4]);
-console.log(result);
