@@ -14,6 +14,20 @@ const solution = (array) => {
 };
 const result = solution([20, 7, 23, 19, 10, 15, 25, 8, 13]);
 
+// 재풀이
+const repeatSolution = (arr) => {
+  const target = arr.reduce((arr, cur) => arr + cur, 0) - 100;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (j !== i && arr[i] + arr[j] === target) {
+        arr.splice(j, 1);
+        arr.splice(i, 1);
+      }
+    }
+  }
+  return arr;
+};
+
 // 다른 사람 풀이
 function otherSolution(arr) {
   let answer = arr;
