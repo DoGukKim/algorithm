@@ -12,3 +12,24 @@ const solution = (arr1, arr2) => {
 };
 const result = solution([1, 3, 9, 5, 2], [3, 2, 5, 7, 8]);
 console.log(result);
+
+// two pointer version
+const otherSolution = (arr1, arr2) => {
+  arr1.sort((a, b) => a - b);
+  arr2.sort((a, b) => a - b);
+
+  let result = new Set();
+  let leftPoint = 0;
+  let rightPoint = 0;
+
+  while (leftPoint < arr1.length) {
+    if (arr1[leftPoint] === arr2[rightPoint]) {
+      result.add(arr1[leftPoint]);
+      result.add(arr2[rightPoint]);
+      leftPoint++;
+      rightPoint++;
+    } else leftPoint++;
+  }
+
+  return result;
+};
