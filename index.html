@@ -11,35 +11,8 @@
       // const solution = () => {};
       // const result = solution();
       // console.log(result);
-      const solution = (arr) => {
-        let result = Number.MIN_SAFE_INTEGER;
-        let row = 0;
-        let colum = 0;
-        let leftCross = 0;
-        let rightCross = 0;
-        for (let i = 0; i < arr.length; i++) {
-          row = 0;
-          colum = 0;
-
-          for (let j = 0; j < arr.length; j++) {
-            row += arr[i][j];
-            colum += arr[j][i];
-          }
-
-          leftCross += arr[i][i];
-          rightCross += arr[i][arr.length - 1 - i];
-        }
-
-        return result;
-      };
-      const result = solution([
-        [5, 3, 7, 2, 3],
-        [3, 7, 1, 6, 1],
-        [7, 2, 5, 3, 4],
-        [4, 3, 6, 4, 1],
-        [8, 7, 3, 5, 2],
-      ]);
-
+      const solution = () => {};
+      const result = solution();
       console.log(result);
     </script>
   </body>

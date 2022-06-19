@@ -1,26 +1,28 @@
-const solution = (array) => {
-  let answer = Number.MIN_SAFE_INTEGER;
-  let 행 = 0;
-  let 열 = 0;
-  let 왼대각 = 0;
-  let 오대각 = 0;
+const solution = (arr) => {
+  let result = 0;
 
-  for (let i = 0; i < array.length; i++) {
-    행 = 0;
-    열 = 0;
+  let leftCross = 0;
+  let rightCross = 0;
 
-    for (let j = 0; j < array.length; j++) {
-      행 += array[i][j];
-      열 += array[j][i];
+  for (let i = 0; i < arr.length; i++) {
+    let row = 0;
+    let colum = 0;
+
+    for (let j = 0; j < arr.length; j++) {
+      row += arr[i][j];
+      colum += arr[j][i];
     }
 
-    왼대각 += array[i][i];
-    오대각 += array[i][array.length - i - 1];
+    leftCross += arr[i][i];
+    rightCross += arr[i][arr.length - 1 - i];
 
-    answer = Math.max(answer, 행, 열);
+    const max = Math.max(row, colum, leftCross, rightCross);
+    if (result < max) result = max;
   }
-  return (answer = Math.max(answer, 왼대각, 오대각));
+
+  return result;
 };
+
 const result = solution([
   [10, 13, 10, 12, 15],
   [12, 39, 30, 23, 11],
@@ -28,3 +30,5 @@ const result = solution([
   [19, 27, 29, 37, 27],
   [19, 13, 30, 13, 19],
 ]);
+
+console.log(result);
