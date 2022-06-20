@@ -19,21 +19,15 @@ console.log(result);
 // 투 포인터 방식
 const pointerSolution = (arr1, arr2) => {
   let result = [];
-  let leftPoint = 0;
-  let rightPoint = 0;
+  let lp = 0;
+  let rp = 0;
 
-  while (leftPoint < arr1.length && rightPoint < arr2.length) {
-    if (arr1[leftPoint] <= arr2[rightPoint]) {
-      result.push(arr1[leftPoint]);
-      leftPoint++;
-    } else {
-      result.push(arr2[rightPoint]);
-      rightPoint++;
-    }
+  while (lp < arr1.length && rp < arr2.length) {
+    if (arr1[lp] <= arr2[rp]) result.push(arr1[lp++]);
+    else result.push(arr2[rp++]);
   }
-
-  while (leftPoint < arr1.length) result.push(arr1[leftPoint++]);
-  while (rightPoint < arr2.length) result.push(arr2[rightPoint++]);
-
+  // 남는 것들을 넣는 로직
+  while (lp < arr1.length) result.push(arr1[lp++]);
+  while (rp < arr2.length) result.push(arr2[rp++]);
   return result;
 };

@@ -1,21 +1,17 @@
 const solution = (arr, k) => {
   let result = Number.MIN_SAFE_INTEGER;
 
-  let leftPointer = 0;
-  let rightPointer = 0;
+  let lp = 0;
+  let rp = 0;
 
-  while (leftPointer < arr.length - k) {
+  while (lp < arr.length - k) {
     let count = k;
     let sum = 0;
 
-    while (count--) {
-      sum += arr[rightPointer];
-      rightPointer++;
-    }
+    while (count--) sum += arr[rp++];
 
-    leftPointer++;
-    rightPointer = leftPointer;
-
+    lp++;
+    rp = lp;
     if (result < sum) result = sum;
   }
 

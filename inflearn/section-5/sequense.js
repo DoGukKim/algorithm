@@ -1,27 +1,27 @@
 const solution = (arr, m) => {
   let result = 0;
-  let pinPointer = 0;
-  let positionPointer = pinPointer + 1;
-  let sum = arr[pinPointer];
+  let lp = 0;
+  let rp = lp + 1;
+  let sum = arr[lp];
 
-  while (pinPointer <= arr.length) {
-    if (sum + arr[positionPointer] > m) {
-      pinPointer++;
-      positionPointer = pinPointer + 1;
-      sum = arr[pinPointer];
+  while (lp <= arr.length) {
+    if (sum + arr[rp] > m) {
+      lp++;
+      rp = lp + 1;
+      sum = arr[lp];
     }
 
-    if (sum + arr[positionPointer] === m) {
+    if (sum + arr[rp] === m) {
       result++;
-      pinPointer++;
-      positionPointer = pinPointer + 1;
-      sum = arr[pinPointer];
+      lp++;
+      rp = lp + 1;
+      sum = arr[lp];
     }
 
-    sum += arr[positionPointer];
-    positionPointer++;
+    sum += arr[rp];
+    rp++;
 
-    if (positionPointer >= arr.length - 1) break;
+    if (rp >= arr.length - 1) break;
   }
 
   return result;
