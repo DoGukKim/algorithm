@@ -1,6 +1,6 @@
 const solution = (n) => {
   if (n === 0) return;
+  solution(n - 1);
   console.log(n);
-  return solution(n - 1);
 };
-const result = solution(3);
+solution(3);
