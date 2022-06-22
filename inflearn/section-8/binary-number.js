@@ -9,12 +9,12 @@ const solution = (n, result = "") => {
 const otherSolution = (n) => {
   let result = "";
 
-  function name(n) {
+  function recursion(n) {
     if (n === 0) return 1;
-    name(Math.floor(n / 2));
+    recursion(Math.floor(n / 2));
     result += String(n % 2);
   }
-  name(n);
+  recursion(n);
 
   return result;
 };

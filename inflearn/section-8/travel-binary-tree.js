@@ -1,12 +1,14 @@
-const solution = (n) => {
-  if (n > 7) return;
-  // PreOrder
-  console.log(n);
-  solution(n * 2);
-  // InOrder
-  console.log(n);
-  solution(n * 2 + 1);
-  // PostOrder
-  console.log(n);
+const solution = () => {
+  function recursion(m) {
+    if (m > 7) return;
+    // pre
+    console.log(m);
+    recursion(m * 2);
+    // in
+    console.log(m);
+    recursion(m * 2 + 1);
+    // post
+    console.log(m);
+  }
+  recursion(1);
 };
-solution(1);
