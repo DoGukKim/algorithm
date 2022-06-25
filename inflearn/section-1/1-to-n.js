@@ -9,5 +9,18 @@ const recursive = (n) => {
   return n + recursive(n - 1);
 };
 
+const main = (n) => {
+  let result = 0;
+  const recursion = (m) => {
+    if (m === 0) return;
+    result += m;
+    recursion(m - 1);
+  };
+  recursion(n);
+  console.log(result);
+};
+
+main(3);
+
 // input
 const result = solution(2);
