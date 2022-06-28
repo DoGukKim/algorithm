@@ -35,3 +35,20 @@ function otherSolution(s) {
   }
   return answer;
 }
+
+const main = (s) => {
+  let result = "";
+  let acc = 1;
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] !== s[i + 1]) {
+      if (acc !== 1) result += s[i] + String(acc);
+      else result += s[i];
+      acc = 1;
+    } else acc++;
+  }
+
+  console.log(result);
+};
+
+main("KKHSSSSSSSE");
