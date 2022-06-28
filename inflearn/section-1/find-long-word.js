@@ -28,3 +28,12 @@ const solution = (arr) => {
 
 // input
 const result = findLongStr(["good", "better"]);
+
+const main = (arr) => {
+  let max = -Infinity;
+  for (let i = 0; i < arr.length; i++) {
+    if (max < arr[i].length) max = i;
+  }
+  console.log(arr[max]);
+};
+main(["good", "better"]);
