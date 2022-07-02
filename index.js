@@ -1,20 +1,19 @@
-const main = (n, arr) => {
-  const graph = Array.from({ length: n + 1 }, () => Array(n + 1).fill(0));
-  const ch = Array.from({ length: n + 1 }, () => 0);
-  for (const [a, b] of arr) {
-    graph[a][b] = 1;
-  }
-
-  console.log(graph);
+const main = () => {};
+main(mock);
+// const mock = {
+//   0: [8, 1, 5],
+//   1: [0],
+//   5: [0, 8],
+//   8: [0, 5],
+//   2: [3, 4],
+//   3: [2, 4],
+//   4: [3, 2],
+// };
+const mock = {
+  1: [2],
+  2: [1, 8],
+  6: [7],
+  9: [8],
+  7: [6, 8],
+  8: [9, 7, 2],
 };
-main(5, [
-  [1, 2],
-  [1, 3],
-  [1, 4],
-  [2, 1],
-  [2, 3],
-  [2, 5],
-  [3, 4],
-  [4, 2],
-  [4, 5],
-]);
