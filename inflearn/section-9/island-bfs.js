@@ -23,19 +23,20 @@ const explore = (grid, r, c, visited) => {
   const queue = [[pos]];
 
   while (queue.length > 0) {
-    visited.add(pos);
-    queue.push([r, c]);
+    const [x, y] = queue.shift();
+    const repos = x + "," + y;
+    visited.add(repos);
 
-    explore(grid, r - 1, c, visited);
-    explore(grid, r + 1, c, visited);
+    explore(grid, x - 1, y, visited);
+    explore(grid, x + 1, y, visited);
 
-    explore(grid, r - 1, c + 1, visited);
-    explore(grid, r - 1, c - 1, visited);
-    explore(grid, r + 1, c - 1, visited);
-    explore(grid, r + 1, c + 1, visited);
+    explore(grid, x - 1, y + 1, visited);
+    explore(grid, x - 1, y - 1, visited);
+    explore(grid, x + 1, y - 1, visited);
+    explore(grid, x + 1, y + 1, visited);
 
-    explore(grid, r, c - 1, visited);
-    explore(grid, r, c + 1, visited);
+    explore(grid, x, y - 1, visited);
+    explore(grid, x, y + 1, visited);
 
     return true;
   }
