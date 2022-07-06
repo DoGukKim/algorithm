@@ -1,5 +1,5 @@
 // 일방적인 재귀를 활용한 피보나치 풀이
-// TimeComplexity O(2^N)
+// TimeComplexity O(2^n)
 // SpaceComplexity O(n)
 const solution = (n) => {
   if (n <= 2) return 1;
@@ -7,7 +7,7 @@ const solution = (n) => {
 };
 
 // 메모이제이션을 통한 피보나치 풀이
-// TimeComplexity O(N)
+// TimeComplexity O(n)
 // SpaceComplexity O(n)
 const memoSolution = (n, memo = new Map()) => {
   if (n <= 2) return 1;
@@ -25,7 +25,8 @@ const memoFib = (n = 6, memo = {}) => {
 };
 
 // 상향식 피보나치 풀이
-// TimeComplexity O(N)
+// TimeComplexity O(n)
+// SpaceComplexity O(n)
 const upperSolution = (n) => {
   if (n === 0) return 0;
 

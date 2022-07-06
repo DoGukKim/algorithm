@@ -1,11 +1,12 @@
+// TimeComplexity O(n log n)
+// SpaceComplexity O(n)
 const swap = (arr, leftIndex, rightIndex) => {
-  let temp = arr[leftIndex];
-  arr[leftIndex] = arr[rightIndex];
-  arr[rightIndex] = temp;
+  [arr[leftIndex], arr[rightIndex]] = [arr[rightIndex], arr[leftIndex]];
 };
 
 const partition = (arr, left, right) => {
   const pivot = arr[Math.floor((right + left) / 2)];
+
   let l = left;
   let r = right;
 
@@ -28,13 +29,9 @@ const partition = (arr, left, right) => {
 
 const quickSort = (arr, left = 0, right = arr.length - 1) => {
   let index = partition(arr, left, right);
-  if (arr.length > 1) {
-    if (left < index - 1) {
-      quickSort(arr, left, index - 1);
-    }
-    if (index < right) {
-      quickSort(arr, index, right);
-    }
+  if (left < right) {
+    quickSort(arr, left, index - 1);
+    quickSort(arr, index + 1, right);
   }
   return arr;
 };

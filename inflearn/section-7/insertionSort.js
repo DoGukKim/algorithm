@@ -1,7 +1,7 @@
 const solution = (arr) => {
   for (let i = 1; i < arr.length; i++) {
     let current = i;
-    while (arr[current] !== undefined && arr[current] < arr[current - 1]) {
+    while (arr[current - 1] !== undefined && arr[current] < arr[current - 1]) {
       [arr[current], arr[current - 1]] = [arr[current - 1], arr[current]];
       current--;
     }
