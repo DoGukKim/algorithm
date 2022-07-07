@@ -5,6 +5,7 @@ const main = (a, b, c) => {
   if (result > a) result = a;
   if (result > b) result = b;
   if (result > c) result = c;
+
   return result;
 };
 console.log(main(6, 5, 11));
@@ -26,8 +27,10 @@ console.log(main2([6, 5, 13, 11]));
 // SpaceComplexity O(n)
 const recursive = (numbers, index = 0) => {
   if (index === numbers.length - 1) return numbers[index];
+
   const result = recursive(numbers, (index += 1));
   if (numbers[index] < result) return numbers[index];
+
   return result;
 };
 console.log(recursive([6, 5, 13, 11]));
