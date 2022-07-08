@@ -1,34 +1,38 @@
-const solution = (arr) => {
-  let result = 0;
+// TimeComplexity O(n^2)
+// SpaceComplexity O(n)
+const main = (board) => {
+  let result = 0,
+    row = 0,
+    colum = 0,
+    leftCross = 0,
+    rightCross = 0;
 
-  let leftCross = 0;
-  let rightCross = 0;
+  for (let r = 0; r < board.length; r += 1) {
+    row = 0;
+    colum = 0;
 
-  for (let i = 0; i < arr.length; i++) {
-    let row = 0;
-    let colum = 0;
-
-    for (let j = 0; j < arr.length; j++) {
-      row += arr[i][j];
-      colum += arr[j][i];
+    for (let c = 0; c < board[0].length; c += 1) {
+      row += board[r][c];
+      colum += board[c][r];
     }
 
-    leftCross += arr[i][i];
-    rightCross += arr[i][arr.length - 1 - i];
+    leftCross += board[r][r];
+    rightCross += board[r][board.length - 1 - r];
 
-    const max = Math.max(row, colum, leftCross, rightCross);
-    if (result < max) result = max;
+    result = Math.max(row, colum, leftCross, rightCross);
   }
 
   return result;
 };
 
-const result = solution([
-  [10, 13, 10, 12, 15],
-  [12, 39, 30, 23, 11],
-  [11, 25, 50, 53, 15],
-  [19, 27, 29, 37, 27],
-  [19, 13, 30, 13, 19],
-]);
+console.log(
+  main([
+    [10, 13, 10, 12, 15],
+    [12, 39, 30, 23, 11],
+    [11, 25, 50, 53, 15],
+    [19, 27, 29, 37, 27],
+    [19, 13, 30, 13, 19],
+  ])
+);
 
-console.log(result);
+// Recursive (Pending)

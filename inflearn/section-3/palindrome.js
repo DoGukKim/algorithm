@@ -1,20 +1,29 @@
-// 풀이
-const solution = (string) => {
-  string = string.toLowerCase();
-  for (let i = 0; i < Math.floor(string.length / 2); i++) {
-    if (string[i] !== string[string.length - 1 - i]) return "NO";
-    else return "YES";
-  }
+// TimeComplexity O(n)
+// SpaceComplexity O(1)
+const main = (word) => {
+  word = word.toLowerCase();
+
+  for (let i = 0; i < Math.floor(word.length / 2); i += 1)
+    if (word[i] !== word[word.length - 1 - i]) return "NO";
+
+  return "YES";
 };
 
-// stack
-const stackSolution = (string) => {
-  let stack = [];
-  for (let i = 0; i < s.length; i++) {
-    stack.push(s[i]);
-  }
-  for (let j = s.length - 1; j >= 0; j--) {
-    if (stack.pop() !== s[j]) return "NO";
-    else "YES";
-  }
+console.log(main("gooG"));
+console.log(main("ghoG"));
+
+// Recursive
+// TimeComplexity O(n)
+// SpaceComplexity O(1)
+const recursion = (word, index = 0) => {
+  word = word.toLowerCase();
+
+  if (index === Math.floor(word.length / 2)) return "YES";
+
+  if (word[index] !== word[word.length - 1 - index]) return "NO";
+
+  return recursion(word, (index += 1));
 };
+
+console.log(recursion("gooG"));
+console.log(recursion("ghoG"));

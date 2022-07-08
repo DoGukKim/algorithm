@@ -1,26 +1,52 @@
-const solution = (arr) => {
+// TimeComplexity O(n^2)
+// SpaceComplexity O(1)
+const main = (board) => {
   let result = 0;
 
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length; j++) {
-      const cur = arr[i][j];
-      let top = arr[i - 1] ? arr[i - 1][j] : 0;
-      let right = arr[i][j + 1] ? arr[i][j + 1] : 0;
-      let bottom = arr[i + 1] ? arr[i + 1][j] : 0;
-      let left = arr[i][j - 1] ? arr[i][j - 1] : 0;
+  for (let r = 0; r < board.length; r += 1) {
+    for (let c = 0; c < board[0].length; c += 1) {
+      const current = board[r][c];
 
-      if (cur > top && cur > right && cur > bottom && cur > left) result++;
+      let top = board[r - 1] ? board[r - 1][c] : 0;
+      let right = board[r][c + 1] ? board[r][c + 1] : 0;
+      let bottom = board[r + 1] ? board[r + 1][c] : 0;
+      let left = board[r][c - 1] ? board[r][c - 1] : 0;
+
+      if (
+        current > top &&
+        current > right &&
+        current > bottom &&
+        current > left
+      )
+        result++;
     }
   }
 
   return result;
 };
 
-const result = solution([
-  [5, 3, 7, 2, 3],
-  [3, 7, 1, 6, 1],
-  [7, 2, 5, 3, 4],
-  [4, 3, 6, 4, 1],
-  [8, 7, 3, 5, 2],
-]);
-console.log(result);
+console.log(
+  main([
+    [5, 3, 7, 2, 3],
+    [3, 7, 1, 6, 1],
+    [7, 2, 5, 3, 4],
+    [4, 3, 6, 4, 1],
+    [8, 7, 3, 5, 2],
+  ])
+);
+
+// Recursive (Pending)
+const recursion = (board) => {
+  for (let r = 0; r < board.length; r += 1) {
+    for (let c = 0; c < board[0].length; c += 1) {}
+  }
+};
+console.log(
+  recursion([
+    [5, 3, 7, 2, 3],
+    [3, 7, 1, 6, 1],
+    [7, 2, 5, 3, 4],
+    [4, 3, 6, 4, 1],
+    [8, 7, 3, 5, 2],
+  ])
+);

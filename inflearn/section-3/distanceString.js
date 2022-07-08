@@ -1,8 +1,10 @@
-// 풀이
-const solution = (string, target) => {
+// TimeComplexity O(n)
+// SpaceComplexity O(n)
+const main = (string, target) => {
   let result = [];
   let acc = 0;
-  for (let i = 0; i < string.length; i++) {
+
+  for (let i = 0; i < string.length; i += 1) {
     if (string[i] !== target) {
       acc++;
       result.push(acc);
@@ -11,8 +13,10 @@ const solution = (string, target) => {
       result.push(acc);
     }
   }
+
   acc = 0;
-  for (let j = string.length - 1; j >= 0; j--) {
+
+  for (let j = string.length - 1; j >= 0; j -= 1) {
     if (string[j] !== target) {
       acc++;
       result[j] = Math.min(result[j], acc);
@@ -21,5 +25,8 @@ const solution = (string, target) => {
       result[j] = acc;
     }
   }
+
   return result;
 };
+
+console.log(main("teachermode", "e"));
