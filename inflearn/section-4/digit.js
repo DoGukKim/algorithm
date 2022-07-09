@@ -1,51 +1,53 @@
-const solution = (array) => {
-  let answer = 0;
-  let max = Number.MIN_SAFE_INTEGER;
-
-  for (let i = 0; i < array.length; i++) {
-    let sum = 0;
-    let temp = array[i];
-
-    while (temp) {
-      sum += temp % 10;
-      temp = Math.floor(temp / 10);
-    }
-
-    if (sum > max) {
-      max = sum;
-      answer = array[i];
-    } else if (sum === max) {
-      if (answer < array[i]) answer = array[i];
-    }
-  }
-  return answer;
-};
-
-// 재귀식 풀이
-const main = (arr) => {
-  let result = [];
+// TimeComplexity O(n)
+// SpaceComplexity O(1)
+const main = (numbers) => {
+  let result = 0;
   let max = -Infinity;
 
-  const recursion = (level = 0) => {
-    if (level === arr.length) return;
-
-    let tmp = arr[level];
+  for (let i = 0; i < numbers.length; i += 1) {
+    let number = numbers[i];
     let sum = 0;
 
-    while (tmp > 0) {
-      sum += tmp % 10;
-      tmp = Math.floor(tmp / 10);
+    while (number > 0) {
+      sum += number % 10;
+      number = Math.floor(number / 10);
     }
 
     if (sum >= max) {
       max = sum;
-      result.push(arr[level]);
+      result = numbers[i];
     }
+  }
 
-    recursion(level + 1);
-  };
-  recursion();
-
-  console.log(Math.max(...result));
+  return result;
 };
-main([128, 460, 603, 40, 521, 137, 123]);
+
+console.log(main([128, 460, 603, 40, 521, 137, 123]));
+
+// Recursive
+// TimeComplexity O(n)
+// SpaceComplexity O(1)
+const recursion = (
+  numbers,
+  index = 0,
+  sum = 0,
+  max = -Infinity,
+  result = 0
+) => {
+  if (index === numbers.length) return result;
+
+  let number = numbers[index];
+  while (number > 0) {
+    sum += number % 10;
+    number = Math.floor(number / 10);
+  }
+
+  if (sum >= max) {
+    max = sum;
+    result = numbers[index];
+  }
+
+  return recursion(numbers, (index += 1), (sum = 0), max, result);
+};
+
+console.log(recursion([128, 460, 603, 40, 521, 137, 123]));

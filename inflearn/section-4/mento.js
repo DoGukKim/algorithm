@@ -1,20 +1,28 @@
-const main = (n, arr) => {
+// TimeComplexity O(n*m)
+// SpaceComplexity O(n)
+const main = (n, board) => {
   const students = Array.from({ length: n }, (_, i) => i + 1);
 
   let result = 0;
-  for (let i = 0; i < students.length; i++) {
+
+  for (let i = 0; i < students.length; i += 1) {
     let minRank = 0;
-    for (let j = 0; j < arr.length; j++) {
-      const rank = arr[j].findIndex((item) => item === students[i]);
+
+    for (let j = 0; j < board.length; j += 1) {
+      const rank = board[j].findIndex((item) => item === students[i]);
       if (rank > minRank) minRank = rank;
     }
+
     result += students.length - 1 - minRank;
   }
-  console.log(result);
+
+  return result;
 };
 
-main(4, [
-  [3, 4, 1, 2],
-  [4, 3, 2, 1],
-  [3, 1, 4, 2],
-]);
+console.log(
+  main(4, [
+    [3, 4, 1, 2],
+    [4, 3, 2, 1],
+    [3, 1, 4, 2],
+  ])
+);

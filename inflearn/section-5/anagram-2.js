@@ -1,7 +1,9 @@
-const solution = (str1, str2) => {
+// TimeComplexity O(n)
+// SpaceComplexity O(1)
+const main = (str1, str2) => {
   let result = 0;
 
-  for (let i = 0; i < str1.length; i++) {
+  for (let i = 0; i < str1.length; i += 1) {
     let sum = "";
     let pointer = i;
     let count = str2.length;
@@ -16,5 +18,5 @@ const solution = (str1, str2) => {
 
   return result;
 };
-const result = solution("bacaAacba", "abc");
-console.log(result);
+
+console.log(main("bacaAacba", "abc"));

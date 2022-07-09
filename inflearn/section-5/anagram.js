@@ -1,4 +1,6 @@
-const solution = (s1, s2) => {
+// TimeComplexity O(n)
+// SpaceComplexity O(n)
+const main = (s1, s2) => {
   let result = "YES";
 
   const map1 = {};
@@ -16,5 +18,5 @@ const solution = (s1, s2) => {
 
   return result;
 };
-const result = solution("AbaAeCe", "baeeACA");
-console.log(result);
+
+console.log(main("AbaAeCe", "baeeACA"));

@@ -1,3 +1,5 @@
+// TimeComplexity O(n^3)
+// SpaceComplexity O(n^2)
 const main = (k, arr) => {
   let result = [];
   const hash = {};
@@ -14,6 +16,7 @@ const main = (k, arr) => {
     }
   }
 
-  console.log(result.sort((a, b) => b - a)[k - 1]);
+  return result.sort((a, b) => b - a)[k - 1];
 };
-main(3, [13, 15, 34, 23, 45, 65, 33, 11, 26, 42]);
+
+console.log(main(3, [13, 15, 34, 23, 45, 65, 33, 11, 26, 42]));

@@ -1,17 +1,25 @@
-const isPrime = (n) => {
-  if (n === 1) return false;
-  for (let i = 2; i <= parseInt(Math.sqrt(n)); i++) {
-    if (n % i === 0) return false;
-  }
+// TimeComplexity O(n)
+// SpaceComplexity O(n)
+const isPrime = (number) => {
+  if (number === 1) return false;
+
+  for (let i = 2; i < Math.floor(Math.sqrt(number)); i += 1)
+    if (number % i === 0) return false;
+
   return true;
 };
 
-const solution = (arr) => {
+const main = (numbers) => {
+  numbers = numbers.map((i) =>
+    parseInt(String(i).split("").reverse().join(""))
+  );
+
   let result = [];
-  arr = arr.map((i) => parseInt(String(i).split("").reverse().join("")));
-  for (i = 0; i < arr.length; i++) {
-    if (isPrime(arr[i])) result.push(arr[i]);
-  }
+
+  for (let i = 0; i < numbers.length; i += 1)
+    if (isPrime(numbers[i]) === true) result.push(numbers[i]);
+
   return result;
 };
-const result = solution([32, 55, 62, 20, 250, 370, 200, 30, 100]);
+
+console.log(main([32, 55, 62, 20, 250, 370, 200, 30, 100]));

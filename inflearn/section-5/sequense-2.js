@@ -1,8 +1,10 @@
-const solution = (arr, m) => {
+// TimeComplexity O(n)
+// SpaceComplexity O(1)
+const main = (arr, m) => {
   let result = 0;
   let sum = 0;
 
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i += 1) {
     if (arr[i] < m) result++;
     if (arr[i] + arr[i + 1] < m) result++;
     sum += arr[i];
@@ -14,5 +16,5 @@ const solution = (arr, m) => {
 
   return result;
 };
-const result = solution([1, 3, 1, 2, 3], 5);
-console.log(result);
+
+console.log(main([1, 3, 1, 2, 3], 5));

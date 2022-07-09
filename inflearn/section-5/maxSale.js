@@ -1,5 +1,7 @@
-const solution = (arr, k) => {
-  let result = Number.MIN_SAFE_INTEGER;
+// TimeComplexity O(n)
+// SpaceComplexity O(1)
+const main = (arr, k) => {
+  let result = -Infinity;
 
   let lp = 0;
   let rp = 0;
@@ -12,10 +14,11 @@ const solution = (arr, k) => {
 
     lp++;
     rp = lp;
+
     if (result < sum) result = sum;
   }
 
   return result;
 };
-const result = solution([12, 15, 11, 20, 25, 10, 20, 19, 13, 15], 3);
-console.log(result);
+
+console.log(main([12, 15, 11, 20, 25, 10, 20, 19, 13, 15], 3));

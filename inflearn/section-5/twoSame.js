@@ -1,9 +1,11 @@
-const solution = (arr1, arr2) => {
+// TimeComplexity O(n)
+// SpaceComplexity O(n)
+const main = (arr1, arr2) => {
   let result = [];
   const map = new Map();
   const newArr = arr1.concat(arr2);
 
-  for (let i = 0; i < newArr.length; i++)
+  for (let i = 0; i < newArr.length; i += 1)
     map.set(newArr[i], (map.get(newArr[i]) || 0) + 1);
 
   for (const [key, value] of map) if (value > 1) result.push(key);
@@ -11,8 +13,10 @@ const solution = (arr1, arr2) => {
   return result.sort((a, b) => a - b);
 };
 
-// two pointer version
-const twoPointerSolution = (arr1, arr2) => {
+console.log(main([1, 3, 9, 5, 2], [3, 2, 5, 7, 8]));
+
+// 투 포인터
+const main2 = (arr1, arr2) => {
   arr1.sort((a, b) => a - b);
   arr2.sort((a, b) => a - b);
 
@@ -30,5 +34,4 @@ const twoPointerSolution = (arr1, arr2) => {
   return result;
 };
 
-const result = solution([1, 3, 9, 5, 2], [3, 2, 5, 7, 8]);
-console.log(result);
+console.log(main2([1, 3, 9, 5, 2], [3, 2, 5, 7, 8]));

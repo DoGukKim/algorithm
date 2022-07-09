@@ -1,4 +1,6 @@
-const solution = (arr, m) => {
+// TimeComplexity O(n)
+// SpaceComplexity O(1)
+const main = (arr, m) => {
   let result = 0;
   let lp = 0;
   let rp = lp + 1;
@@ -26,5 +28,5 @@ const solution = (arr, m) => {
 
   return result;
 };
-const result = solution([1, 2, 1, 3, 1, 1, 1, 2], 6);
-console.log(result);
+
+console.log(main([1, 2, 1, 3, 1, 1, 1, 2], 6));
