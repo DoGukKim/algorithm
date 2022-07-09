@@ -1,6 +1,9 @@
+// TimeComplexity O(n)
+// SpaceComplexity O(n)
 const main = (s) => {
   let result = "YES";
   const stack = [];
+
   for (let i = 0; i < s.length; i++) {
     if (stack.length === 0 && s[i] === ")") result = "NO";
     if (s[i] === "(") stack.push(s[i]);
@@ -9,7 +12,8 @@ const main = (s) => {
 
   if (stack.length !== 0) result = "NO";
 
-  console.log(result);
+  return result;
 };
-main("(()(()))(()");
-// main("(()))");
+
+console.log(main("(()(()))(()"));
+console.log(main("(()))"));

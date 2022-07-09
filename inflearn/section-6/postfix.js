@@ -1,3 +1,5 @@
+// TimeComplexity O(n)
+// SpaceComplexity O(n)
 const main = (s) => {
   const stack = [];
   const operator = Object.freeze({
@@ -20,4 +22,4 @@ const main = (s) => {
   return stack[0];
 };
 
-main("352+*9-");
+console.log(main("352+*9-"));
