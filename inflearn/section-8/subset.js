@@ -1,13 +1,16 @@
-const solution = (n) => {
-  function recursion(m, result = []) {
-    if (m > n) return;
-    const arr1 = result.slice();
-    const arr2 = result.slice();
-    arr1.push(m);
-    recursion(m + 1, arr1);
-    console.log(arr1);
-    recursion(m + 1, arr2);
-  }
-  recursion(1);
+// TimeComplexity O(2^n)
+// SpaceComplexity O(n)
+const main = (n, arr = []) => {
+  if (n > 3) return;
+
+  const arr1 = arr.slice();
+  const arr2 = arr.slice();
+
+  arr1.push(n);
+
+  main(n + 1, arr1);
+  console.log(arr1);
+  main(n + 1, arr2);
 };
-solution(3);
+
+main(1);
