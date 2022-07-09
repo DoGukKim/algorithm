@@ -1,5 +1,8 @@
-const solution = (arr) => {
+// TimeComplexity O(n^2)
+// SpaceComplexity O(1)
+const main = (arr) => {
   let isSwap = false;
+
   do {
     isSwap = false;
     for (let i = 0; i < arr.length; i++) {
@@ -9,7 +12,8 @@ const solution = (arr) => {
       }
     }
   } while (isSwap);
+
   return arr;
 };
-// input
-const result = solution([13, 5, 11, 7, 23, 15]);
+
+console.log(main([13, 5, 11, 7, 23, 15]));

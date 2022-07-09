@@ -1,3 +1,5 @@
+// TimeComplexity O(n log n)
+// SpaceComplexity O(n)
 const merge = (left, right) => {
   const sortedArray = [];
   while (left.length && right.length) {

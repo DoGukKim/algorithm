@@ -1,4 +1,6 @@
-const solution = (arr, c) => {
+// TimeComplexity O(log n)
+// SpaceComplexity O(1)
+const main = (arr, c) => {
   let result;
   arr.sort((a, b) => a - b);
 
@@ -28,4 +30,4 @@ const solution = (arr, c) => {
   return result;
 };
 
-const result = solution([1, 2, 8, 4, 9], 3);
+console.log(main([1, 2, 8, 4, 9], 3));

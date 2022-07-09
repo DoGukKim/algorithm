@@ -1,4 +1,6 @@
-const solution = (arr, t) => {
+// TimeComplexity O(log n)
+// SpaceComplexity O(1)
+const main = (arr, t) => {
   arr.sort((a, b) => a - b);
 
   let start = 0;
@@ -11,23 +13,28 @@ const solution = (arr, t) => {
     if (t > arr[middle]) start = middle + 1;
     if (t < arr[middle]) end = middle - 1;
   }
+
+  return arr;
 };
 
-// to recursion
-const binarySearch = (arr, t, lp = 0, rp = arr.length - 1) => {
+console.log(main([23, 87, 65, 12, 57, 32, 99, 81], 32));
+
+// Recursive
+// TimeComplexity O(log n)
+// SpaceComplexity O(1)
+const recursion = (arr, t, lp = 0, rp = arr.length - 1) => {
   const mid = Math.floor((lp + rp) / 2);
   if (arr[mid] === t) return arr[mid];
 
   if (t > arr[mid]) {
     lp = mid + 1;
-    return binarySearch(arr, t, lp, rp);
+    return recursion(arr, t, lp, rp);
   }
 
   if (t < arr[mid]) {
     rp = mid - 1;
-    return binarySearch(arr, t, lp, rp);
+    return recursion(arr, t, lp, rp);
   }
 };
 
-// input
-const result = solution([23, 87, 65, 12, 57, 32, 99, 81], 32);
+console.log(recursion([23, 87, 65, 12, 57, 32, 99, 81], 32));

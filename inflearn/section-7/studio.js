@@ -1,4 +1,6 @@
-const solution = (arr, m) => {
+// TimeComplexity O(n)
+// SpaceComplexity O(1)
+const main = (arr, m) => {
   let result = 0;
   let startPoint = Math.max(...arr);
   let endPoint = arr.reduce((acc, cur) => acc + cur, 0);
@@ -25,21 +27,5 @@ const solution = (arr, m) => {
 
   return result;
 };
-const result = solution([1, 2, 3, 4, 5, 6, 7, 8, 9], 3);
 
-// 또 다른 풀이
-const otherSolution = (m, arr) => {
-  let min = Math.floor(arr.reduce((acc, cur) => acc + cur, 0) / m);
-  let sum = 0;
-  let result = 0;
-
-  for (let i = 0; i < arr.length; i++) {
-    if (sum + arr[i] >= min) {
-      result = sum + arr[i];
-      sum = 0;
-    }
-    sum += arr[i];
-  }
-
-  return result;
-};
+console.log(main([1, 2, 3, 4, 5, 6, 7, 8, 9], 3));

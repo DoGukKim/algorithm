@@ -1,15 +1,20 @@
-const solution = (arr) => {
+// TimeComplexity O(n log n)
+// SpaceComplexity O(1)
+const main = (arr) => {
   arr = arr.sort((a, b) => {
     if (a[0] === b[0]) return a[1] - b[1];
     else return a[0] - b[0];
   });
+
   return arr;
 };
 
-const result = solution([
-  [2, 7],
-  [1, 3],
-  [1, 2],
-  [2, 5],
-  [3, 6],
-]);
+console.log(
+  main([
+    [2, 7],
+    [1, 3],
+    [1, 2],
+    [2, 5],
+    [3, 6],
+  ])
+);
