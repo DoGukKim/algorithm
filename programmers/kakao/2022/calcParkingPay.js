@@ -1,48 +1,35 @@
 const main = (fees, records) => {
-  const formatRec = records
+  const sortedRecords = records
     .map((record) => record.split(" "))
     .sort((a, b) => a[1] - b[1]);
 
   const map = new Map();
-  for (let i = 0; i < formatRec.length; i += 1) {
-    if (!map.has(formatRec[i][1])) {
-      map.set(formatRec[i][1], {
-        time: formatTime(formatRec[i][0]),
-        status: formatRec[i][2],
-      });
-    } else {
-      const { time } = map.get(formatRec[i][1]);
-      map.set(formatRec[i][1], {
-        time: formatTime(formatRec[i][0]) - time,
-        status: formatRec[i][2],
-      });
+  for (let i = 0; i < sortedRecords.length; i += 1) {
+    let [time, carNumber, status] = sortedRecords[i];
+    const [h, m] = time.split(":");
+    time = Number(h) * 60 + Number(m);
+
+    if (!map.has(carNumber)) {
+      map.set(carNumber, { time, status });
+      continue;
     }
+
+    map.set(carNumber, { time: time - map.get(carNumber).time, status });
   }
 
-  for (const [carNumber, carRecord] of map) {
-    const { time, status } = carRecord;
-    if (status === "IN")
-      map.set(carNumber, {
-        status: "OUT",
-        time: formatTime("23:59") - time,
-      });
-  }
+  for (const [carNumber, record] of map)
+    if (record.status === "IN")
+      map.set(carNumber, { time: 1439 - record.time, status: "OUT" });
 
-  // 일괄 게산
   let result = [];
-  for (const [carNumber, carRecord] of map) {
-    const { time } = carRecord;
-    if (time <= fees[0]) result.push(fees[1]);
-    else result.push(fees[1] + Math.ceil((time - fees[0]) / fees[2]) * fees[3]);
+  for (const [_, record] of map) {
+    if (record.time <= fees[0]) result.push(fees[1]);
+    else
+      result.push(
+        fees[1] + Math.ceil((record.time - fees[0]) / fees[2]) * fees[3]
+      );
   }
-
   return result;
-};
-
-const formatTime = (time) => {
-  const separateTime = time.split(":");
-  const hourToMin = Number(separateTime[0]) * 60;
-  return hourToMin + Number(separateTime[1]);
 };
 
 const fees = [180, 5000, 10, 600];
