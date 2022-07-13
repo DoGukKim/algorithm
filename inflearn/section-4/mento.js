@@ -6,7 +6,7 @@ const main = (n, board) => {
   let result = 0;
 
   for (let i = 0; i < students.length; i += 1) {
-    let minRank = 0;
+    let minRank = -1;
 
     for (let j = 0; j < board.length; j += 1) {
       const rank = board[j].findIndex((item) => item === students[i]);
