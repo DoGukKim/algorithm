@@ -1,14 +1,10 @@
-const solution = (arr, stack = []) => {
-  if (arr.length === 1) {
-    if (arr[0] % 2) return null;
-    else {
-      stack.push(arr[0]);
-      return stack;
-    }
-  }
-  if (arr[0] % 2) return solution(arr.slice(1, arr.length), stack);
-  else {
-    stack.push(arr[0]);
-    return solution(arr.slice(1, arr.length), stack);
-  }
+// TimeComplexity O(n)
+// SpaceComplexity O(n)
+const main = (numbers, evens = []) => {
+  if (numbers.length === 0) return evens;
+
+  if (numbers[0] % 2 === 0) evens.push(numbers[0]);
+  return main(numbers.slice(1), evens);
 };
+
+console.log(main([2, 3, 4, 5, 6]));
