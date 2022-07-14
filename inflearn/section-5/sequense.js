@@ -30,3 +30,32 @@ const main = (arr, m) => {
 };
 
 console.log(main([1, 2, 1, 3, 1, 1, 1, 2], 6));
+
+// Recursive
+const recursion = (
+  numbers,
+  max,
+  lt = 0,
+  rt = lt + 1,
+  sum = numbers[lt],
+  result = 0
+) => {
+  if (rt === numbers.length) return result;
+
+  if (sum + numbers[rt] === max) {
+    lt += 1;
+    sum = numbers[lt];
+    return recursion(numbers, max, lt, (rt = lt + 1), sum, (result += 1));
+  }
+
+  if (sum + numbers[rt] > max) {
+    lt += 1;
+    sum = numbers[lt];
+    return recursion(numbers, max, lt, (rt = lt + 1), sum, result);
+  }
+
+  sum += numbers[rt];
+  return recursion(numbers, max, lt, (rt += 1), sum, result);
+};
+
+console.log(recursion([1, 2, 1, 3, 1, 1, 1, 2], 6));

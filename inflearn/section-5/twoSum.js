@@ -33,3 +33,22 @@ const main2 = (arr1, arr2) => {
 };
 
 console.log(main2([1, 3, 5], [2, 3, 6, 7, 9]));
+
+// Recursive
+const recursion = (numbers1, numbers2, sortedArray = []) => {
+  if (numbers1.length === 0 || numbers2.length === 0) return;
+
+  if (numbers1[0] <= numbers2[0]) {
+    sortedArray.push(numbers1.shift());
+    recursion(numbers1, numbers2, sortedArray);
+  }
+
+  if (numbers2[0] <= numbers1[0]) {
+    sortedArray.push(numbers2.shift());
+    recursion(numbers1, numbers2, sortedArray);
+  }
+
+  return [...sortedArray, ...numbers1, ...numbers2];
+};
+
+console.log(recursion([1, 3, 5], [2, 3, 6, 7, 9]));
