@@ -1,6 +1,6 @@
 // 하향식
 // TimeComplexity O(n)
-// SpaceComplexity O(1)
+// SpaceComplexity O(n)
 const TopDownFactorial = (n) => {
   if (n === 1) return 1;
   return n * TopDownFactorial(n - 1);

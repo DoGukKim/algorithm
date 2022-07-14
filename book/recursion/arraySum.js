@@ -1,3 +1,5 @@
+// TimeComplexity O(n^2)
+// SpaceComplexity O(n)
 const main = (numbers) => {
   if (numbers.length === 0) return 0;
   return numbers[0] + main(numbers.slice(1));

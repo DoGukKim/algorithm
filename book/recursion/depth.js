@@ -1,3 +1,5 @@
+// TimeComplexity O(n * m)
+// SpaceComplexity O(n * m)
 const main = (numbers) => {
   for (let i = 0; i < numbers.length; i += 1) {
     if (isNaN(numbers[i])) main(numbers[i]);
