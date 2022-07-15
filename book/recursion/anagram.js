@@ -1,8 +1,15 @@
-const main = (word) => {
-  if (word.length === 1) return [word[0]];
+// TimeComplexity O(n!)
+// SpaceComplexity O(n!)
+const main = (word, anagram = "", anagrams = []) => {
+  if (word.length === 0) return anagrams.push(anagram);
 
-  const remainder = main(word.slice(1));
-  console.log(remainder);
+  for (let i = 0; i < word.length; i += 1) {
+    anagram += word[i];
+    main(word.slice(0, i) + word.slice(i + 1), anagram, anagrams);
+    anagram = anagram.slice(0, anagram.length - 1);
+  }
+
+  return anagrams;
 };
 
-console.log(main("ABC"));
+console.log(main("abc"));
