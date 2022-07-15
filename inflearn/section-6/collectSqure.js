@@ -1,19 +1,26 @@
 // TimeComplexity O(n)
 // SpaceComplexity O(n)
-const main = (s) => {
-  let result = "YES";
+const main = (brackets) => {
   const stack = [];
 
-  for (let i = 0; i < s.length; i++) {
-    if (stack.length === 0 && s[i] === ")") result = "NO";
-    if (s[i] === "(") stack.push(s[i]);
-    if (s[i] === ")") stack.pop();
+  for (let i = 0; i < brackets.length; i += 1) {
+    if (brackets[i] === "(") stack.push(brackets[i]);
+    if (brackets[i] === ")") stack.pop();
   }
 
-  if (stack.length !== 0) result = "NO";
-
-  return result;
+  return stack.length > 0 ? "NO" : "YES";
 };
 
 console.log(main("(()(()))(()"));
-console.log(main("(()))"));
+
+// Recursive
+// TimeComplexity O(n^2)
+// SpaceComplexity O(n)
+const recursion = (brackets, stack = []) => {
+  if (brackets.length === 0) return stack.length > 0 ? "NO" : "YES";
+  if (brackets[0] === "(") stack.push(brackets[0]);
+  if (brackets[0] === ")") stack.pop();
+  return recursion(brackets.slice(1), stack);
+};
+
+console.log(recursion("(()(()))(()"));
