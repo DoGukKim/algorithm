@@ -1,31 +1,28 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(1)
-const main = (arr, m) => {
-  let result = 0;
-  let startPoint = Math.max(...arr);
-  let endPoint = arr.reduce((acc, cur) => acc + cur, 0);
+// TimeComplexity O(log n)
+// SpaceComplexity O(n)
+const main = (songsCount, totalDVDCount) => {
+  const songs = Array.from({ length: songsCount }, (_, i) => i + 1);
+  let lt = Math.max(...songs);
+  let rt = (songsCount + 1) * (songsCount / 2);
 
-  while (startPoint <= endPoint) {
-    const middlePoint = Math.floor((startPoint + endPoint) / 2);
+  while (lt <= rt) {
+    const mid = Math.floor((lt + rt) / 2);
     let sum = 0;
+    let dvdCount = 0;
 
-    for (let i = 0; i < arr.length; i++) {
-      if (sum + arr[i] > middlePoint) {
-        result++;
-        sum = arr[i];
-      } else {
-        sum += arr[i];
-      }
+    for (let i = 0; i < songs.length; i += 1) {
+      if (sum + songs[i] > mid) {
+        sum = songs[i];
+        dvdCount += 1;
+      } else sum += songs[i];
     }
 
-    if (result <= m) {
-      endPoint = middlePoint - 1;
-    } else {
-      startPoint = middlePoint + 1;
-    }
+    if (sum > 0) dvdCount += 1;
+
+    if (dvdCount === totalDVDCount) return mid;
+    if (dvdCount > totalDVDCount) lt = mid + 1;
+    if (dvdCount < totalDVDCount) rt = mid - 1;
   }
-
-  return result;
 };
 
-console.log(main([1, 2, 3, 4, 5, 6, 7, 8, 9], 3));
+console.log(main(9, 3));
