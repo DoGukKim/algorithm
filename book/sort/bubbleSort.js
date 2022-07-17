@@ -5,7 +5,7 @@ const main = (arr) => {
 
   do {
     isSwap = false;
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i += 1) {
       if (arr[i] > arr[i + 1]) {
         [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
         isSwap = true;
@@ -17,3 +17,20 @@ const main = (arr) => {
 };
 
 console.log(main([13, 5, 11, 7, 23, 15]));
+
+// Recursive
+const recursion = (numbers, index = 0, isSwap = false) => {
+  if (index === numbers.length && !isSwap) return numbers;
+  if (index === numbers.length - 1 && isSwap) index = 0;
+
+  isSwap = false;
+
+  if (numbers[index] > numbers[index + 1]) {
+    [numbers[index], numbers[index + 1]] = [numbers[index + 1], numbers[index]];
+    isSwap = true;
+  }
+
+  return recursion(numbers, (index += 1), isSwap);
+};
+
+console.log(recursion([13, 5, 11, 7, 23, 15]));
