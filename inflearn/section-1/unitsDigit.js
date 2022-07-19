@@ -13,7 +13,7 @@ console.log(main(3, [25, 23, 11, 47, 53, 17, 33]));
 
 // Recursive
 // TimeComplexity O(n)
-// SpaceComplexity O(1)
+// SpaceComplexity O(n)
 const recursion = (day, numbers, index = 0, result = 0) => {
   if (index === numbers.length) return result;
 

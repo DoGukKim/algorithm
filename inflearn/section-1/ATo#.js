@@ -13,7 +13,7 @@ console.log(main("BANANA"));
 
 // Recursive
 // TimeComplexity O(n)
-// SpaceComplexity O(1)
+// SpaceComplexity O(n)
 const recursion = (word, index = 0, result = "") => {
   if (index === word.length) return result;
 

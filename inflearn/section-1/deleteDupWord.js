@@ -9,7 +9,7 @@ console.log(main(["good", "time", "good", "time", "student"]));
 
 // Recursive
 // TimeComplexity O(n^2)
-// SpaceComplexity O(1)
+// SpaceComplexity O(n)
 const recursion = (words, index = 0) => {
   if (index === words.length) return;
 

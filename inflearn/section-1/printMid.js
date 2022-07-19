@@ -12,7 +12,7 @@ console.log(main("study"));
 
 // Recursive
 // TimeComplexity O(n)
-// SpaceComplexity O(1)
+// SpaceComplexity O(n)
 const recursion = (
   word,
   index = 0,
@@ -23,6 +23,7 @@ const recursion = (
     if (isOdd) return word[mid];
     else return word[mid] + word[mid + 1];
   }
+
   return recursion(word, (index += 1), mid, isOdd);
 };
 

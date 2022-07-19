@@ -3,9 +3,8 @@
 const main = (words) => {
   let result = words[0];
 
-  for (let i = 1; i < words.length; i += 1) {
+  for (let i = 1; i < words.length; i += 1)
     if (words[i].length > result.length) result = words[i];
-  }
 
   return result;
 };
@@ -14,7 +13,7 @@ console.log(main(["teacher", "time", "student", "beautiful", "good"]));
 
 // Recursive
 // TimeComplexity O(n)
-// SpaceComplexity O(1)
+// SpaceComplexity O(n)
 const recursion = (words, index = 0, result = words[0]) => {
   if (index === words.length) return result;
 

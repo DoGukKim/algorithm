@@ -13,11 +13,12 @@ const main = (numbers) => {
 
   return [sum, min];
 };
+
 console.log(main([12, 77, 38, 41, 53, 92, 85]));
 
 // Recursive
 // TimeComplexity O(n)
-// SpaceComplexity O(1)
+// SpaceComplexity O(n)
 const recursion = (numbers, index = 0, sum = 0, min = Infinity) => {
   if (index === numbers.length) return [sum, min];
 
@@ -28,4 +29,5 @@ const recursion = (numbers, index = 0, sum = 0, min = Infinity) => {
 
   return recursion(numbers, (index += 1), sum, min);
 };
+
 console.log(recursion([12, 77, 38, 41, 53, 92, 85]));
