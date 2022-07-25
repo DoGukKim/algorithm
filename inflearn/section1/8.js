@@ -1,6 +1,3 @@
-// const main = () => {};
-// console.log(main());
-
 // Time: O(n^2)
 // Space: O(n)
 const main = (dwarfs) => {

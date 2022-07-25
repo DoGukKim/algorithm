@@ -1,10 +1,10 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// Time O(n)
+// Space O(n)
 const main = (string, target) => {
   let result = [];
   let acc = 0;
 
-  for (let i = 0; i < string.length; i += 1) {
+  for (let i = 0; i < string.length; i++) {
     if (string[i] !== target) {
       acc++;
       result.push(acc);
