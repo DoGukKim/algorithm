@@ -1,5 +1,5 @@
-// TimeComplexity O(n^2)
-// SpaceComplexity O(n)
+// Time: O(n^2) // n * n
+// Space: O(1)
 const main = (board) => {
   let result = 0,
     row = 0,
@@ -34,5 +34,3 @@ console.log(
     [19, 13, 30, 13, 19],
   ])
 );
-
-// Recursive (Pending)

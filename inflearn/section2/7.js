@@ -1,5 +1,5 @@
-// TimeComplexity O(n^2)
-// SpaceComplexity O(1)
+// Time: O(n^2)
+// Space: O(1)
 const main = (board) => {
   let result = 0;
 
