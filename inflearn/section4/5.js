@@ -1,5 +1,5 @@
-// TimeComplexity O(n^3)
-// SpaceComplexity O(n^2)
+// Time: O(n^3)
+// Space: O(n)
 const main = (k, arr) => {
   let result = [];
   const hash = {};

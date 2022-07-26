@@ -1,5 +1,5 @@
-// Time O(n^2)
-// Space O(n)
+// Time: O(n^2)
+// Space: O(n)
 const main = (n = 1, arr = []) => {
   if (n > 3) return;
 
@@ -14,9 +14,9 @@ const main = (n = 1, arr = []) => {
 
 console.log(main());
 
-// 순서에 상관없이 부분집합 구해보기
-// Time O(2^n)
-// Space O(n^2)
+// 순서에 상관없이 부분집합
+// Time: O(2^n)
+// Space: O(n^2)
 const main2 = (n = 1, arr = Array.from({ length: 3 }, (_, v) => v + 1)) => {
   if (arr.length === 0) return [[]];
 

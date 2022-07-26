@@ -1,9 +1,9 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// Time: O(n^2)
+// Space: O(n)
 const isPrime = (number) => {
   if (number === 1) return false;
 
-  for (let i = 2; i < Math.floor(Math.sqrt(number)); i += 1)
+  for (let i = 2; i < Math.floor(Math.sqrt(number)); i++)
     if (number % i === 0) return false;
 
   return true;
@@ -15,8 +15,7 @@ const main = (numbers) => {
   );
 
   let result = [];
-
-  for (let i = 0; i < numbers.length; i += 1)
+  for (let i = 0; i < numbers.length; i++)
     if (isPrime(numbers[i]) === true) result.push(numbers[i]);
 
   return result;

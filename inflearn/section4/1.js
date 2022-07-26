@@ -1,10 +1,10 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(1)
+// Time: O(n)
+// Space: O(1)
 const main = (numbers) => {
   let result = 0;
   let max = -Infinity;
 
-  for (let i = 0; i < numbers.length; i += 1) {
+  for (let i = 0; i < numbers.length; i++) {
     let number = numbers[i];
     let sum = 0;
 
@@ -24,9 +24,9 @@ const main = (numbers) => {
 
 console.log(main([128, 460, 603, 40, 521, 137, 123]));
 
-// Recursive
-// TimeComplexity O(n)
-// SpaceComplexity O(1)
+// 재귀식 풀이
+// Time: O(n)
+// Space: O(n)
 const recursion = (
   numbers,
   index = 0,
@@ -47,7 +47,7 @@ const recursion = (
     result = numbers[index];
   }
 
-  return recursion(numbers, (index += 1), (sum = 0), max, result);
+  return recursion(numbers, index + 1, (sum = 0), max, result);
 };
 
 console.log(recursion([128, 460, 603, 40, 521, 137, 123]));
