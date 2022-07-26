@@ -1,5 +1,5 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// Time: O(n^2)
+// Space: O(n)
 const main = (s1, s2) => {
   let result = "YES";
 

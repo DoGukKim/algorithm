@@ -1,5 +1,5 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(1)
+// Time: O(n)
+// Space: O(1)
 const main = (arr, m) => {
   let result = 0;
   let sum = 0;

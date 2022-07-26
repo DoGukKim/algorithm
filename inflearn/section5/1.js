@@ -1,5 +1,5 @@
-// TimeComplexity O(n*m)
-// SpaceComplexity O(n)
+// Time: O(min(n,m))
+// Space: O(n+m)
 const main = (arr1, arr2) => {
   let result = [];
 
@@ -9,7 +9,6 @@ const main = (arr1, arr2) => {
   }
 
   result = [...result, ...arr1, ...arr2];
-
   return result;
 };
 
@@ -34,7 +33,7 @@ const main2 = (arr1, arr2) => {
 
 console.log(main2([1, 3, 5], [2, 3, 6, 7, 9]));
 
-// Recursive
+// 재귀식 풀이
 const recursion = (numbers1, numbers2, sortedArray = []) => {
   if (numbers1.length === 0 || numbers2.length === 0) return;
 

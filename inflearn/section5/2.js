@@ -1,5 +1,5 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// Time: O(n^2)
+// Space: O(n)
 const main = (arr1, arr2) => {
   let result = [];
   const map = new Map();
@@ -36,7 +36,7 @@ const main2 = (arr1, arr2) => {
 
 console.log(main2([1, 3, 9, 5, 2], [3, 2, 5, 7, 8]));
 
-// Recursive
+// 재귀식 풀이
 const recursive = (numbers1, numbers2) => {
   numbers1.sort((a, b) => a - b);
   numbers2.sort((a, b) => a - b);

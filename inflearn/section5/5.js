@@ -1,5 +1,5 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(1)
+// Time: O(n)
+// Space: O(1)
 const main = (arr, k) => {
   let result = -Infinity;
 

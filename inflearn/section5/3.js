@@ -1,5 +1,5 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(1)
+// Time: O(n)
+// Space: O(1)
 const main = (arr, m) => {
   let result = 0;
   let lp = 0;
@@ -31,7 +31,7 @@ const main = (arr, m) => {
 
 console.log(main([1, 2, 1, 3, 1, 1, 1, 2], 6));
 
-// Recursive
+// 재귀식 풀이
 const recursion = (
   numbers,
   max,

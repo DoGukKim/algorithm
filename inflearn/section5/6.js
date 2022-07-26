@@ -1,5 +1,5 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// Time: O(n)
+// Space: O(n)
 const main = (s) => {
   let result = "";
   let max = -Infinity;
