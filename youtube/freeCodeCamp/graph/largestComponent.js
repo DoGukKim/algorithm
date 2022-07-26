@@ -1,20 +1,25 @@
 const largestComponent = (graph) => {
-  let result = 0;
+  let result = -Infinity;
   const visited = new Set();
-  for (let vertex in graph) {
-    const size = exploreSize(graph, vertex, visited);
-    if (size > result) result = size;
+
+  for (const vertex in graph) {
+    const remainder = exploreSize(graph, vertex, visited);
+    if (remainder > result) result = remainder;
   }
+
   return result;
 };
 
 const exploreSize = (graph, vertex, visited) => {
   if (visited.has(vertex)) return 0;
+
   visited.add(vertex);
   let size = 1;
-  for (let neighbor of graph[vertex]) {
-    size += exploreSize(graph, neighbor, visited);
+
+  for (let i = 0; i < graph[vertex].length; i++) {
+    size += exploreSize(graph, graph[vertex][i], visited);
   }
+
   return size;
 };
 
