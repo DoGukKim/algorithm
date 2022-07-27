@@ -1,5 +1,5 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// Time: O(n)
+// Space: O(n)
 const main = (n, k) => {
   const princes = Array.from({ length: n }, (_, i) => i + 1);
   let result = 0;
@@ -16,8 +16,8 @@ const main = (n, k) => {
 console.log(main(8, 3));
 
 // Recursive
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// Time: O(n)
+// Space: O(n)
 const recursion = (
   n,
   k,

@@ -1,5 +1,5 @@
-// TimeComplexity O(n log n)
-// SpaceComplexity O(1)
+// Time: O(n log n)
+// Space: O(1)
 const main = (arr) => {
   arr.sort((a, b) => {
     if (a[1] === b[1]) return a[0] - b[0];

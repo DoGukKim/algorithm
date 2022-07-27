@@ -1,5 +1,5 @@
-// TimeComplexity O(log n)
-// SpaceComplexity O(1)
+// Time: O(log n)
+// Space: O(1)
 const main = (stall, maxHorseCount) => {
   stall.sort((a, b) => a - b);
 

@@ -1,5 +1,5 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// Time: O(n)
+// Space: O(n)
 const main = (string) => {
   const stack = [];
   const operator = Object.freeze({
@@ -9,7 +9,7 @@ const main = (string) => {
     "-": true,
   });
 
-  for (let i = 0; i < string.length; i += 1) {
+  for (let i = 0; i < string.length; i++) {
     if (operator[string[i]]) {
       const sum = new Function("a", "b", `return b ${string[i]} a`);
       const result = sum(stack.pop(), stack.pop());
@@ -22,9 +22,9 @@ const main = (string) => {
 
 console.log(main("352+*9-"));
 
-// Recursive
-// TimeComplexity O(n^2)
-// SpaceComplexity O(n)
+// 재귀식 풀이
+// Time: O(n^2)
+// Space: O(n)
 const operator = Object.freeze({
   "*": true,
   "/": true,

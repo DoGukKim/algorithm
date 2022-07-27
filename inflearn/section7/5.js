@@ -1,5 +1,5 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// Time: O(n)
+// Space: O(n)
 const main = (size, arr) => {
   const memory = Array.from({ length: size }, () => 0);
 

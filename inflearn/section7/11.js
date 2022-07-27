@@ -1,5 +1,5 @@
-// TimeComplexity O(log n)
-// SpaceComplexity O(n)
+// Time: O(log n)
+// Space: O(n)
 const main = (songsCount, totalDVDCount) => {
   const songs = Array.from({ length: songsCount }, (_, i) => i + 1);
   let lt = Math.max(...songs);

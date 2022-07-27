@@ -1,5 +1,5 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// Time: O(n)
+// Space: O(n)
 const main = (sticks) => {
   let result = 0;
   const stack = [];
@@ -18,9 +18,9 @@ const main = (sticks) => {
 
 console.log(main("()(((()())(())()))(())"));
 
-// Recursive
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// 재귀식 풀이
+// Time: O(n)
+// Space: O(n)
 const recursion = (sticks, index = 0, stack = [], result = 0) => {
   if (index === sticks.length) return result;
 
@@ -31,7 +31,7 @@ const recursion = (sticks, index = 0, stack = [], result = 0) => {
     else result += 1;
   }
 
-  return recursion(sticks, (index += 1), stack, result);
+  return recursion(sticks, index + 1, stack, result);
 };
 
 console.log(recursion("()(((()())(())()))(())"));

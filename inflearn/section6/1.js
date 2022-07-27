@@ -1,9 +1,9 @@
-// TimeComplexity O(n)
-// SpaceComplexity O(n)
+// Time: O(n)
+// Space: O(n)
 const main = (brackets) => {
   const stack = [];
 
-  for (let i = 0; i < brackets.length; i += 1) {
+  for (let i = 0; i < brackets.length; i++) {
     if (brackets[i] === "(") stack.push(brackets[i]);
     if (brackets[i] === ")") stack.pop();
   }
@@ -13,13 +13,15 @@ const main = (brackets) => {
 
 console.log(main("(()(()))(()"));
 
-// Recursive
-// TimeComplexity O(n^2)
-// SpaceComplexity O(n)
+// 재귀식 풀이
+// Time: O(n^2)
+// Space: O(n)
 const recursion = (brackets, stack = []) => {
   if (brackets.length === 0) return stack.length > 0 ? "NO" : "YES";
+
   if (brackets[0] === "(") stack.push(brackets[0]);
   if (brackets[0] === ")") stack.pop();
+
   return recursion(brackets.slice(1), stack);
 };
 
