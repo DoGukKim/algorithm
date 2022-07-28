@@ -20,3 +20,17 @@ var firstUniqChar = function (s) {
 
   return -1;
 };
+
+// Time: O(n^2)
+// Space: O(1)
+// Runtime: 97 ms, faster than 96.46% of JavaScript online submissions
+// Memory Usage: 44.8 MB
+var firstUniqChar = function (s) {
+  for (let i = 0; i < s.length; i++) {
+    if (s.lastIndexOf(s[i]) === i && s.indexOf(s[i]) === i) {
+      return i;
+    }
+  }
+
+  return -1;
+};
