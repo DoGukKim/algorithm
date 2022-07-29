@@ -11,6 +11,7 @@
  * @param {number} targetSum
  * @return {boolean}
  */
+// 풀이
 var hasPathSum = function (root, targetSum) {
   if (root === null) {
     if (targetSum === 0) return true;
@@ -23,3 +24,13 @@ var hasPathSum = function (root, targetSum) {
 };
 
 // [],0 케이스 오류 해결 필요!
+
+// 다른 풀이
+var hasPathSum = function (root, targetSum) {
+  if (!root) return false;
+  if (!root.left && !root.right) return targetSum === root.val;
+  return (
+    hasPathSum(root.left, targetSum - root.val) ||
+    hasPathSum(root.right, targetSum - root.val)
+  );
+};

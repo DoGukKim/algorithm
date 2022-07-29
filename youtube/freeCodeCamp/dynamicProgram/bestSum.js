@@ -1,5 +1,5 @@
-// TimeComplexity O(n^m*m)
-// SpaceComplexity O(m^2)
+// Time: O(n^m^2)
+// Space: O(m^2)
 const bestSum = (targetSum, numbers) => {
   if (targetSum === 0) return [];
   if (targetSum < 0) return null;
@@ -7,8 +7,8 @@ const bestSum = (targetSum, numbers) => {
   let shortestCombination = null;
 
   for (let i = 0; i < numbers.length; i++) {
-    const remainder = targetSum - numbers[i];
-    const remainderCombination = bestSum(remainder, numbers);
+    const remainderCombination = bestSum(targetSum - numbers[i], numbers);
+
     if (remainderCombination !== null) {
       const combination = [...remainderCombination, numbers[i]];
       if (
@@ -22,11 +22,12 @@ const bestSum = (targetSum, numbers) => {
 
   return shortestCombination;
 };
-console.log(bestSum(8, [2, 3, 5]));
 
-// TimeComplexity O(m^2*n)
-// SpaceComplexity O(m^2)
-const memoBestSum = (targetSum, numbers, memo = {}) => {
+console.log(bestSum(8, [3, 5, 2]));
+
+// Time: O(n*m^2)
+// Space: O(m^2)
+const bestSumM = (targetSum, numbers, memo = {}) => {
   if (targetSum in memo) return memo[targetSum];
   if (targetSum === 0) return [];
   if (targetSum < 0) return null;
@@ -34,8 +35,12 @@ const memoBestSum = (targetSum, numbers, memo = {}) => {
   let shortestCombination = null;
 
   for (let i = 0; i < numbers.length; i++) {
-    const remainder = targetSum - numbers[i];
-    const remainderCombination = memoBestSum(remainder, numbers, memo);
+    const remainderCombination = bestSumM(
+      targetSum - numbers[i],
+      numbers,
+      memo
+    );
+
     if (remainderCombination !== null) {
       const combination = [...remainderCombination, numbers[i]];
       if (
@@ -50,4 +55,5 @@ const memoBestSum = (targetSum, numbers, memo = {}) => {
   memo[targetSum] = shortestCombination;
   return shortestCombination;
 };
-console.log(memoBestSum(100, [1, 2, 5, 25]));
+
+console.log(bestSumM(8, [3, 5, 2]));
