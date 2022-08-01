@@ -8,7 +8,6 @@ const connectedComponentsCount = (graph) => {
     if (explore(graph, vertex, visited) === true) count += 1;
   }
 
-  console.log(count);
   return count;
 };
 

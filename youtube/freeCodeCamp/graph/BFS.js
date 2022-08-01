@@ -1,12 +1,14 @@
-const main = (graph, source) => {
-  const queue = [source];
+const main = (graph, root) => {
+  const queue = [root];
 
   while (queue.length > 0) {
     const current = queue.shift();
+
     console.log(current);
 
-    for (let i = 0; i < graph[current].length; i++)
+    for (let i = 0; i < graph[current].length; i++) {
       queue.push(graph[current][i]);
+    }
   }
 };
 
