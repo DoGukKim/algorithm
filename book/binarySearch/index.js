@@ -1,5 +1,5 @@
-// TimeComplexity O(log n)
-// SpaceComplexity O(1)
+// Time: O(log n)
+// Space: O(1)
 const main = (arr, t) => {
   arr.sort((a, b) => a - b);
 
@@ -20,8 +20,8 @@ const main = (arr, t) => {
 console.log(main([23, 87, 65, 12, 57, 32, 99, 81], 32));
 
 // Recursive
-// TimeComplexity O(log n)
-// SpaceComplexity O(1)
+// Time: O(log n)
+// Space: O(1)
 const recursion = (arr, t, lp = 0, rp = arr.length - 1) => {
   const mid = Math.floor((lp + rp) / 2);
   if (arr[mid] === t) return arr[mid];

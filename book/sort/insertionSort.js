@@ -1,8 +1,9 @@
-// TimeComplexity O(n^2)
-// SpaceComplexity O(1)
+// Time: O(n^2)
+// Space: O(1)
 const main = (arr) => {
-  for (let i = 1; i < arr.length; i += 1) {
+  for (let i = 1; i < arr.length; i++) {
     let current = i;
+
     while (arr[current - 1] !== undefined && arr[current] < arr[current - 1]) {
       [arr[current], arr[current - 1]] = [arr[current - 1], arr[current]];
       current--;
