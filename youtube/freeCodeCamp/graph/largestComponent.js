@@ -3,21 +3,21 @@ const largestComponent = (graph) => {
   const visited = new Set();
 
   for (const vertex in graph) {
-    const remainder = exploreSize(graph, vertex, visited);
-    if (remainder > result) result = remainder;
+    const remainder = explore(graph, vertex, visited);
+    if (result < remainder) result = remainder;
   }
 
   return result;
 };
 
-const exploreSize = (graph, vertex, visited) => {
+const explore = (graph, vertex, visited) => {
   if (visited.has(vertex)) return 0;
 
-  visited.add(vertex);
   let size = 1;
+  visited.add(vertex);
 
   for (let i = 0; i < graph[vertex].length; i++) {
-    size += exploreSize(graph, graph[vertex][i], visited);
+    size += explore(graph, graph[vertex][i], visited);
   }
 
   return size;

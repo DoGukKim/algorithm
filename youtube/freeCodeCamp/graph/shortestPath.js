@@ -1,32 +1,34 @@
-const shortestPath = (edges, start, end) => {
+const shortestPath = (edges, vertex, target) => {
   const graph = buildGraph(edges);
+  const queue = [[vertex, 0]]; // 0은 distance의 초기값
   const visited = new Set();
 
-  const queue = [[start, 0]];
   while (queue.length > 0) {
-    const [vertex, distance] = queue.shift();
-    if (vertex === end) return distance;
+    const [v, distance] = queue.shift();
 
-    for (let i = 0; i < graph[vertex].length; i++) {
-      if (!visited.has(graph[vertex][i])) {
-        visited.add(graph[vertex][i]);
-        queue.push([graph[vertex][i], distance + 1]);
+    if (v === target) return distance;
+
+    for (let i = 0; i < graph[v].length; i++) {
+      if (!visited.has(graph[v][i])) {
+        visited.add(graph[v][i]);
+        queue.push([graph[v][i], distance + 1]);
       }
     }
   }
+
+  return -1;
 };
 
 const buildGraph = (edges) => {
   const graph = {};
 
   for (let i = 0; i < edges.length; i++) {
-    const [a, b] = edges[i];
+    const [v, e] = edges[i];
+    if (!(v in graph)) graph[v] = [];
+    if (!(e in graph)) graph[e] = [];
 
-    if (!graph[a]) graph[a] = [];
-    if (!graph[b]) graph[b] = [];
-
-    graph[a].push(b);
-    graph[b].push(a);
+    graph[v].push(e);
+    graph[e].push(v);
   }
 
   return graph;
@@ -40,4 +42,4 @@ const edges = [
   ["w", "v"],
 ];
 
-shortestPath(edges, "w", "z"); // -> 2
+console.log(shortestPath(edges, "w", "z")); // -> 2;
