@@ -1,9 +1,10 @@
-// TimeComplexity O(n * m)
-// SpaceComplexity O(n * m)
+// Time: O(n^2)
+// Space: O(n)
 const main = (numbers) => {
-  for (let i = 0; i < numbers.length; i += 1) {
-    if (isNaN(numbers[i])) main(numbers[i]);
-    else console.log(numbers[i]);
+  for (let i = 0; i < numbers.length; i++) {
+    if (isNaN(numbers[i])) {
+      main(numbers[i]);
+    } else console.log(numbers[i]);
   }
 };
 
