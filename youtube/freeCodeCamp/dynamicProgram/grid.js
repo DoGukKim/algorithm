@@ -13,6 +13,10 @@ console.log(gridTraveler(3, 3));
 // Time: O(n*m)
 // Space: O(n+m)
 const gridTravelerM = (r, c, memo = {}) => {
+  const rowInBound = 0 < r && r < grid.length;
+  const columInBound = 0 < c && c < grid[0].length;
+  if (!rowInBound || !columInBound) return false; // 그리드를 벗어나면 false 반환
+
   const pos = r + "," + c;
 
   if (pos in memo) return memo[pos];

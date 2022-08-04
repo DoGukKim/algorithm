@@ -9,14 +9,16 @@ const main = (grid) => {
     }
   }
 
-  console.log(result);
+  return result;
 };
 
 const explore = (grid, r, c, visited) => {
   const rowInBound = 0 < r && r < grid.length;
   const columInBound = 0 < c && c < grid[0].length;
   if (!rowInBound || !columInBound) return false;
+
   if (grid[r][c] === 0) return false;
+
   const pos = r + "," + c;
   if (visited.has(pos)) return false;
   visited.add(pos);

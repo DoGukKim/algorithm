@@ -3,13 +3,14 @@ const main = (n, arr) => {
   let ch = Array.from({ length: n + 1 }, () => 0);
   let result = 0;
   let path = [];
+
   for (const [a, b] of arr) {
     graph[a].push(b);
   }
+
   function DFS(v) {
     if (v === n) {
       result++;
-      console.log(path);
     } else {
       for (let nv of graph[v]) {
         if (ch[nv] === 0) {

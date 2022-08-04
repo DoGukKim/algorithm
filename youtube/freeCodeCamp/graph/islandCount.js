@@ -16,7 +16,7 @@ const explore = (grid, r, c, visited) => {
   const columInBound = 0 < c && c < grid[0].length;
   if (!rowInBound || !columInBound) return false; // 그리드를 벗어나면 false 반환
 
-  const pos = r + "," + "c"; // 키의 중복을 방지하기 위함
+  const pos = r + "," + c; // 키의 중복을 방지하기 위함
   if (grid[r][c] === "W") return false;
   if (visited.has(pos)) return false;
 
