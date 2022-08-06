@@ -11,16 +11,17 @@
  * @return {number[]}
  */
 
-var inorderTraversal = function (root, result = []) {
-  if (root === null) return null;
-
-  inorderTraversal(root.left, result);
-  result.push(root.val);
-  inorderTraversal(root.right, result);
-
-  return result;
+var inorderTraversal = function (root) {
+  return root
+    ? [
+        ...inorderTraversal(root.left),
+        root.val,
+        ...inorderTraversal(root.right),
+      ]
+    : [];
 };
 
+// 다른 방법
 var inorderTraversal = function (root) {
   let res = [];
 

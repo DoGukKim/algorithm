@@ -10,20 +10,31 @@
  * @param {TreeNode} root
  * @return {string[]}
  */
-
-// Time: O(n)
-// Space: O(n)
 var binaryTreePaths = function (root) {
-  const allPaths = [];
-  explore(root, all);
-  return allPaths;
+  const result = [];
+  explore(root, result);
+  return result;
 };
 
-const explore = (root, allPaths, sum = "") => {
-  if (root === null) return "";
-  if (!root.left && !root.right) return allPaths.push((sum += root.val));
+const explore = (root, result, sum = "") => {
+  if (!root) return "";
+  if (!root.left && !root.right) return result.push(sum + root.val);
+  explore(root.left, result, sum + root.val + "->");
+  explore(root.right, result, sum + root.val + "->");
+};
 
-  sum += root.val + "->";
-  explore(root.left, allPaths, sum);
-  explore(root.right, allPaths, sum);
+// 다른 방법
+var binaryTreePaths = function (root) {
+  const result = [];
+
+  function DFS(root, sum) {
+    if (!root) return "";
+    if (!root.left && !root.right) return result.push(sum + root.val);
+    DFS(root.left, sum + root.val + "->");
+    DFS(root.right, sum + root.val + "->");
+  }
+
+  DFS(root, "");
+
+  return result;
 };

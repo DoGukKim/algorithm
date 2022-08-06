@@ -34,3 +34,10 @@ function invertTree(root) {
   [root.left, root.right] = [invertTree(root.right), invertTree(root.left)];
   return root;
 }
+// [9]
+// [6]
+// [7,9,6]
+// [3]
+// [1]
+// [2,3,1]
+// [4,7,2,9,6,3,1]
