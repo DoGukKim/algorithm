@@ -11,6 +11,53 @@
  * @return {number[]}
  */
 
+// Time: O(2^n)
+// Space: O(n)
+var inorderTraversal = function (root) {
+  const result = [];
+
+  function dfs(root) {
+    if (!root) return null;
+
+    dfs(root.left);
+    result.push(root.val);
+    dfs(root.right);
+  }
+  dfs(root);
+
+  return result;
+};
+
+// 이터레이티브 풀이
+// Time: O(n)
+// Space: O(n)
+var inorderTraversal = function (root) {
+  if (!root) return [];
+  const stack = [];
+  const result = [];
+
+  while (stack.length > 0 || root) {
+    if (root) {
+      // root를 stack에 저장해 놓고 left계속 파고 들어감
+      // stack 상태
+      // [ [1,null,2,3] ]
+      // [ [2,3] ]
+      // [ [2,3], [3] ]
+      stack.push(root);
+      root = root.left;
+    } else {
+      // left가 null이면 저장해 놓았던 root를 root에 다시 재할당
+      root = stack.pop();
+      result.push(root.val);
+      root = root.right;
+    }
+  }
+
+  return result;
+};
+
+// Time: O(2^n)
+// Space: O(n)
 var inorderTraversal = function (root) {
   return root
     ? [
@@ -20,20 +67,3 @@ var inorderTraversal = function (root) {
       ]
     : [];
 };
-
-// 다른 방법
-var inorderTraversal = function (root) {
-  let res = [];
-
-  inorder(root, res);
-
-  return res;
-};
-
-function inorder(root, res) {
-  if (!root) return null;
-
-  inorder(root.left, res);
-  res.push(root.val);
-  inorder(root.right, res);
-}

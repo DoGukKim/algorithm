@@ -11,25 +11,26 @@
  * @return {number[]}
  */
 
-// Time: O(n)
-// Space: O(n^2)
-// Runtime: 84 ms, faster than 56.43% of JavaScript online submissions
-// Memory Usage: 42.2 MB
+// Time: O(2^n)
+// Space: O(n)
 var preorderTraversal = function (root) {
   const result = [];
-  explore(root, result);
+
+  function dfs(root) {
+    if (!root) return null;
+
+    result.push(root.val);
+    dfs(root.left);
+    dfs(root.right);
+  }
+  dfs(root);
+
   return result;
 };
 
-const explore = (root, result) => {
-  if (!root) return null;
-
-  result.push(root.val);
-  explore(root.left, result);
-  explore(root.right, result);
-};
-
 // 다른 풀이
+// Time: O(2^n)
+// Space: O(n)
 var preorderTraversal = function (root) {
   return root
     ? [
@@ -38,4 +39,21 @@ var preorderTraversal = function (root) {
         ...preorderTraversal(root.right),
       ]
     : [];
+}; // [1,...[]] -> [1,2] -> [1,2,3] -> [1,2,3,...[]] -> [1,2,3]
+
+// 이터레이티브 풀이
+// Time: O(n)
+// Space: O(n)
+var preorderTraversal = function (root) {
+  if (!root) return [];
+  var result = [];
+  var stack = [root];
+
+  while (stack.length) {
+    var node = stack.pop();
+    result.push(node.val);
+    if (node.right) stack.push(node.right);
+    if (node.left) stack.push(node.left);
+  }
+  return result;
 };
