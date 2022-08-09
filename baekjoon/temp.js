@@ -1,11 +1,8 @@
-const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
-// let input = require('fs').readFileSync('/dev/stdin').toString().split('\n');
-const input = require("fs")
-  .readFileSync(filePath)
-  .toString()
-  .trim()
-  .split("\n");
+// const input = require("fs").readFileSync("/dev/stdin").toString().trim();
+// const input = require("fs").readFileSync("./input.txt").toString().trim();
 
-console.log(input);
-function solution() {}
-solution();
+// const input = require("fs")
+//   .readFileSync("/dev/stdin")
+//   .toString()
+//   .trim()
+//   .split("\n");
