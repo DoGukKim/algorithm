@@ -1,6 +1,7 @@
-// const input = require("fs").readFileSync("/dev/stdin").toString().trim();
 const input = require("fs").readFileSync("./input.txt").toString().trim();
 
+// Time: O(2^n)
+// Space: O(n)
 const main = (n) => {
   let result = 0;
   const moves = [];
@@ -21,4 +22,4 @@ const main = (n) => {
   console.log(moves.map((i) => i.join(" ")).join("\n"));
 };
 
-main(Number(input));
+main(Number(input)); // input -> 3
