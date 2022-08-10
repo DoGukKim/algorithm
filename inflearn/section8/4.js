@@ -1,33 +1,65 @@
-// Time: O(n^2)
-// Space: O(n)
-const main = (n = 1, arr = []) => {
-  if (n > 3) return;
-
-  const combination = arr.slice();
-  const combination2 = arr.slice();
-
-  combination.push(n);
-  main(n + 1, combination);
-  console.log(combination);
-  main(n + 1, combination2);
-};
-
-console.log(main());
-
-// 순서에 상관없이 부분집합
+// 방법 1
 // Time: O(2^n)
 // Space: O(n^2)
-const main2 = (n = 1, arr = Array.from({ length: 3 }, (_, v) => v + 1)) => {
-  if (arr.length === 0) return [[]];
+const main = (n) => {
+  const result = [];
 
-  const withoutElement = main2(n, arr.slice(1));
-  const allCombination = [];
+  function dfs(m, subset) {
+    if (m > n) {
+      result.push(subset); // 모든 집합에 부분 집합들이 들어가게 됨
+      return;
+    }
 
-  for (let i = 0; i < withoutElement.length; i++) {
-    const remainder = [arr[0], ...withoutElement[i]];
-    allCombination.push(remainder);
+    const subsetWithElement = subset.slice(); // 각 요소가 포함된 집합
+    const subsetWithoutElement = subset.slice(); // 각 요소가 포함되지 않는 집합
+
+    subsetWithElement.push(m); // 요소 포함하기
+
+    dfs(m + 1, subsetWithElement); // 요소가 포함된 재귀
+    dfs(m + 1, subsetWithoutElement); // 요소가 포함되지 않는 재귀
+  }
+  dfs(1, []);
+
+  return result;
+};
+
+main(3);
+
+// 재귀 그려보기
+//                                  root
+// 1                    [1]                       []
+//                 /           \             /          \
+// 2            [1,2]          [1]         [2]          []
+//              /   \         /   \       /   \        /  \
+// 3        [1,2,3] [1,2]  [1,3]  [1]   [2,3] [2]    [3]   []
+
+// 방법 2
+// Time: O(2^n)
+// Space: O(n^2) -> n (stack frame) * n - 1 (without element sliced array)
+const main2 = (n) => {
+  const arr = Array.from({ length: n }, (_, val) => val + 1);
+
+  function dfs(numbers) {
+    if (numbers.length === 0) return [[]]; // 요소가 없는 집합 반환
+
+    const subsetWithoutElement = dfs(numbers.slice(1)); // 재귀에서 반환된 부분집합들
+    const subsetWithElement = [];
+
+    for (let i = 0; i < subsetWithoutElement.length; i++) {
+      const subset = [numbers[0], ...subsetWithoutElement[i]]; // 각 요소가 포함되어 있는 집합
+      subsetWithElement.push(subset); // 포함되어 있는 집합을 삽입
+    }
+
+    return [...subsetWithoutElement, ...subsetWithElement]; // 포함되어 있는 집합과, 그렇지 않은 집합을 반환
   }
 
-  return [...allCombination, ...withoutElement];
+  return dfs(arr);
 };
-console.log(main2());
+
+main2(3);
+
+//   with                           withOut
+// 1 [[1,2,3],[1,2],[1,3],[2,3]]    [[],[3],[2],[1]]
+// 2 [[2,3]]                        [[],[3],[2]]
+// 3 [[3]]                          [[]]
+//   [[]]

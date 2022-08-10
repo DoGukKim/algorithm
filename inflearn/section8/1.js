@@ -1,9 +1,38 @@
+// 방법 1
 // Time: O(n)
 // Space: O(n)
-const main = (n, c = 1) => {
-  if (c > n) return;
-  console.log(c);
-  return main(n, c + 1);
+const main = (n) => {
+  function dfs(num) {
+    if (num === 0) return;
+    dfs(num - 1);
+    console.log(num);
+  }
+  dfs(n);
 };
 
-console.log(main(3));
+main(3);
+
+// 방법 2
+// Time: O(n)
+// Space: O(n)
+const main2 = (n) => {
+  function dfs(num) {
+    if (num > n) return;
+    console.log(num);
+    dfs(num + 1);
+  }
+  dfs(1);
+};
+
+main(3);
+
+// 방법 3
+// Time: O(n)
+// Space: O(n)
+const main3 = (n, m = 1) => {
+  if (m > n) return;
+  console.log(m);
+  main3(n, m + 1);
+};
+
+main3(3);
