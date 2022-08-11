@@ -1,41 +1,39 @@
 const main = (s) => {
-  let result = s.length; // 기존 s의 길이 값으로 초기화
+  let result = s.length; // s의 길이 값으로 초기화
 
   function dfs(i) {
     if (i > s.length) return; // 기저 조건
 
-    let compressResult = ""; // i 압축 결과
-    let compressWord = s.substr(0, i); // 압축어 초기화 처음부터 i 까지
+    let compressResult = ""; // 단위 별 결과물
+    let compressWord = s.substr(0, i); // 처음부터 단위까지의 압축단어 초기화
     let acc = 0; // 누적 값
 
-    for (let j = 0; j <= s.length + i; j += i) {
-      const currentWord = s.substr(j, i); // 현재 i 단위로 잘린 언어
+    for (let j = 0; j < s.length; j = j + i) {
+      const current = s.substr(j, i); // 단위별 현재 단어
 
-      if (currentWord !== compressWord) {
+      if (current !== compressWord) {
+        // 현재 단어가 압축단어와 다르면
         if (acc > 1) {
-          compressResult += String(acc) + compressWord; // 압축 누적 값 + 압축 단어
+          compressResult += String(acc) + compressWord; // acc + 압축단어
         } else {
-          compressResult += compressWord; // 누적 추가 없이 추가
+          compressResult += compressWord; // 압축단어
         }
 
-        compressWord = s.substr(j, i); // 단위 별 압축어 재할당
-        acc = 1; // 누적 값 초기화
-
+        compressWord = s.substr(j, i); // 압축단어 갱신
+        acc = 1; // 누적 값 1 초기화 1인 이유는 압축단어 자체도 카운터 하나 해줘야 하기 때문
         continue;
       }
 
-      if (currentWord === compressWord) {
-        // 압축 값과 현재 단어가 같을 때는 누적 값 1 증가
-        acc++;
-      }
+      acc++; // 같으면 누적 + 1
     }
 
-    if (compressResult.length < result) {
-      // 압축 결과가 이전 최소 값 보다 작으면 재할당
-      result = compressResult.length;
-    }
+    // 반목분 다 돌았을 때 나머지 처리
+    if (acc > 1) compressResult += String(acc) + compressWord;
+    else compressResult += compressWord.repeat(acc);
 
-    dfs(i + 1);
+    if (compressResult.length < result) result = compressResult.length; // 최소 길이 재할당
+
+    dfs(i + 1); // 재귀
   }
   dfs(1);
 
