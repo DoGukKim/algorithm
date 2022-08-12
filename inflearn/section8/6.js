@@ -1,18 +1,18 @@
+// 방법 1
 // Time: O(2^n)
 // Space: O(n)
 const main = (maxWeight, dogs) => {
-  const remainder = calc(maxWeight, dogs);
-  return Math.max(...remainder);
-};
+  function dfs(level, sum) {
+    if (sum + dogs[level] > maxWeight) return sum;
+    if (level === dogs.length) return sum;
 
-const calc = (maxWeight, dogs, idx = 0, sum = 0, arr = []) => {
-  if (sum + dogs[idx] > maxWeight) return arr.push(sum);
-  if (idx === dogs.length) return arr.push(sum);
+    const left = dfs(level + 1, sum + dogs[level]);
+    const right = dfs(level + 1, sum);
 
-  calc(maxWeight, dogs, idx + 1, sum + dogs[idx], arr);
-  calc(maxWeight, dogs, idx + 1, sum, arr);
+    return Math.max(left, right);
+  }
 
-  return arr;
+  return dfs(0, 0);
 };
 
 console.log(main(259, [81, 58, 42, 33, 61]));

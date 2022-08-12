@@ -26,4 +26,4 @@ const main2 = (n) => {
   return main2(Math.floor(n / 2)) + String(n % 2);
 };
 
-main2(6);
+main2(6); // -> 110

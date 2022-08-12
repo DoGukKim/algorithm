@@ -18,9 +18,9 @@ const main = (tree) => {
   }
   traversal(1);
 
-  console.log(preOrderResult);
-  console.log(inOrderResult);
-  console.log(postOrderResult);
+  console.log(preOrderResult); // 전위순회
+  console.log(inOrderResult); // 중위순회
+  console.log(postOrderResult); // 후위순회
 };
 
 // 트리를 생성
@@ -54,9 +54,9 @@ const main2 = (tree) => {
       : "";
   };
 
-  console.log(preOrder(1));
-  console.log(inOrder(1));
-  console.log(postOrder(1));
+  console.log(preOrder(1)); // 전위순회
+  console.log(inOrder(1)); // 중위순회
+  console.log(postOrder(1)); // 후위순회
 };
 
 main2(tree);
