@@ -1,3 +1,6 @@
+// 신고 결과 받기
+// Time: O(n^3)
+// Space: O()
 const main = (id_list, report, k) => {
   const reportMap = new Map();
 
