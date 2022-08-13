@@ -6,6 +6,7 @@
 
 - [프로그래머스](programmers)
 - [인프런](inflearn)
-- [LeetCode](leetcode)
 - [백준](baekjoon)
+- [책](book)
+- [LeetCode](leetcode)
 - [Youtube](youtube)
