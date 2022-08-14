@@ -3,6 +3,8 @@
  * @return {number[][]}
  */
 
+// Time: O(n!)
+// Space: O(n^2)
 var permute = function (nums) {
   const result = [];
 
@@ -25,9 +27,8 @@ var permute = function (nums) {
 
 var permute = function (nums) {
   const result = [];
-  const temp = [];
 
-  function permutation(nums, temp, result) {
+  function permutation(temp) {
     if (nums.length === temp.length) {
       result.push([...temp]);
       return;
@@ -36,11 +37,12 @@ var permute = function (nums) {
     for (let i = 0; i < nums.length; i++) {
       if (temp.includes(nums[i])) continue;
       temp.push(nums[i]);
-      permutation(nums, temp, result);
+      permutation(temp);
       temp.pop();
     }
   }
 
-  permutation(nums, temp, result);
+  permutation([]);
+
   return result;
 };
