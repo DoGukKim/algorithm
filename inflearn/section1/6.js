@@ -1,3 +1,4 @@
+// 방법 1
 // Time: O(n)
 // Space: O(1)
 const main = (numbers) => {
@@ -16,33 +17,48 @@ const main = (numbers) => {
 
 console.log(main([12, 77, 38, 41, 53, 92, 85]));
 
-// 재귀식 풀이
-// Time: O(n)
-// Space: O(n)
-const recursion = (numbers, idx = 0, sum = 0, min = Infinity) => {
-  if (idx === numbers.length) return [sum, min];
-
-  if (numbers[idx] % 2 === 1) {
-    sum += numbers[idx];
-    if (min > numbers[idx]) min = numbers[idx];
-  }
-
-  return recursion(numbers, idx + 1, sum, min);
-};
-
-console.log(recursion([12, 77, 38, 41, 53, 92, 85]));
-
+// 방법 2
 // Time: O(n^2)
 // Space: O(n)
-const recursion2 = (numbers, sum = 0, min = Infinity) => {
-  if (numbers.length === 0) return [sum, min];
+const main2 = (numbers) => {
+  function dfs(arr) {
+    if (arr.length === 0) return [0, Infinity];
 
-  if (numbers[0] % 2 === 1) {
-    sum += numbers[0];
-    if (min > numbers[0]) min = numbers[0];
+    const [sum, min] = dfs(arr.slice(1)); // [0,infinity] -> [85, 85] -> ...
+
+    const isOdd = arr[0] % 2 === 1;
+
+    return [isOdd ? sum + arr[0] : sum, isOdd ? Math.min(arr[0], min) : min]; // 홀수 일시 계산 or 아무 것도 안함
   }
 
-  return recursion2(numbers.slice(1), sum, min);
+  const [sum, min] = dfs(numbers);
+  return [sum, min];
 };
 
-console.log(recursion2([12, 77, 38, 41, 53, 92, 85]));
+console.log(main2([12, 77, 38, 41, 53, 92, 85]));
+
+// 방법 3
+// Time: O(n)
+// Space: O(n)
+const main3 = (numbers) => {
+  let min = Infinity;
+  let sum = 0;
+
+  function dfs(index) {
+    if (index === numbers.length) {
+      return;
+    }
+
+    if (numbers[index] % 2 === 1) {
+      min = Math.min(numbers[index], min);
+      sum += numbers[index];
+    }
+
+    dfs(index + 1);
+  }
+  dfs(0);
+
+  return [sum, min];
+};
+
+console.log(main3([12, 77, 38, 41, 53, 92, 85]));

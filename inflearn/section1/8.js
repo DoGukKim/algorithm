@@ -1,15 +1,16 @@
+// 방법 1
 // Time: O(n^2)
 // Space: O(n)
 const main = (dwarfs) => {
-  const hash = new Map();
   const targetSum = dwarfs.reduce((acc, cur) => acc + cur, 0) - 100;
+  const hash = new Map();
 
   for (let i = 0; i < dwarfs.length; i++) {
-    const anotherCheatDwarfTall = targetSum - dwarfs[i];
+    const anotherCheatDwarf = targetSum - dwarfs[i];
 
-    if (hash.has(anotherCheatDwarfTall))
+    if (hash.has(anotherCheatDwarf))
       return dwarfs.filter((dwarf, idx) => {
-        if (idx !== i && idx !== hash.get(anotherCheatDwarfTall)) return dwarf;
+        if (idx !== i && idx !== hash.get(anotherCheatDwarf)) return dwarf;
       });
 
     hash.set(dwarfs[i], i);
@@ -18,6 +19,7 @@ const main = (dwarfs) => {
 
 console.log(main([20, 7, 23, 19, 10, 15, 25, 8, 13]));
 
+// 방법 2
 // Time: O(n^2)
 // Space: O(1)
 const main2 = (dwarfs) => {
@@ -37,10 +39,39 @@ const main2 = (dwarfs) => {
 
 console.log(main2([20, 7, 23, 19, 10, 15, 25, 8, 13]));
 
-// 투 포인터 방식
+// 방법 3
+// Time: O(n!)
+// Space: O(n!)
+const main3 = (dwarfs) => {
+  const targetSum = dwarfs.reduce((acc, cur) => acc + cur, 0) - 100;
+
+  function dfs(i) {
+    if (i === dwarfs.length) {
+      return;
+    }
+
+    for (let j = i + 1; j < dwarfs.length; j++) {
+      if (targetSum - dwarfs[i] === dwarfs[j]) {
+        return [i, j];
+      }
+
+      return dfs(i + 1);
+    }
+  }
+
+  const [i, j] = dfs(0);
+  dwarfs.splice(j, 1);
+  dwarfs.splice(i, 1);
+
+  return dwarfs;
+};
+
+console.log(main3([20, 7, 23, 19, 10, 15, 25, 8, 13]));
+
+// 방법 4
 // Time: O(n^2)
 // Space: O(1)
-const main3 = (dwarfs) => {
+const main4 = (dwarfs) => {
   const cheatDwarfTall = dwarfs.reduce((acc, cur) => acc + cur, 0) - 100;
   let lp = 0;
   let rp = lp + 1;
@@ -62,4 +93,4 @@ const main3 = (dwarfs) => {
   return dwarfs;
 };
 
-console.log(main3([20, 7, 23, 19, 10, 15, 25, 8, 13]));
+console.log(main4([20, 7, 23, 19, 10, 15, 25, 8, 13]));

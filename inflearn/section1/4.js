@@ -1,4 +1,4 @@
-// 공식 풀이
+// 방법 1
 // Time: O(1)
 // Space: O(1)
 const main = (n) => {
@@ -7,6 +7,7 @@ const main = (n) => {
 
 console.log(main(6));
 
+// 방법 2
 // Time: O(n)
 // Space: O(1)
 const main2 = (n) => {
@@ -14,14 +15,15 @@ const main2 = (n) => {
   for (let i = 1; i <= n; i++) result += i;
   return result;
 };
+
 console.log(main2(6));
 
-// 재귀식 풀이
+// 방법 3
 // Time: O(n)
 // Space: O(n)
-const recursion = (n) => {
+const main3 = (n) => {
   if (n === 0) return 0; // or if(n === 1) return 1
-  return n + recursion(n - 1);
+  return n + main3(n - 1);
 };
 
-console.log(recursion(6));
+console.log(main3(6));
