@@ -1,3 +1,4 @@
+// 방법 1
 // Time: O(n)
 // Space: O(1)
 const main = (word) => {
@@ -11,16 +12,25 @@ const main = (word) => {
 
 console.log(main("gooG"));
 
-// 재귀식 풀이
+// 방법 2
 // Time: O(n)
-// Space: O(n)
-const recursion = (word, idx = 0) => {
+// Space: O(1)
+const recursion = (word) => {
   word = word.toLowerCase();
-  if (idx === Math.floor(word.length / 2)) return "YES";
 
-  if (word[idx] !== word[word.length - 1 - idx]) return "NO";
+  function dfs(index) {
+    if (index === word.length) {
+      return null;
+    }
 
-  return recursion(word, idx + 1);
+    if (word[index] !== word[word.length - 1 - index]) {
+      return "NO";
+    }
+
+    return dfs(index + 1) || "YES"; // null 이면 YES
+  }
+
+  return dfs(0);
 };
 
-console.log(recursion("gooG"));
+console.log(recursion("good"));
