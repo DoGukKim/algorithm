@@ -1,3 +1,4 @@
+// 방법 1
 // Time: O(n)
 // Space: O(1)
 const main = (A, B) => {
@@ -20,3 +21,34 @@ const main = (A, B) => {
 };
 
 console.log(main([2, 3, 3, 1, 3], [1, 1, 2, 2, 3]));
+
+// 방법 2
+// Time: O(n)
+// Space: O(1)
+const main2 = (A, B) => {
+  // 이기는 상황을 해시로 저장
+  const caseMap = Object.freeze({
+    1: 3,
+    2: 1,
+    3: 2,
+  });
+
+  function dfs(index) {
+    if (index === A.length) {
+      return;
+    }
+
+    if (A[index] === B[index]) {
+      console.log("D");
+    } else {
+      if (caseMap[A[index]] === B[index]) console.log("A");
+      else console.log("B");
+    }
+
+    dfs(index + 1);
+  }
+
+  dfs(0);
+};
+
+console.log(main2([2, 3, 3, 1, 3], [1, 1, 2, 2, 3]));

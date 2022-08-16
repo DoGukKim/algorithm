@@ -1,3 +1,4 @@
+// 방법 1
 // Time: O(n)
 // Space: O(n)
 const main = (numbers) => {
@@ -11,15 +12,23 @@ const main = (numbers) => {
 
 console.log(main([7, 3, 9, 5, 6, 12]));
 
-// 재귀식 풀이
+// 방법 2
 // Time: O(n)
 // Space: O(n)
-const recursion = (numbers, idx = 0, result = [numbers[0]]) => {
-  if (idx === numbers.length) return result;
+const main2 = (numbers) => {
+  function dfs(index, result = []) {
+    if (index === numbers.length) {
+      return result;
+    }
 
-  if (numbers[idx] > numbers[idx - 1]) result.push(numbers[idx]);
+    if (numbers[index] > numbers[index - 1]) {
+      result.push(numbers[index]);
+    }
 
-  return recursion(numbers, idx + 1, result);
+    return dfs(index + 1, result);
+  }
+
+  return dfs(1, [numbers[0]]);
 };
 
-console.log(recursion([7, 3, 9, 5, 6, 12]));
+console.log(main2([7, 3, 9, 5, 6, 12]));
