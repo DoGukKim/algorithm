@@ -1,4 +1,5 @@
-// Time: O(n^2)
+// 방법 1
+// Time: O(n)
 // Space: O(n)
 const main = (arr1, arr2) => {
   let result = [];
@@ -15,7 +16,9 @@ const main = (arr1, arr2) => {
 
 console.log(main([1, 3, 9, 5, 2], [3, 2, 5, 7, 8]));
 
-// 투 포인터
+// 방법 2
+// Time: O(n)
+// Space: O(n)
 const main2 = (arr1, arr2) => {
   arr1.sort((a, b) => a - b);
   arr2.sort((a, b) => a - b);
@@ -36,33 +39,30 @@ const main2 = (arr1, arr2) => {
 
 console.log(main2([1, 3, 9, 5, 2], [3, 2, 5, 7, 8]));
 
-// 재귀식 풀이
-const recursive = (numbers1, numbers2) => {
-  numbers1.sort((a, b) => a - b);
-  numbers2.sort((a, b) => a - b);
+// 방법 3
+// Time: O(n^2)
+// Space: O(n)
+const main3 = (arr1, arr2) => {
+  arr1.sort((a, b) => a - b);
+  arr2.sort((a, b) => a - b);
 
-  return recursion(numbers1, numbers2);
+  let result = [];
+
+  function dfs(a1, a2) {
+    if (a1.length < 1 || a2.length < 1) {
+      return;
+    }
+
+    if (a1[0] !== a2[0]) {
+      dfs(a1.slice(1), a2);
+    } else {
+      result.push(a1[0]);
+      dfs(a1.slice(1), a2.slice(1));
+    }
+  }
+  dfs(arr1, arr2);
+
+  return result;
 };
 
-const recursion = (
-  numbers1,
-  numbers2,
-  index1 = 0,
-  index2 = 0,
-  sameArray = []
-) => {
-  if (index1 === numbers1.length || index2 === numbers2.length) return;
-
-  if (numbers1[index1] === numbers2[index2]) {
-    sameArray.push(numbers1[index1]);
-    recursion(numbers1, numbers2, (index1 += 1), (index2 += 1), sameArray);
-  }
-
-  if (numbers1[index1] !== numbers2[index2]) {
-    recursion(numbers1, numbers2, (index1 += 1), index2, sameArray);
-  }
-
-  return sameArray;
-};
-
-console.log(recursive([1, 3, 9, 5, 2], [3, 2, 5, 7, 8]));
+console.log(main3([1, 3, 9, 5, 2], [3, 2, 5, 7, 8]));

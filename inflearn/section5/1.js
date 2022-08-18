@@ -1,3 +1,4 @@
+// 방법 1
 // Time: O(min(n,m))
 // Space: O(n+m)
 const main = (arr1, arr2) => {
@@ -14,7 +15,9 @@ const main = (arr1, arr2) => {
 
 console.log(main([1, 3, 5], [2, 3, 6, 7, 9]));
 
-// 투 포인터 방식
+// 방법 2
+// Time: O(min(n,m))
+// Space: O(n+m)
 const main2 = (arr1, arr2) => {
   let result = [];
   let lp = 0;
@@ -33,21 +36,30 @@ const main2 = (arr1, arr2) => {
 
 console.log(main2([1, 3, 5], [2, 3, 6, 7, 9]));
 
-// 재귀식 풀이
-const recursion = (numbers1, numbers2, sortedArray = []) => {
-  if (numbers1.length === 0 || numbers2.length === 0) return;
+// 방법 3
+// Time: O(min(n,m)^2)
+// Space: O(n+m)
+const main3 = (arr1, arr2) => {
+  let result = [];
 
-  if (numbers1[0] <= numbers2[0]) {
-    sortedArray.push(numbers1.shift());
-    recursion(numbers1, numbers2, sortedArray);
+  function dfs(a1, a2) {
+    // 배열들을 하나씩 줄여가면서 삽입해주고, 기저 조건에서 나머지를 처리해주면 된다
+    if (a1.length < 1 || a2.length < 1) {
+      result = [...result, ...a1, ...a2];
+      return;
+    }
+
+    if (a1[0] > a2[0]) {
+      result.push(a2[0], a1[0]);
+    } else {
+      result.push(a1[0], a2[0]);
+    }
+
+    dfs(a1.slice(1), a2.slice(1));
   }
+  dfs(arr1, arr2);
 
-  if (numbers2[0] <= numbers1[0]) {
-    sortedArray.push(numbers2.shift());
-    recursion(numbers1, numbers2, sortedArray);
-  }
-
-  return [...sortedArray, ...numbers1, ...numbers2];
+  return result; // -> 1,2,3,3,5,6,7,9
 };
 
-console.log(recursion([1, 3, 5], [2, 3, 6, 7, 9]));
+console.log(main3([1, 3, 5], [2, 3, 6, 7, 9]));

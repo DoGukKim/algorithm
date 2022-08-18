@@ -1,4 +1,5 @@
-// Time: O(n)
+// 방법 1
+// Time: O(n+m)
 // Space: O(1)
 const main = (arr, m) => {
   let result = 0;
@@ -31,31 +32,32 @@ const main = (arr, m) => {
 
 console.log(main([1, 2, 1, 3, 1, 1, 1, 2], 6));
 
-// 재귀식 풀이
-const recursion = (
-  numbers,
-  max,
-  lt = 0,
-  rt = lt + 1,
-  sum = numbers[lt],
-  result = 0
-) => {
-  if (rt === numbers.length) return result;
+// 방법 2
+// Time: O(n^2)
+// Space: O(n)
+const main2 = (n, m) => {
+  let result = 0;
 
-  if (sum + numbers[rt] === max) {
-    lt += 1;
-    sum = numbers[lt];
-    return recursion(numbers, max, lt, (rt = lt + 1), sum, (result += 1));
+  for (let i = 0; i < n.length; i++) {
+    dfs(i);
   }
 
-  if (sum + numbers[rt] > max) {
-    lt += 1;
-    sum = numbers[lt];
-    return recursion(numbers, max, lt, (rt = lt + 1), sum, result);
+  function dfs(i, index = i, sum = 0) {
+    if (sum > m) {
+      return;
+    }
+    if (sum === m) {
+      result++;
+      return;
+    }
+    if (index === n.length) {
+      return;
+    }
+
+    dfs(i, index + 1, sum + n[index]);
   }
 
-  sum += numbers[rt];
-  return recursion(numbers, max, lt, (rt += 1), sum, result);
+  return result; // -> [ [ 2, 1, 3 ], [ 1, 3, 1, 1 ], [ 3, 1, 1, 1 ] ]
 };
 
-console.log(recursion([1, 2, 1, 3, 1, 1, 1, 2], 6));
+console.log(main2([1, 2, 1, 3, 1, 1, 1, 2], 6));
