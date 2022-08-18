@@ -9,11 +9,11 @@ const main = (budget, wish_list) => {
 
   let result = -Infinity;
 
-  for (let i = 0; i < wish_list.length; i += 1) {
+  for (let i = 0; i < wish_list.length; i++) {
     let sum = wish_list[i][0] / 2 + wish_list[i][1];
     let count = 1;
 
-    for (let j = 0; j < wish_list.length; j += 1) {
+    for (let j = 0; j < wish_list.length; j++) {
       const currentPrice = wish_list[j][0] + wish_list[j][1];
       if (j !== i && sum + currentPrice <= budget) {
         sum += currentPrice;
