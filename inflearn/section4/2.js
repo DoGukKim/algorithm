@@ -1,3 +1,4 @@
+// 방법 1
 // Time: O(n^2)
 // Space: O(n)
 const isPrime = (number) => {

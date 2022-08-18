@@ -1,16 +1,18 @@
+// 방법 1
 // Time: O(n)
 // Space: O(1)
 const main = (numbers) => {
   let result = 0;
+  let sum = 0;
   let max = -Infinity;
 
   for (let i = 0; i < numbers.length; i++) {
-    let number = numbers[i];
-    let sum = 0;
+    let temp = numbers[i];
+    sum = 0;
 
-    while (number > 0) {
-      sum += number % 10;
-      number = Math.floor(number / 10);
+    while (temp > 0) {
+      sum += temp % 10;
+      temp = Math.floor(temp / 10);
     }
 
     if (sum >= max) {
@@ -24,30 +26,34 @@ const main = (numbers) => {
 
 console.log(main([128, 460, 603, 40, 521, 137, 123]));
 
-// 재귀식 풀이
-// Time: O(n)
+// 방법 2
+// Time: O(n^2)
 // Space: O(n)
-const recursion = (
-  numbers,
-  index = 0,
-  sum = 0,
-  max = -Infinity,
-  result = 0
-) => {
-  if (index === numbers.length) return result;
+const main2 = (numbers) => {
+  function dfs(arr) {
+    if (arr.length < 1) {
+      // 자릿수의 max, result 값
+      return [-Infinity, 0];
+    }
 
-  let number = numbers[index];
-  while (number > 0) {
-    sum += number % 10;
-    number = Math.floor(number / 10);
+    const [max, result] = dfs(arr.slice(1));
+
+    let temp = arr[0];
+    let sum = 0;
+    while (temp > 0) {
+      sum += temp % 10;
+      temp = Math.floor(temp / 10);
+    }
+
+    if (sum > max) {
+      return [sum, arr[0] > result ? arr[0] : result];
+    }
+
+    return [max, result];
   }
 
-  if (sum >= max) {
-    max = sum;
-    result = numbers[index];
-  }
-
-  return recursion(numbers, index + 1, (sum = 0), max, result);
+  const [_, result] = dfs(numbers);
+  return result; // -> 137
 };
 
-console.log(recursion([128, 460, 603, 40, 521, 137, 123]));
+console.log(main2([128, 460, 603, 40, 521, 137, 123]));
