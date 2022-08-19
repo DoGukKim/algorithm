@@ -1,6 +1,35 @@
+// 방법 1
 // Time: O(n)
 // Space: O(n)
-const main = (word) => {
+const main = (s) => {
+  let result = "";
+  let openBracketCount = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "(") {
+      openBracketCount++;
+      continue;
+    }
+
+    if (s[i] === ")") {
+      openBracketCount--;
+      continue;
+    }
+
+    if (openBracketCount === 0) {
+      result += s[i];
+    }
+  }
+
+  return result;
+};
+
+console.log(main("(A(BC)D)EF(G(H)(IJ)K)LM(N)"));
+
+// 방법 2
+// Time: O(n)
+// Space: O(n)
+const main2 = (word) => {
   let result = "";
   const stack = [];
 
@@ -14,20 +43,4 @@ const main = (word) => {
   return result;
 };
 
-console.log(main("(A(BC)D)EF(G(H)(IJ)K)LM(N)"));
-
-// 재귀식 풀이
-// Time: O(n^2)
-// Space: O(n)
-const recursion = (word, stack = [], result = "") => {
-  if (word.length === 0) return result;
-
-  if (word[0] === "(") stack.push(word[0]);
-  if (word[0] === ")") stack.pop();
-  if (stack.length === 0 && word[0] !== "(" && word[0] !== ")")
-    result += word[0];
-
-  return recursion(word.slice(1), stack, result);
-};
-
-console.log(recursion("(A(BC)D)EF(G(H)(IJ)K)LM(N)"));
+console.log(main2("(A(BC)D)EF(G(H)(IJ)K)LM(N)"));

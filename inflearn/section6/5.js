@@ -1,3 +1,4 @@
+// 방법 1
 // Time: O(n)
 // Space: O(n)
 const main = (sticks) => {
@@ -17,21 +18,3 @@ const main = (sticks) => {
 };
 
 console.log(main("()(((()())(())()))(())"));
-
-// 재귀식 풀이
-// Time: O(n)
-// Space: O(n)
-const recursion = (sticks, index = 0, stack = [], result = 0) => {
-  if (index === sticks.length) return result;
-
-  if (sticks[index] === "(") stack.push("(");
-  else {
-    stack.pop();
-    if (sticks[index - 1] === "(") result += stack.length;
-    else result += 1;
-  }
-
-  return recursion(sticks, index + 1, stack, result);
-};
-
-console.log(recursion("()(((()())(())()))(())"));
