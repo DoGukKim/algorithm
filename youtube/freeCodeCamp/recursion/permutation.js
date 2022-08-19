@@ -1,25 +1,29 @@
-// TimeComplexity O(n!)
-// SpaceComplexity O(n^2)
-const main = (words) => {
-  if (words.length === 0) return [[]];
+// 방법 3
+// Time: O(n!)
+// Space: O(n^2)
+const permute = (n) => {
+  if (n.length === 0) return [[]];
 
-  const permutation = main(words.slice(1));
+  const withOutElement = permute(n.slice(1));
   const allPermutation = [];
 
-  for (let i = 0; i < permutation.length; i++) {
-    for (let j = 0; j <= permutation[i].length; j++) {
-      const concat = [
-        ...permutation[i].slice(0, j),
-        words[0],
-        ...permutation[i].slice(j),
+  for (let i = 0; i < withOutElement.length; i++) {
+    for (let j = 0; j <= withOutElement[i].length; j++) {
+      const permWithElement = [
+        ...withOutElement[i].slice(0, j),
+        n[0],
+        ...withOutElement[i].slice(j),
       ];
-      allPermutation.push(concat);
+      allPermutation.push(permWithElement);
     }
   }
 
   return allPermutation;
 };
-console.log(main(["a", "b", "c"]));
+
+console.log(permute([1, 2, 3]));
+console.log(permute(["a", "b", "c"]));
+
 // ->
 // [
 //   [ 'a', 'b', 'c' ],
