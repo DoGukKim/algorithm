@@ -1,21 +1,50 @@
-// n: numbers , m: m
-// Time: O(n^m)
-// Space: O(m^2)
-const main = (numbers, m, temp = numbers.slice()) => {
-  if (numbers.length === 0) return [];
+// 방법 1
+// Time: O(n! * n)
+// Space: O(n^2)
+const main = (n, m) => {
+  const result = [];
 
-  const combination = main(numbers.slice(1), m, temp);
-  let allCombination = [];
+  function permute(permutation) {
+    if (permutation.length === m) {
+      result.push([...permutation]);
+      return;
+    }
 
-  for (let i = 0; i < temp.length; i++) {
-    if (numbers[0] !== temp[i]) {
-      const combinationWithFirst = [numbers[0], temp[i]];
-      allCombination.push(combinationWithFirst);
+    for (let i = 0; i < n.length; i++) {
+      if (permutation.includes(n[i])) continue; // permutation에 값이 있으면 불필요한 재귀를 호출하지 않기 위함
+      permutation.push(n[i]);
+      permute(permutation);
+      permutation.pop();
     }
   }
+  permute([]);
 
-  return [...allCombination, ...combination];
+  return result;
 };
 
 console.log(main([3, 6, 9], 2));
-// -> [ [ 3, 6 ], [ 3, 9 ], [ 6, 3 ], [ 6, 9 ], [ 9, 3 ], [ 9, 6 ] ]
+
+// 방법 2
+// Time: O(n! * n)
+// Space: O(n^2)
+const main2 = (n, m) => {
+  const result = [];
+
+  function permute(i) {
+    if (i === m) {
+      result.push(n.slice(0, i));
+      return;
+    }
+
+    for (let j = i; j < n.length; j++) {
+      [n[i], n[j]] = [n[j], n[i]];
+      permute(i + 1);
+      [n[j], n[i]] = [n[i], n[j]];
+    }
+  }
+  permute(0);
+
+  return result;
+};
+
+console.log(main2([3, 6, 9], 2));
