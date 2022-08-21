@@ -1,19 +1,32 @@
-// n: 3, m: 2
+// 방법 1
 // Time: O(n^m)
 // Space: O(n^2)
-const main = (n, m, numbers = Array.from({ length: n }, (_, v) => v + 1)) => {
-  if (numbers.length === 0) return [];
+const main = (n, m) => {
+  const result = [];
 
-  const permutation = main(n, m, numbers.slice(1));
-  let allPermutation = [];
+  function permute(permutation) {
+    if (permutation.length === m) {
+      result.push([...permutation]);
+      return;
+    }
 
-  for (let i = 1; i <= n; i++) {
-    const permutationWithFirst = [numbers[0], i];
-    allPermutation.push(permutationWithFirst);
+    for (let i = 0; i < n.length; i++) {
+      permutation.push(n[i]);
+      permute(permutation);
+      permutation.pop();
+    }
   }
+  permute([]);
 
-  return [...allPermutation, ...permutation];
+  return [result, result.length];
 };
 
-const result = main(3, 2);
-console.log(result, result.length); // -> array, 9
+console.log(main([1, 2, 3], 2));
+// [
+//     [ 1, 1 ], [ 1, 2 ],
+//     [ 1, 3 ], [ 2, 1 ],
+//     [ 2, 2 ], [ 2, 3 ],
+//     [ 3, 1 ], [ 3, 2 ],
+//     [ 3, 3 ]
+//  ],
+//  9

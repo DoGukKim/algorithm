@@ -1,18 +1,22 @@
-function solution(n, k, arr, m) {
-  let answer = 0;
-  function DFS(L, s, sum) {
-    if (L === k) {
-      if (sum % m === 0) answer++;
-    } else {
-      for (let i = s; i < n; i++) {
-        DFS(L + 1, i + 1, sum + arr[i]);
-      }
+// 방법 1
+// Time: O(n!)
+// Space: O(n)
+const main = (n, k, m) => {
+  let result = 0;
+
+  function dfs(level, index, combinationSum) {
+    if (level === k) {
+      if (combinationSum % m === 0) result++;
+      return;
+    }
+
+    for (let i = index; i < n.length; i++) {
+      dfs(level + 1, i + 1, combinationSum + n[i]);
     }
   }
+  dfs(0, 0, 0);
 
-  DFS(0, 0, 0);
-  return answer;
-}
+  return result;
+};
 
-let arr = [2, 4, 5, 8, 12];
-console.log(solution(5, 3, arr, 6));
+console.log(main([2, 4, 5, 8, 12], 3, 6)); // -> 2

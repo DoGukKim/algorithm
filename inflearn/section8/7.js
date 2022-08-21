@@ -1,3 +1,4 @@
+// 방법 1
 // Time: O(2^n)
 // Space: O(n)
 const main = (m, ps, pt) => {

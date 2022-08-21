@@ -1,5 +1,6 @@
-// Time: O(2^n+r)
-// Space: O(n+r)
+// 방법 1
+// Time: O(2^n*r)
+// Space: O(n*r)
 const main = (n, r) => {
   if (n === r || r === 0) return 1;
   return main(n - 1, r - 1) + main(n - 1, r);
@@ -7,8 +8,9 @@ const main = (n, r) => {
 
 console.log(main(5, 3));
 
+// 방법 2
 // Time: O(n*r)
-// Space: O(n*r)
+// Space: O(n+r)
 const memo = (n, r, memo = {}) => {
   const key = n + "," + r;
   if (key in memo) return memo[key];

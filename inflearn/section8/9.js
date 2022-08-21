@@ -1,3 +1,4 @@
+// 빙법 1
 // m: targetSum, n: numbers
 // Time: O(n^m^2)
 // Space: O(m^2)
