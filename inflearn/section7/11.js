@@ -1,28 +1,38 @@
+// 방법 1
 // Time: O(log n)
-// Space: O(n)
-const main = (songsCount, totalDVDCount) => {
-  const songs = Array.from({ length: songsCount }, (_, i) => i + 1);
-  let lt = Math.max(...songs);
-  let rt = (songsCount + 1) * (songsCount / 2);
+// Space: O(1)
+const main = (n, m) => {
+  let lp = n;
+  let rp = (n + 1) * (n / 2);
+  let result = 0;
 
-  while (lt <= rt) {
-    const mid = Math.floor((lt + rt) / 2);
+  while (lp <= rp) {
+    const mid = Math.floor((lp + rp) / 2);
     let sum = 0;
-    let dvdCount = 0;
+    let dvd = 1; // 1장 부터 시작
 
-    for (let i = 0; i < songs.length; i += 1) {
-      if (sum + songs[i] > mid) {
-        sum = songs[i];
-        dvdCount += 1;
-      } else sum += songs[i];
+    for (let i = 1; i <= n; i++) {
+      if (sum + i > mid) {
+        // 누적 분량이 dvd 1장의 공간 보다 커지면 dvd 1장 추가하고
+        // sum은 현재 노래로 재할당
+        dvd++;
+        sum = i;
+      } else {
+        sum += i;
+      }
     }
 
-    if (sum > 0) dvdCount += 1;
-
-    if (dvdCount === totalDVDCount) return mid;
-    if (dvdCount > totalDVDCount) lt = mid + 1;
-    if (dvdCount < totalDVDCount) rt = mid - 1;
+    if (dvd <= m) {
+      // 장수가 m 보다 작거나 같으면 여유가 있는 분량으로 줄여나가면서 다시 이분 검색
+      result = mid;
+      rp = mid - 1;
+    } else {
+      // 여유가 없으니 분량을 증가시켜 다시 이분 검색
+      lp = mid + 1;
+    }
   }
+
+  return result;
 };
 
 console.log(main(9, 3));

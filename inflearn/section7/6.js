@@ -1,11 +1,13 @@
-// Time: O(n log n) // 아마도 sort()가 n log n이라서..?
+// 방법 1
+// Time: O(n log n)
 // Space: O(n)
-const main = (arr) => {
+const main = (n) => {
   let result = [];
-  const sorted = arr.slice().sort((a, b) => a - b);
+  const sorted = n.slice().sort((a, b) => a - b);
 
-  for (let i = 0; i < arr.length; i++)
-    if (arr[i] !== sorted[i]) result.push(i + 1);
+  for (let i = 0; i < n.length; i++) {
+    if (n[i] !== sorted[i]) result.push(i + 1);
+  }
 
   return result;
 };

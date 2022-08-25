@@ -1,13 +1,18 @@
+// 방법 1
 // Time: O(n^2)
 // Space: O(1)
-const main = (arr) => {
-  for (let i = 0; i < arr.length; i += 1) {
+const main = (n) => {
+  for (let i = 0; i < n.length; i++) {
     let min = i;
-    for (let j = i + 1; j < arr.length; j += 1) if (arr[min] > arr[j]) min = j;
-    [arr[i], arr[min]] = [arr[min], arr[i]];
+
+    for (let j = i + 1; j < n.length; j++) {
+      if (n[j] < n[min]) min = j;
+    }
+
+    [n[i], n[min]] = [n[min], n[i]];
   }
 
-  return arr;
+  return n;
 };
 
 console.log(main([13, 5, 11, 7, 23, 15]));

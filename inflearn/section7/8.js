@@ -1,7 +1,8 @@
+// 방법 1
 // Time: O(n log n)
 // Space: O(1)
-const main = (arr) => {
-  arr.sort((a, b) => {
+const main = (n) => {
+  n.sort((a, b) => {
     if (a[1] === b[1]) return a[0] - b[0];
     else return a[1] - b[1];
   });
@@ -9,9 +10,9 @@ const main = (arr) => {
   let result = 0;
   let end = 0;
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i][0] >= end) {
-      end = arr[i][1];
+  for (let i = 0; i < n.length; i++) {
+    if (n[i][0] >= end) {
+      end = n[i][1];
       result++;
     }
   }
@@ -29,8 +30,10 @@ console.log(
   ])
 );
 
-// main([
-//   [3, 3],
-//   [1, 3],
-//   [2, 3],
-// ]);
+console.log(
+  main([
+    [3, 3],
+    [1, 3],
+    [2, 3],
+  ])
+);
