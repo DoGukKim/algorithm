@@ -1,7 +1,18 @@
-// TimeComplexity O(n log n)
-// SpaceComplexity O(n)
+// Time: O(n log n)
+// Space: O(n)
+const main = (n) => {
+  if (n.length === 1) return n; // 기저 조건
+
+  const mid = Math.floor(n.length / 2); // 영역의 중간 지점
+  const lp = n.slice(0, mid); // 왼쪽 영역
+  const rp = n.slice(mid, n.length); // 오른쪽 영역
+
+  return merge(main(lp), main(rp));
+};
+
 const merge = (left, right) => {
   const sortedArray = [];
+
   while (left.length && right.length) {
     if (left[0] <= right[0]) {
       sortedArray.push(left.shift());
@@ -10,16 +21,9 @@ const merge = (left, right) => {
     }
   }
 
+  // 정렬된 배열과 나머지 두 영역을 넣어 새로운 배열 반환
   return [...sortedArray, ...left, ...right];
 };
 
-const mergeSort = (arr) => {
-  if (arr.length === 1) return arr;
-  const middle = Math.floor(arr.length / 2);
-  const left = arr.slice(0, middle);
-  const right = arr.slice(middle, arr.length);
-
-  return merge(mergeSort(left), mergeSort(right));
-};
-
-const result = mergeSort([9, 5, 2, 3, 7, 8, 4]);
+const numbers = [3, 9, 4, 7, 5, 0, 1, 6, 8, 2];
+console.log(main(numbers));

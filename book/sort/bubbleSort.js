@@ -1,36 +1,39 @@
+// 방법 1
 // Time: O(n^2)
 // Space: O(1)
-const main = (arr) => {
-  let isSwap = false;
-
-  do {
-    isSwap = false;
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i] > arr[i + 1]) {
-        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-        isSwap = true;
+const main = (n) => {
+  for (let i = 0; i < n.length - 1; i++) {
+    // 버블이 자리 잡기 때문에 - i 를 줄여가며 정렬하면 된다.
+    for (let j = 0; j < n.length - i - 1; j++) {
+      if (n[j] > n[j + 1]) {
+        [n[j], n[j + 1]] = [n[j + 1], n[j]];
       }
     }
-  } while (isSwap);
-
-  return arr;
-};
-
-console.log(main([13, 5, 11, 7, 23, 15]));
-
-// Recursive
-const recursion = (numbers, index = 0, isSwap = false) => {
-  if (index === numbers.length && !isSwap) return numbers;
-  if (index === numbers.length - 1 && isSwap) index = 0;
-
-  isSwap = false;
-
-  if (numbers[index] > numbers[index + 1]) {
-    [numbers[index], numbers[index + 1]] = [numbers[index + 1], numbers[index]];
-    isSwap = true;
   }
 
-  return recursion(numbers, index++, isSwap);
+  return n;
 };
 
-console.log(recursion([13, 5, 11, 7, 23, 15]));
+console.log(main([1, 2, 3, -3, -2, 5, 6, -6]));
+
+// 방법 2
+// Time: O(n^2)
+// Space: O(1)
+const main2 = (n) => {
+  let isSwap = true;
+
+  while (isSwap) {
+    isSwap = false;
+
+    for (let i = 0; i < n.length; i++) {
+      if (n[i] > n[i + 1]) {
+        [n[i], n[i + 1]] = [n[i + 1], n[i]];
+        swap = true;
+      }
+    }
+  }
+
+  return n;
+};
+
+console.log(main2([1, 2, 3, -3, -2, 5, 6, -6]));
