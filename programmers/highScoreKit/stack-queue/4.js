@@ -1,3 +1,4 @@
+// 프린터
 // Time: O(n^2)
 // Space: O(1)
 const main = (priorities, location) => {
