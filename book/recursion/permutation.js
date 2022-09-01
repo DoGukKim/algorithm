@@ -1,12 +1,12 @@
 // 방법 1
-// Time: O(n! * n) -> * n인 이유는 매 재귀 마다 spread로 새로운 배열을 생성하기 때문
-// Space: O(n^2)
-const permute = (n) => {
+// Time: O(n! * n) -> * n인 이유는 매 재귀 마다 spread로 새로운 배열을 생성하기 때문에
+// Space: O(n!) -> 콜 스텍은 n이나 순열의 개수만큼 저장되기 때문에
+const permute = (n, r) => {
   const result = [];
 
   function dfs(permutation) {
     // 조합된 순열을 새로운 배열로 result에 삽입해준다.
-    if (permutation.length === n.length) {
+    if (permutation.length === r) {
       result.push([...permutation]);
       //   result.push([...permutation].join("")); // -> 문자열에 대한 순열 구할 때
       return;
@@ -26,8 +26,8 @@ const permute = (n) => {
   return result;
 };
 
-console.log(permute([1, 2, 3])); // -> [1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1];
-console.log(permute("abc")); // -> [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
+console.log(permute([1, 2, 3], 2)); // -> [1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1];
+console.log(permute("abc", 2)); // -> [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
 
 // 방법 2
 // Time: O(n! * n)
