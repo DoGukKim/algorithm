@@ -31,13 +31,13 @@ console.log(permute("abc", 2)); // -> [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba'
 
 // 방법 2
 // Time: O(n! * n)
-// Space: O(n^2)
-const permute2 = (n) => {
+// Space: O(n!)
+const permute2 = (n, r) => {
   const result = [];
 
   function dfs(i) {
     if (i === n.length) {
-      result.push(n.slice());
+      result.push(n.slice(0, r));
       //   result.push(n.slice().join("")); // 문자열로 수열을 구할 때.
       return;
     }
@@ -56,12 +56,12 @@ const permute2 = (n) => {
   return result;
 };
 
-console.log(permute2([1, 2, 3])); // -> [1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 2, 1], [3, 1, 2];
+console.log(permute2([1, 2, 3], 2)); // -> [ [ 1, 2 ], [ 1, 3 ], [ 2, 1 ], [ 2, 3 ], [ 3, 2 ], [ 3, 1 ] ]
 console.log(permute2("abc".split(""))); // -> [ 'abc', 'acb', 'bac', 'bca', 'cba', 'cab' ]
 
 // 방법 3
 // Time: O(n!)
-// Space: O(n^2)
+// Space: O(n!)
 const permute3 = (n) => {
   if (n.length === 0) return [[]];
 
