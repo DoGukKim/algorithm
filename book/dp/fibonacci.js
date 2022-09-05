@@ -15,7 +15,7 @@ const main2 = (n, memo = {}) => {
   if (n in memo) return memo[n];
   if (n <= 2) return 1;
 
-  memo[n] = main(n - 1) + main(n - 2);
+  memo[n] = main(n - 1, memo) + main(n - 2, memo);
   return memo[n];
 };
 
