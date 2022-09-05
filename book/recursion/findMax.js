@@ -1,7 +1,9 @@
-const main = (numbers, max = -Infinity) => {
-  if (numbers.length === 0) return max;
-  if (max < numbers[0]) max = numbers[0];
-  return main(numbers.slice(1), max);
+// Time: O(n)
+// Space: O(n)
+const main = (n) => {
+  if (n.length === 1) return n[0];
+  const remainder = main(n.slice(1));
+  return n[0] > remainder ? n[0] : remainder;
 };
 
-console.log(main([2, 3, 4]));
+console.log(main([1, 2, 3, 4]));
