@@ -5,9 +5,13 @@ const input = require("fs")
   .split("\n");
 
 input.shift();
-const format = input.map((day) => day.split(" ").map((item) => Number(item)));
-console.log(format);
+const n = input[0].split(" ");
 
-const main = (n) => {};
+function dfs(arr, level) {
+  if (arr.length === 0) return;
 
-console.log(main(format));
+  const center = Math.floor(arr.length / 2);
+  dfs(arr.slice(0, center), level + 1);
+  dfs(arr.slice(center + 1, arr.length), level + 1);
+}
+dfs(n, 0);
