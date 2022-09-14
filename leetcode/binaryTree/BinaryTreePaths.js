@@ -20,6 +20,7 @@ var binaryTreePaths = function (root) {
 const explore = (root, result, sum = "") => {
   if (!root) return "";
   if (!root.left && !root.right) return result.push(sum + root.val);
+
   explore(root.left, result, sum + root.val + "->");
   explore(root.right, result, sum + root.val + "->");
 };
