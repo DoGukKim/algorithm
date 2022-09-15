@@ -45,7 +45,7 @@ var postorderTraversal = function (root) {
 // [...[], ...[3,2], 1]
 // -> [3,2,1]
 
-// 이터레이티브 풀이
+// Iterative
 // TimeL: O(n)
 // Space: O(n)
 var postorderTraversal = function (root) {

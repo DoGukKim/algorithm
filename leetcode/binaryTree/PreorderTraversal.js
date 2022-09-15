@@ -41,7 +41,7 @@ var preorderTraversal = function (root) {
     : [];
 }; // [1,...[]] -> [1,2] -> [1,2,3] -> [1,2,3,...[]] -> [1,2,3]
 
-// 이터레이티브 풀이
+// Iterative
 // Time: O(n)
 // Space: O(n)
 var preorderTraversal = function (root) {

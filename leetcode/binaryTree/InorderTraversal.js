@@ -28,7 +28,7 @@ var inorderTraversal = function (root) {
   return result;
 };
 
-// 이터레이티브 풀이
+// Iterative
 // Time: O(n)
 // Space: O(n)
 var inorderTraversal = function (root) {
