@@ -1,34 +1,37 @@
-const main = (n, arr) => {
+// Time: O(v+e)
+// Space: O(n)
+const main = (n, edges) => {
   const graph = Array.from({ length: n + 1 }, () => Array());
-  let ch = Array.from({ length: n + 1 }, () => 0);
-  let result = 0;
-  let path = [];
+  const visited = Array.from({ length: n + 1 }, () => 0);
 
-  for (const [a, b] of arr) {
-    graph[a].push(b);
+  for (let i = 0; i < edges.length; i++) {
+    const [v, e] = edges[i];
+    graph[v].push(e);
   }
 
-  function DFS(v) {
+  let result = 0;
+  function dfs(v) {
     if (v === n) {
       result++;
-    } else {
-      for (let nv of graph[v]) {
-        if (ch[nv] === 0) {
-          path.push(nv);
-          ch[nv] = 1;
-          DFS(nv);
-          ch[nv] = 0;
-          path.pop();
-        }
+      return;
+    }
+
+    for (let i = 0; i < graph[v].length; i++) {
+      if (visited[graph[v][i]] === 0) {
+        visited[graph[v][i]] = 1;
+        dfs(graph[v][i]);
+        visited[graph[v][i]] = 0;
       }
     }
   }
-  ch[1] = 1;
-  path.push(1);
-  DFS(1);
-  console.log(result);
+
+  visited[1] = 1;
+  dfs(1);
+
+  return result;
 };
-main(5, [
+
+const edges = [
   [1, 2],
   [1, 3],
   [1, 4],
@@ -38,4 +41,5 @@ main(5, [
   [3, 4],
   [4, 2],
   [4, 5],
-]);
+];
+console.log(main(5, edges));
