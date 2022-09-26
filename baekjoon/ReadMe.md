@@ -4,7 +4,11 @@
 
 ## 알고리즘 분류
 
+- `베이직` : [basic](basic)
+- `스택` : [stack](stack)
 - `재귀` : [recursion](recursion)
+- `이진 트리` : [binaryTree](binaryTree)
+- `그래프` : [graph](graph)
 
 ### 참조
 
