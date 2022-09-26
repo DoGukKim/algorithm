@@ -1,27 +1,38 @@
-function solution(board) {
-  let answer = 0;
-  let dx = [-1, 0, 1, 0];
-  let dy = [0, 1, 0, -1];
-  function DFS(x, y) {
-    if (x === 6 && y === 6) answer++;
-    else {
-      for (let k = 0; k < 4; k++) {
-        let nx = x + dx[k];
-        let ny = y + dy[k];
-        if (nx >= 0 && nx <= 6 && ny >= 0 && ny <= 6 && board[nx][ny] === 0) {
-          board[nx][ny] = 1;
-          DFS(nx, ny);
-          board[nx][ny] = 0;
-        }
-      }
-    }
-  }
-  board[0][0] = 1;
-  DFS(0, 0);
-  return answer;
-}
+// Time: O(4^n+m)
+// Space: O(n+m)
+const main = (matrix) => {
+  let result = 0;
+  const visited = new Set();
 
-let arr = [
+  function dfs(r, c, visited) {
+    const rowOutBound = r < 0 || r > matrix.length - 1;
+    const columOutBound = c < 0 || c > matrix[0].length - 1;
+    if (rowOutBound || columOutBound) return;
+
+    if (matrix[r][c] === 1) return;
+
+    const pos = r + "," + c;
+    if (visited.has(pos)) return false;
+
+    if (r === 6 && c === 6) {
+      result++;
+      return;
+    }
+
+    visited.add(pos);
+
+    dfs(r - 1, c, visited);
+    dfs(r, c + 1, visited);
+    dfs(r + 1, c, visited);
+    dfs(r, c - 1, visited);
+    visited.delete(pos);
+  }
+  dfs(0, 0, visited);
+
+  return result;
+};
+
+const matrix = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 1, 1, 1, 1, 1, 0],
   [0, 0, 0, 1, 0, 0, 0],
@@ -31,4 +42,4 @@ let arr = [
   [1, 0, 0, 0, 0, 0, 0],
 ];
 
-console.log(solution(arr));
+console.log(main(matrix)); // -> 8
