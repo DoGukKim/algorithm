@@ -6,3 +6,4 @@ const input = require("fs")
 
 const [n, m] = input.shift().split(" ");
 const map = input.map((v) => v.split("").map((v) => Number(v)));
+console.log(n, m, map);
