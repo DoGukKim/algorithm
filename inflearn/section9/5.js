@@ -1,16 +1,20 @@
-const main = () => {
-  let result = "";
-  const queue = [1];
+// Time: O(v+e)
+// Space: O(n)
+const main = (root) => {
+  const result = [];
+  const queue = [root];
 
   while (queue.length > 0) {
     const current = queue.shift();
-    result += String(current);
+
+    result.push(current);
+
     for (const item of [current * 2, current * 2 + 1]) {
       if (item > 7) break;
       queue.push(item);
     }
   }
 
-  console.log(result);
+  return result;
 };
-main();
+console.log(main(1));
