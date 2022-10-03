@@ -1,4 +1,4 @@
-// Time: O(v+e)
+// Time: O(n)
 // Space: O(n)
 const main = (root) => {
   const result = [];
