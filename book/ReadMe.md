@@ -5,8 +5,9 @@
 ## 알고리즘 분류
 
 - `이진탐색` : [binarySearch](binarySearch)
-- `재귀` : [recursion](recursion)
 - `정렬` : [sort](sort)
+- `재귀` : [recursion](recursion)
+- `DP` : [dp](dp)
 
 ### 참조
 
