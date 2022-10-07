@@ -7,7 +7,7 @@
 - `이진탐색` : [binarySearch](binarySearch)
 - `정렬` : [sort](sort)
 - `재귀` : [recursion](recursion)
-- `DP` : [dp](dp)
+- `동적프로그래밍` : [dp](dp)
 
 ### 참조
 
