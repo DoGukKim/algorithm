@@ -1,24 +1,23 @@
+// Title: 세 수 중 최솟값
 // 방법 1
 // Time: O(1)
 // Space: O(1)
-const main = (a, b, c) => {
-  let result = Infinity;
-
-  if (result > a) result = a;
-  if (result > b) result = b;
-  if (result > c) result = c;
-
-  // 각 요소를 compare 하면 답을 도출할 수 있다.
-  return result;
-};
-
-console.log(main(6, 5, 11));
+// Input: 6, 5, 11
+function main(a, b, c) {
+  return Math.min(a, b, c);
+}
 
 // 방법 2
 // Time: O(1)
 // Space: O(1)
-const main2 = (a, b, c) => {
-  return Math.max(a, b, c);
-};
+function main(a, b, c) {
+  let min = Infinity;
 
-console.log(main2(6, 5, 11));
+  if (a < min) min = a;
+  if (b < min) min = b;
+  if (c < min) min = c;
+
+  return min;
+}
+
+console.log(main(6, 5, 11));

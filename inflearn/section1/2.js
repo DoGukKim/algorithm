@@ -1,12 +1,13 @@
+// Title: 삼각형 판별하기
 // 방법 1
-// Time: O(1)
+// Time: O(n)
 // Space: O(1)
-const main = (a, b, c) => {
-  let total = a + b + c;
-  let max = Math.max(a, b, c);
-  if (total - max <= max) return "NO"; // 가장 긴 면 길이보다, 두 면의 길이가 작거나 같으면 NO
-  return "YES";
-};
+// InputA: 6, 7, 11
+// InputB: 13, 33, 17
+function main(a, b, c) {
+  const max = Math.max(a, b, c);
+  return a + b + c - max <= max ? "NO" : "YES";
+}
 
-console.log(main(6, 7, 11));
-console.log(main(13, 33, 17));
+console.log(main(6, 7, 11)); // -> YES
+console.log(main(13, 33, 17)); // -> NO
