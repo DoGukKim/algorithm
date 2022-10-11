@@ -1,21 +1,23 @@
+// Title: 문자열 압축
 // 방법 1
-// Time O(n)
-// Space O(n)
-const main = (s) => {
-  s = s + " ";
-  let result = "";
+// Time: O(n)
+// Space: O(n)
+// Input: KKHSSSSSSSE
+function main(s) {
+  const stack = [];
   let acc = 1;
 
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === s[i + 1]) acc++;
-    else {
-      result += s[i];
-      if (acc > 1) result += `${acc}`;
-      acc = 1;
-    }
+    if (stack[stack.length - 1] !== s[i]) {
+      if (acc > 1) {
+        stack.push(acc);
+        acc = 1;
+      }
+      stack.push(s[i]);
+    } else acc++;
   }
 
-  return result;
-};
+  return stack.join("");
+}
 
-console.log(main("KKHSSSSSSSE"));
+console.log(main("KKHSSSSSSSE")); // -> K2HS7E

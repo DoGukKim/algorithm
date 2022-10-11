@@ -1,36 +1,18 @@
+// Title: 팰린드롬(1)
 // 방법 1
 // Time: O(n)
-// Space: O(1)
-const main = (word) => {
-  word = word.toLowerCase();
+// Space: O(n)
+// Input: gooG
+function main(s) {
+  s = s.toLowerCase();
 
-  for (let i = 0; i < Math.floor(word.length / 2); i++)
-    if (word[i] !== word[word.length - 1 - i]) return "NO";
-
-  return "YES";
-};
-
-console.log(main("gooG"));
-
-// 방법 2
-// Time: O(n)
-// Space: O(1)
-const recursion = (word) => {
-  word = word.toLowerCase();
-
-  function dfs(index) {
-    if (index === word.length) {
-      return null;
-    }
-
-    if (word[index] !== word[word.length - 1 - index]) {
+  for (let i = 0; i < Math.floor(s.length / 2); i++) {
+    if (s[i] !== s[s.length - 1 - i]) {
       return "NO";
     }
-
-    return dfs(index + 1) || "YES"; // null 이면 YES
   }
 
-  return dfs(0);
-};
+  return "YES";
+}
 
-console.log(recursion("good"));
+console.log(main("gooG")); // -> YES
