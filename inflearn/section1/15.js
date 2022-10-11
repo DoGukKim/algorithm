@@ -1,3 +1,4 @@
+// Title: 가운데 문자 출력
 // 방법 1
 // Time: O(1)
 // Space: O(1)
@@ -9,4 +10,4 @@ const main = (word) => {
   return word[mid - 1] + word[mid];
 };
 
-console.log(main("good"));
+console.log(main("good")); // -> oo

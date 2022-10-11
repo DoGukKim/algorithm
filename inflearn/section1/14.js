@@ -1,28 +1,20 @@
+// Title: 가장 긴 문자열
 // 방법 1
 // Time: O(n)
-// Space: O(1)
-const main = (words) => {
-  let result = words[0];
-
-  for (let i = 1; i < words.length; i++)
-    if (result.length < words[i].length) result = words[i];
-
-  return result;
-};
-
-console.log(main(["teacher", "time", "student", "beautiful", "good"]));
-
-// 방법 2
-// Time: O(n^2)
 // Space: O(n)
-const main2 = (words) => {
-  function dfs(arr) {
-    if (arr.length < 1) return "";
-    const longWord = dfs(arr.slice(1));
-    return longWord.length < arr[0].length ? arr[0] : longWord;
+// Input: teacher, time, student, beautiful, good
+function main(words) {
+  let max = words[0].length;
+  let result = "";
+
+  for (let i = 1; i < words.length; i++) {
+    if (max < words[i].length) {
+      result = words[i];
+      max = words[i].length;
+    }
   }
 
-  return dfs(words);
-};
+  return result;
+}
 
-console.log(main2(["teacher", "time", "student", "beautiful", "good"]));
+console.log(main(["teacher", "time", "student", "beautiful", "good"])); // -> beautiful

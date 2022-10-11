@@ -1,8 +1,25 @@
+// Title: 대소문자 변환
 // 방법 1
-// Time: O(n)
+// Time: O(n^2)
 // Space: O(n)
-const main = (word) => {
-  return word.toLowerCase();
-};
+// Input: sTUdy
+function main(s) {
+  let result = "";
 
-console.log(main("StuDY"));
+  for (let i = 0; i < s.length; i++) {
+    const upper = s[i].toUpperCase();
+    const lower = s[i].toLowerCase();
+
+    if (s[i] === lower) {
+      result += upper;
+    }
+
+    if (s[i] === upper) {
+      result += lower;
+    }
+  }
+
+  return result;
+}
+
+console.log(main("sTUdy")); // -> StuDY

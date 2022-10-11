@@ -1,66 +1,35 @@
+// Title: A를 #으로
 // 방법 1
 // Time: O(n)
-// Space: O(n)
-const main = (word) => {
+// Space: O(n) -> strings require O(n) space
+// Input: BANANA
+function main(s) {
   let result = "";
 
-  for (let i = 0; i < word.length; i++) {
-    if (word[i] === "A") {
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "A") {
       result += "#";
-      continue;
-    }
-
-    result += word[i];
+    } else result += s[i];
   }
 
   return result;
-};
-
-console.log(main("BANANA"));
+}
 
 // 방법 2
 // Time: O(n)
 // Space: O(n)
-const main2 = (word) => {
-  return word.split("A").join("#");
-};
-
-console.log(main2("BANANA"));
+function main(s) {
+  return s.split("A").join("#");
+}
 
 // 방법 3
 // Time: O(n^2)
 // Space: O(n)
-const main3 = (word) => {
-  function dfs(s) {
-    if (s.length < 1) return "";
+function main(s) {
+  if (s.length === 0) return "";
 
-    const sum = dfs(s.slice(1));
-    return s[0] !== "A" ? s[0] + sum : "#" + sum;
-  }
-  return dfs(word);
-};
+  const word = main(s.slice(1));
+  return s[0] === "A" ? "#" + word : s[0] + word;
+}
 
-console.log(main3("BANANA"));
-
-// 방법 4
-// Time: O(n^2)
-// Space: O(n)
-const main4 = (word) => {
-  let result = "";
-  function dfs(index) {
-    if (index === word.length) {
-      return;
-    }
-
-    if (word[index] === "A") {
-      result += "#";
-    } else result += word[index];
-
-    dfs(index + 1);
-  }
-  dfs(0);
-
-  return result;
-};
-
-console.log(main4("BANANA"));
+console.log(main("BANANA")); // -> B#N#N#
