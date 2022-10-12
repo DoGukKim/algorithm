@@ -1,25 +1,35 @@
+// Title: 뒤집은 소수
 // 방법 1
 // Time: O(n^2)
 // Space: O(n)
-const isPrime = (number) => {
-  if (number === 1) return false;
+// Input: 32, 55, 62, 20, 250, 370, 200, 30, 100
+function main(n) {
+  const result = [];
 
-  for (let i = 2; i < Math.floor(Math.sqrt(number)); i++)
-    if (number % i === 0) return false;
+  function isPrime(n) {
+    if (n < 2) return false;
 
-  return true;
-};
+    for (let i = 2; i < Math.sqrt(Math.floor(n / 2)); i++) {
+      if (n % i === 0) return false;
+    }
 
-const main = (numbers) => {
-  numbers = numbers.map((i) =>
-    parseInt(String(i).split("").reverse().join(""))
-  );
+    return true;
+  }
 
-  let result = [];
-  for (let i = 0; i < numbers.length; i++)
-    if (isPrime(numbers[i]) === true) result.push(numbers[i]);
+  for (let i = 0; i < n.length; i++) {
+    let reverse = ""; // or we can using reverse method to n modify
+
+    while (n[i] > 0) {
+      reverse += n[i] % 10;
+      n[i] = Math.floor(n[i] / 10);
+    }
+
+    const temp = parseInt(reverse);
+    const prime = isPrime(temp);
+    if (prime) result.push(temp);
+  }
 
   return result;
-};
+}
 
-console.log(main([32, 55, 62, 20, 250, 370, 200, 30, 100]));
+console.log(main([32, 55, 62, 20, 250, 370, 200, 30, 100])); // -> [ 23, 2, 73, 2, 3 ]
