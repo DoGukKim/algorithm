@@ -1,63 +1,58 @@
+// Title: 연속부분수열(1)
 // 방법 1
-// Time: O(n+m)
+// Time: O(n*m) -> if n have only 1 like [1,1,1,1...]
 // Space: O(1)
-const main = (arr, m) => {
+// Input: [1, 2, 1, 3, 1, 1, 1, 2], 6
+function main(n, m) {
   let result = 0;
-  let lp = 0;
-  let rp = lp + 1;
-  let sum = arr[lp];
+  let lt = 0;
+  let sum = 0;
 
-  while (lp <= arr.length) {
-    if (sum + arr[rp] > m) {
-      lp++;
-      rp = lp + 1;
-      sum = arr[lp];
+  for (let rp = 0; rp < n.length; rp++) {
+    sum += n[rp];
+
+    if (sum === m) result++;
+
+    while (sum >= m) {
+      sum -= n[lt++];
+      if (sum === m) result++;
     }
-
-    if (sum + arr[rp] === m) {
-      result++;
-      lp++;
-      rp = lp + 1;
-      sum = arr[lp];
-    }
-
-    sum += arr[rp];
-    rp++;
-
-    if (rp >= arr.length - 1) break;
   }
 
   return result;
-};
-
-console.log(main([1, 2, 1, 3, 1, 1, 1, 2], 6));
+}
 
 // 방법 2
-// Time: O(n^2)
-// Space: O(n)
-const main2 = (n, m) => {
+// Time: O(n*m)
+// Space: O(1)
+function main() {
   let result = 0;
 
-  for (let i = 0; i < n.length; i++) {
-    dfs(i);
-  }
+  let lp = 0;
+  let rp = lp + 1;
+  let sum = n[lp];
 
-  function dfs(i, index = i, sum = 0) {
+  while (lp < n.length) {
+    sum += n[rp];
+    rp++;
+
     if (sum > m) {
-      return;
-    }
-    if (sum === m) {
-      result++;
-      return;
-    }
-    if (index === n.length) {
-      return;
+      lp++;
+      rp = lp + 1;
+      sum = n[lp];
     }
 
-    dfs(i, index + 1, sum + n[index]);
+    if (sum === m) {
+      lp++;
+      rp = lp + 1;
+      sum = n[lp];
+      result++;
+    }
+
+    if (rp > n.length) break;
   }
 
-  return result; // -> [ [ 2, 1, 3 ], [ 1, 3, 1, 1 ], [ 3, 1, 1, 1 ] ]
-};
+  return result;
+}
 
-console.log(main2([1, 2, 1, 3, 1, 1, 1, 2], 6));
+console.log(main([1, 2, 1, 3, 1, 1, 1, 2], 6)); // -> 3

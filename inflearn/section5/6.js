@@ -1,21 +1,26 @@
+// Title: 학급 회장
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-const main = (s) => {
-  let result = "";
-  let max = -Infinity;
+// Input: BACBACCACCBDEDE
+function main(s) {
   const map = new Map();
 
-  for (let i = 0; i < s.length; i += 1) map.set(s[i], map.get(s[i]) + 1 || 0);
+  for (let i = 0; i < s.length; i++) {
+    map.set(s[i], (map.get(s[i]) || 0) + 1);
+  }
 
-  for (const [key, value] of map) {
-    if (max < value) {
-      max = value;
-      result = key;
+  let result = "";
+  let max = -Infinity;
+
+  for (const [k, v] of map) {
+    if (max < v) {
+      max = v;
+      result = k;
     }
   }
 
   return result;
-};
+}
 
-console.log(main("BACBACCACCBDEDE"));
+console.log(main("BACBACCACCBDEDE")); // -> C

@@ -1,34 +1,40 @@
+// Title: 아나그램(1)
 // 방법 1
-// Time: O(n log n)
-// Space: O(1)
-const main = (s1, s2) => {
+// Time: O(n)
+// Space: O(n)
+// Input: AbaAeCe, baeeACA
+function main(s1, s2) {
   s1 = s1.split("").sort();
   s2 = s2.split("").sort();
 
-  return s1.join("") === s2.join("");
-};
+  for (let i = 0; i < s1.length; i++) {
+    if (s1[i] !== s2[i]) return "NO";
+  }
 
-console.log(main("AbaAeCe", "baeeACA"));
+  return "YES";
+  // or return s1.join("") === s2.join("");
+}
 
 // 방법 2
 // Time: O(n)
 // Space: O(n)
-const main2 = (s1, s2) => {
-  const hashMap = new Map();
+function main(s1, s2) {
+  const map = new Map();
 
   for (let i = 0; i < s1.length; i++) {
-    hashMap.set(s1[i], (hashMap.get(s1[i]) || 0) + 1);
+    map.set(s1[i], (map.get(s1[i]) || 0) + 1);
   }
 
   for (let i = 0; i < s2.length; i++) {
-    hashMap.set(s2[i], hashMap.get(s2[i]) - 1);
+    map.set(s2[i], map.get(s2[i]) - 1);
   }
 
-  for (const [_, value] of hashMap) {
-    if (value !== 0) return false;
+  for (const [k, v] of map) {
+    if (v !== 0) return "NO";
   }
 
-  return true;
-};
+  return "YES";
+}
 
-console.log(main2("AbaAeCe", "baeeACA"));
+console.log(main("AbaAeCe", "baeeACA")); // -> YES
+console.log(main("abaCC", "Caaab")); // -> NO
