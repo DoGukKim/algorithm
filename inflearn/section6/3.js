@@ -1,3 +1,4 @@
+// Title: 크레인 인형뽑기
 // 방법 1
 // n: board m: moves
 // Time: O(n*m)
@@ -33,7 +34,7 @@ const board = [
   [3, 5, 1, 3, 1],
 ];
 const moves = [1, 5, 3, 5, 1, 2, 1, 4];
-console.log(main(board, moves));
+console.log(main(board, moves)); // -> 4
 
 // 방법 2
 // n: board m:move

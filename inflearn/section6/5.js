@@ -1,20 +1,21 @@
+// Title: 쇠막대기
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-const main = (sticks) => {
+function main(s) {
   let result = 0;
   const stack = [];
 
-  for (let i = 0; i < sticks.length; i += 1) {
-    if (sticks[i] === "(") stack.push("(");
+  for (let i = 0; i < s.length; i += 1) {
+    if (s[i] === "(") stack.push("(");
     else {
       stack.pop();
-      if (sticks[i - 1] === "(") result += stack.length;
+      if (s[i - 1] === "(") result += stack.length;
       else result += 1;
     }
   }
 
   return result;
-};
+}
 
-console.log(main("()(((()())(())()))(())"));
+console.log(main("()(((()())(())()))(())")); // -> 24
