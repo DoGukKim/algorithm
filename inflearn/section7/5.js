@@ -1,8 +1,8 @@
+// Title: Least Recently Used
 // 방법 1
-// n: numbers, m:size
 // Time: O(n*m)
 // Space: O(m)
-const main = (size, n) => {
+function main(size, n) {
   const memory = Array.from({ length: size }, () => 0);
 
   for (let i = 0; i < n.length; i++) {
@@ -18,6 +18,6 @@ const main = (size, n) => {
   }
 
   return memory;
-};
+}
 
 console.log(main(5, [1, 2, 3, 2, 6, 2, 3, 5, 7]));

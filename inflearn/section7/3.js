@@ -1,7 +1,8 @@
+// Title: Special Sort
 // 방법 1
 // Time: O(n^2)
 // Space: O(1)
-const main = (n) => {
+function main(n) {
   for (let i = 0; i < n.length - 1; i++) {
     for (let j = 0; j < n.length - i - 1; j++) {
       if (n[j] > n[j + 1]) {
@@ -11,14 +12,14 @@ const main = (n) => {
   }
 
   return n;
-};
+}
 
 console.log(main([1, 2, 3, -3, -2, 5, 6, -6]));
 
 // 방법 2
 // Time: O(n^2)
 // Space: O(1)
-const main2 = (n) => {
+function main(n) {
   let isSwap = true;
 
   while (isSwap) {
@@ -33,6 +34,6 @@ const main2 = (n) => {
   }
 
   return n;
-};
+}
 
 console.log(main2([1, 2, 3, -3, -2, 5, 6, -6]));

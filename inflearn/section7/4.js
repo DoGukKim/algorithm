@@ -1,7 +1,8 @@
+// Title: 삽입 정렬
 // 방법 1
 // Time: O(n^2)
 // Space: O(1)
-const main = (n) => {
+function main(n) {
   for (let i = 1; i < n.length; i++) {
     let current = i;
 
@@ -12,6 +13,6 @@ const main = (n) => {
   }
 
   return n;
-};
+}
 
 console.log(main([11, 7, 5, 6, 10, 9]));
