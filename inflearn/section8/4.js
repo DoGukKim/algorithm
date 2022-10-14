@@ -1,7 +1,9 @@
+// Title: 부분집합 구하기(DFS)
 // 방법 1
 // Time: O(2^n)
 // Space: O(n^2)
-const main = (n) => {
+// Input: 3
+function main(n) {
   const result = [];
 
   function dfs(m, subset) {
@@ -21,10 +23,7 @@ const main = (n) => {
   dfs(1, []);
 
   return result;
-};
-
-main(3);
-
+}
 // 재귀 그려보기
 //
 //                                  root
@@ -37,7 +36,7 @@ main(3);
 // 방법 2
 // Time: O(2^n)
 // Space: O(n^2) -> n (stack frame) * n - 1 (without element sliced array)
-const main2 = (n) => {
+function main(n) {
   const arr = Array.from({ length: n }, (_, val) => val + 1);
 
   function dfs(numbers) {
@@ -55,9 +54,9 @@ const main2 = (n) => {
   }
 
   return dfs(arr);
-};
+}
 
-main2(3);
+console.log(main(3));
 
 //   with                           withOut
 // 1 [[1,2,3],[1,2],[1,3],[2,3]]    [[],[3],[2],[1]]

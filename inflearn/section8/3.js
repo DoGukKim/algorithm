@@ -1,45 +1,25 @@
-// 방식 1
+// Title: 이진트리 순회(깊이우선탐색)
+// 방법 1
 // Time: O(2^n)
 // Space: O(n)
-const main = (tree) => {
-  let preOrderResult = "";
-  let inOrderResult = "";
-  let postOrderResult = "";
+// Input: 7
+function main(n) {
+  function dfs(m) {
+    if (m > n) return;
 
-  function traversal(node) {
-    if (!node) return;
-    const [left, right] = tree[node];
-
-    preOrderResult += node;
-    traversal(left);
-    inOrderResult += node;
-    traversal(right);
-    postOrderResult += node;
+    console.log(m); // preOrder
+    dfs(m * 2);
+    console.log(m); // inOrder
+    dfs(m * 2 + 1);
+    console.log(m); // postOrder
   }
-  traversal(1);
-
-  console.log(preOrderResult); // 전위순회
-  console.log(inOrderResult); // 중위순회
-  console.log(postOrderResult); // 후위순회
-};
-
-// 트리를 생성
-const tree = {
-  1: [2, 3],
-  2: [4, 5],
-  3: [6, 7],
-  4: [],
-  5: [],
-  6: [],
-  7: [],
-};
-
-main(tree);
+  dfs(1);
+}
 
 // 방식 2
 // Time: O(2^n)
 // Space: O(n)
-const main2 = (tree) => {
+function main(n) {
   const preOrder = (node) => {
     return node ? node + preOrder(tree[node][0]) + preOrder(tree[node][1]) : "";
   };
@@ -57,21 +37,6 @@ const main2 = (tree) => {
   console.log(preOrder(1)); // 전위순회
   console.log(inOrder(1)); // 중위순회
   console.log(postOrder(1)); // 후위순회
-};
+}
 
-main2(tree);
-
-// 방식 3
-// Time: O(2^n)
-// Space: O(n)
-const main3 = (n = 1) => {
-  if (n > 7) return;
-
-  console.log(n); // 전위순회 (preOrder)
-  main3(n * 2);
-  console.log(n); // 중위순회 (inOrder)
-  main3(n * 2 + 1);
-  console.log(n); // 후위순회 (postOrder)
-};
-
-console.log(main3());
+console.log(main(7));
