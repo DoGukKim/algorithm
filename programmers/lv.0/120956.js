@@ -1,7 +1,7 @@
 // Title: 옹알이
 // 방법 1
-// Time: O()
-// Space: O()
+// Time: O(n*m)
+// Space: O(n)
 // InputA: ["ayaye", "uuu", "yeye", "yemawoo", "ayaayaa"] -> 2
 // InputB: ["yemawooye"] -> 1
 function solution(babbling) {
