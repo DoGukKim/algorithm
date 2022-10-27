@@ -1,12 +1,14 @@
+// Title: 그룹 단어 체커
+// Time: O(n^2)
+// Space: O(n)
 const input = require("fs")
   .readFileSync("/dev/stdin")
   .toString()
   .trim()
   .split("\n");
+
 input.shift();
 
-// Time: O(n^2)
-// Space: O(n)
 let result = input.length;
 let stack = [];
 

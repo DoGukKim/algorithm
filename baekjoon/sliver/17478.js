@@ -1,7 +1,8 @@
-const input = require("fs").readFileSync("./input.txt").toString().trim();
-
+// Title: 재귀함수가 뭔가요?
 // Time: O(n)
 // Space: O(n)
+const input = require("fs").readFileSync("/dev/stdin").toString().trim();
+
 const main = (n) => {
   console.log("어느 한 컴퓨터공학과 학생이 유명한 교수님을 찾아가 물었다.");
 
@@ -26,4 +27,4 @@ ${underBar}그의 답은 대부분 옳았다고 하네. 그런데 어느 날, �
   recursion(0);
 };
 
-main(Number(input[0])); // input -> 2
+main(Number(input[0]));

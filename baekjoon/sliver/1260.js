@@ -1,11 +1,12 @@
+// Title: DFS와 BFS
+// Time: O(v+e)
+// Space: O(n)
 const input = require("fs")
-  .readFileSync("./input.txt")
+  .readFileSync("/dev/stdin")
   .toString()
   .trim()
   .split("\n");
 
-// Time: O(v+e)
-// Space: O(n)
 const [n, _, v] = input.shift().split(" ");
 const graph = Array.from({ length: Number(n) + 1 }, () => Array());
 
