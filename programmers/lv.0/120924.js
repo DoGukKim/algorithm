@@ -10,10 +10,12 @@ function solution(common) {
   for (let i = 0; i < common.length - 1; i++) {
     if (g === null) g = common[i + 1] - common[i];
     if (g && g !== common[i + 1] - common[i]) {
+      // 등비 수열
       return common[common.length - 1] * Math.floor(common[i + 1] / common[i]);
     }
   }
 
+  // 등차 수열
   return common[common.length - 1] + g;
 }
 
