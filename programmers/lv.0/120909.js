@@ -4,6 +4,5 @@
 // Space: O(1)
 // Input: 144
 function solution(n) {
-  if (Math.sqrt(n) % 1 > 0) return 2;
-  return 1;
+  return Math.sqrt(n) % 1 ? 2 : 1;
 } // -> 1
