@@ -1,6 +1,6 @@
 // Title: 다항식 더하기
 // 방법 1
-// Time: O(n^2)
+// Time: O(n*m)
 // Space: O(1)
 // Input: "3x + 7 + x", "4x + 7"
 function solution(polynomial) {
