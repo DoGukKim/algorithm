@@ -1,18 +1,17 @@
-const undirectedPath = (edges, vertex, target) => {
+const undirectedPath = (edges, nodeA, nodeB) => {
   const graph = buildGraph(edges);
-  const visited = new Set();
-  const stack = [vertex];
 
-  while (stack.length > 0) {
+  const stack = [nodeA];
+  const visited = {};
+  while (stack.length) {
     const current = stack.pop();
-
-    if (visited.has(current)) continue;
-    if (current === target) return true;
-
-    visited.add(current);
+    visited[current] = true;
 
     for (let i = 0; i < graph[current].length; i++) {
-      stack.push(graph[current][i]);
+      if (graph[current][i] === nodeB) return true;
+      if (!visited[graph[current][i]]) {
+        stack.push(graph[current][i]);
+      }
     }
   }
 
@@ -53,25 +52,3 @@ const edges = [
 ]; // -> true
 
 console.log(undirectedPath(edges, "j", "m"));
-
-// 재귀식 풀이
-const undirectedPath2 = (edges, vertex, target) => {
-  const graph = buildGraph(edges);
-  const visited = new Set();
-  return hasPath(graph, vertex, target, visited);
-};
-
-const hasPath = (graph, vertex, target, visited) => {
-  if (visited.has(vertex)) return false;
-  if (vertex === target) return true;
-
-  visited.add(vertex);
-
-  for (let i = 0; i < graph[vertex].length; i++) {
-    if (hasPath(graph, graph[vertex][i], target, visited) === true) return true;
-  }
-
-  return false;
-};
-
-console.log(undirectedPath2(edges, "j", "m"));

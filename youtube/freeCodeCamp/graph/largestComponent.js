@@ -1,27 +1,58 @@
-const largestComponent = (graph) => {
-  let result = -Infinity;
-  const visited = new Set();
+function largestComponent(graph) {
+  const visited = {};
+  let result = 0;
 
-  for (const vertex in graph) {
-    const remainder = explore(graph, vertex, visited);
-    if (result < remainder) result = remainder;
+  for (let v in graph) {
+    const size = dfs(v);
+    if (result < size) result = size;
+  }
+
+  function dfs(src) {
+    if (visited[src]) return 0;
+    visited[src] = true;
+
+    let cnt = 1;
+    for (let i = 0; i < graph[src].length; i++) {
+      cnt += dfs(graph[src][i]);
+    }
+
+    return cnt;
   }
 
   return result;
-};
+}
 
-const explore = (graph, vertex, visited) => {
-  if (visited.has(vertex)) return 0;
+function largestComponent(graph) {
+  const visited = {};
+  let result = 0;
 
-  let size = 1;
-  visited.add(vertex);
-
-  for (let i = 0; i < graph[vertex].length; i++) {
-    size += explore(graph, graph[vertex][i], visited);
+  for (let v in graph) {
+    const size = dfs(v);
+    if (result < size) result = size;
   }
 
-  return size;
-};
+  function dfs(src) {
+    if (visited[src]) return 0;
+    const stack = [src];
+    let size = 0;
+
+    while (stack.length) {
+      const current = stack.pop();
+      visited[current] = true;
+      size++;
+
+      for (let i = 0; i < graph[current].length; i++) {
+        if (!visited[graph[current][i]]) {
+          visited[graph[current][i]] = true;
+          stack.push(graph[current][i]);
+        }
+      }
+    }
+    return size;
+  }
+
+  return result;
+}
 
 largestComponent({
   0: ["8", "1", "5"],

@@ -1,27 +1,61 @@
-// Time: O(e)
-// Space: O(n)
-const connectedComponentsCount = (graph) => {
-  let count = 0;
-  const visited = new Set();
+// Time: O(v*e)
+// Space: O(v+e)
+function connectedComponentsCount(graph) {
+  let result = 0;
+  const visited = {};
 
-  for (const vertex in graph) {
-    if (explore(graph, vertex, visited) === true) count += 1;
+  for (let v in graph) {
+    // 방문한 정점은 다시 방분하지 않음
+    if (!visited[v]) {
+      result++;
+      dfs(v);
+    }
   }
 
-  return count;
-};
+  function dfs(src) {
+    visited[src] = true;
 
-const explore = (graph, vertex, visited) => {
-  if (visited.has(String(vertex))) return false;
-
-  visited.add(String(vertex));
-
-  for (let i = 0; i < graph[vertex].length; i++) {
-    explore(graph, graph[vertex][i], visited);
+    for (let i = 0; i < graph[src].length; i++) {
+      // 방문한 정점은 다시 방분하지 않음
+      if (!visited[graph[src][i]]) {
+        dfs(graph[src][i]);
+      }
+    }
   }
 
-  return true;
-};
+  return result;
+}
+
+// Time: O(v+e)
+// Space: O(v+e)
+function connectedComponentsCount(graph) {
+  let result = 0;
+  const visited = {};
+
+  for (let v in graph) {
+    if (!visited[v]) {
+      result++;
+      dfs(v);
+    }
+  }
+
+  function dfs(src) {
+    const stack = [src];
+
+    while (stack.length) {
+      const current = stack.pop();
+      visited[current] = true;
+
+      for (let i = 0; i < graph[current].length; i++) {
+        if (!visited[graph[current][i]]) {
+          stack.push(graph[current][i]);
+        }
+      }
+    }
+  }
+
+  return result;
+}
 
 connectedComponentsCount({
   0: [8, 1, 5],
