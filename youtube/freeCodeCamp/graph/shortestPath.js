@@ -1,6 +1,21 @@
-const shortestPath = (edges, vertex, target) => {
+function shortestPath(edges, nodeA, nodeB) {
   const graph = buildGraph(edges);
-};
+  const visited = new Set(nodeA);
+  const queue = [[nodeA, 0]];
+
+  while (queue.length) {
+    const [cur, dis] = queue.shift();
+    if (cur === nodeB) return dis;
+
+    for (let i = 0; i < graph[cur].length; i++) {
+      if (!visited.has(graph[cur][i])) {
+        visited.add(graph[cur][i]);
+        queue.push([graph[cur][i], dis + 1]);
+      }
+    }
+  }
+  return -1;
+}
 
 const buildGraph = (edges) => {
   const graph = {};
