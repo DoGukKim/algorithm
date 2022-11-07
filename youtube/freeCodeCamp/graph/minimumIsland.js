@@ -1,33 +1,38 @@
 const minimumIsland = (grid) => {
+  const nr = [-1, 0, 1, 0];
+  const nc = [0, 1, 0, -1];
   const visited = new Set();
-  let result = Infinity;
 
+  function dfs(r, c) {
+    const rowInBound = 0 <= r && r < grid.length;
+    const columInBound = 0 <= c && c < grid[0].length;
+    if (!rowInBound || !columInBound) return 0;
+    if (grid[r][c] === "W") return 0;
+
+    const pos = r + "," + c;
+    if (visited.has(pos)) return 0;
+    visited.add(pos);
+
+    let size = 1;
+
+    for (let i = 0; i < 4; i++) {
+      size += dfs(r + nr[i], c + nc[i]);
+    }
+
+    return size;
+  }
+
+  let result = 0;
   for (let r = 0; r < grid.length; r++) {
     for (let c = 0; c < grid[0].length; c++) {
-      const size = explore(grid, r, c, visited);
-      if (size > 0 && size < result) result = size;
+      if (grid[r][c] === "L") {
+        const size = dfs(r, c);
+        if (size < result) result = size;
+      }
     }
   }
 
   return result;
-};
-
-const explore = (grid, r, c, visited) => {
-  const rowInBound = 0 <= r && r < grid.length;
-  const columInBound = 0 <= c && c < grid[0].length;
-  if (!rowInBound || !columInBound) return 0; // 그리드를 벗어나면 0 반환
-
-  if (grid[r][c] === "W") return 0;
-  const pos = r + "," + c; // 키의 중복을 방지하기 위함
-  if (visited.has(pos)) return 0;
-  visited.add(pos);
-
-  let size = 1;
-  size += explore(grid, r - 1, c, visited); // top: ;
-  size += explore(grid, r, c + 1, visited); // right
-  size += explore(grid, r + 1, c, visited); // bottom
-  size += explore(grid, r, c - 1, visited); // left
-  return size;
 };
 
 const grid = [
