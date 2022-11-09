@@ -1,6 +1,6 @@
 // 방법 1
-// Time: O()
-// Space: O()
+// Time: O(v*e)
+// Space: O(v+e)
 function main(n, edges) {
   const graph = Array.from({ length: n + 1 }, () => Array(n + 1).fill(0));
 
