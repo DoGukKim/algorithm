@@ -1,4 +1,4 @@
-// Title: 캐릭터의 좌표
+// Title: 겹치는 선분의 길이
 // 방법 1
 // Time: O(n * s + e)
 // Space: O(min(s) + max(e))
