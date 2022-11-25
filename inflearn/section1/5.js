@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(1)
-// Input: 5 3 7 11 2 15 17 (n = 7)
 function main(numbers) {
   let min = Infinity;
 

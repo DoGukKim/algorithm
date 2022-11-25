@@ -2,8 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(1)
-// InputA: 3, 25 23 11 47 53 17 33
-// InputB: 0, 12 20 54 30 87 91 30
 function main(n, cars) {
   let result = 0;
 

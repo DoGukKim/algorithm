@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-// Input: ksekkset
 function main(s) {
   const map = new Map();
   let result = "";

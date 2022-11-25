@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n^2)
 // Space: O(n)
-// Input: 20 7 23 19 10 15 25 8 13
 function main(n) {
   const cheatTall = n.reduce((a, c) => a + c, 0) - 100;
   const map = new Map();

@@ -2,8 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(1)
-// InputA: 6, 7, 11
-// InputB: 13, 33, 17
 function main(a, b, c) {
   const max = Math.max(a, b, c);
   return a + b + c - max <= max ? "NO" : "YES";

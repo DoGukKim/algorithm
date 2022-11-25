@@ -2,8 +2,6 @@
 // 방법 1
 // Time: O(1)
 // Space: O(1)
-// InputA: 6
-// InputB: 10
 function main(n) {
   return (n + 1) * (n / 2);
 }

@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(n) -> strings require O(n) space
-// Input: BANANA
 function main(s) {
   let result = "";
 

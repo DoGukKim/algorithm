@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-// Input: 7 3 9 5 6 12
 function main(numbers) {
   const result = [numbers[0]];
 

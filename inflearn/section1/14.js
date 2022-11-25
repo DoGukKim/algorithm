@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-// Input: teacher, time, student, beautiful, good
 function main(words) {
   let max = words[0].length;
   let result = "";

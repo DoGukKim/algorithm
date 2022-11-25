@@ -2,8 +2,6 @@
 // 방법 1
 // Time: O(1)
 // Space: O(1)
-// InputA: 25
-// InputB: 178
 function main(n) {
   return Math.ceil(n / 12);
 }

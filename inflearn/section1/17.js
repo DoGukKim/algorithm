@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n^2)
 // Space: O(n)
-// Input: good, time, good, time, student
 function main(words) {
   const result = [];
 

@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n^2) -> toUpperCase method is O(n)
 // Space: O(1)
-// Input: KoreaTimeGood
 function main(s) {
   let result = 0;
 
@@ -27,6 +26,20 @@ function main(s) {
     if (65 <= charCode && charCode <= 90) {
       result++;
     }
+  }
+
+  return result;
+}
+
+// 방법 3
+// Time: O(n)
+// Space: O(n)
+function main(s) {
+  const us = s.toUpperCase();
+  let result = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === us[i]) result++;
   }
 
   return result;

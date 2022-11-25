@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n^2)
 // Space: O(n)
-// Input: sTUdy
 function main(s) {
   let result = "";
 

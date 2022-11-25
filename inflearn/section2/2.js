@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-// Input: 130, 135, 148, 140, 145, 150, 150, 153
 function main(numbers) {
   let result = 1;
   let min = numbers[0];

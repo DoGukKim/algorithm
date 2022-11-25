@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(1)
-// Input: COMPUTERPROGRAMMING, R
 
 function main(s, w) {
   let result = 0;

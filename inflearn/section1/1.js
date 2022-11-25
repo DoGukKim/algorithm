@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(1)
 // Space: O(1)
-// Input: 6, 5, 11
 function main(a, b, c) {
   return Math.min(a, b, c);
 }

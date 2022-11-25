@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(1)
-// Input: 12 77 38 41 53 92 85
 function main(numbers) {
   let sum = 0;
   let min = Infinity;
