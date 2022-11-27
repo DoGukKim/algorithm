@@ -3,3 +3,6 @@ const input = require("fs")
   .toString()
   .trim()
   .split("\n");
+
+input.shift();
+console.log(input);

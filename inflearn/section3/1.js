@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-// Input: gooG
 function main(s) {
   s = s.toLowerCase();
 

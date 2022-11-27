@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-// Input: g0en2T0s8eSoft
 function main(s) {
   let result = "";
 
