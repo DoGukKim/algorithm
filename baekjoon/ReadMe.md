@@ -5,6 +5,7 @@
 ## 알고리즘 분류
 
 - `bronze` : [bronze](bronze)
+- `gold` : [gold](gold)
 - `sliver` : [sliver](sliver)
 
 ### 참조
