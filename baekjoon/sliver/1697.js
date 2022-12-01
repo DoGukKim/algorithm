@@ -1,3 +1,6 @@
+// Title: 숨바꼭질
+// Time: O(n)
+// Space: O(n)
 const input = require("fs").readFileSync("/dev/stdin").toString().trim();
 
 const [n, k] = input.split(" ").map(Number);
