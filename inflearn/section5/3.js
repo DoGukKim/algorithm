@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n*m) -> if n have only 1 like [1,1,1,1...]
 // Space: O(1)
-// Input: [1, 2, 1, 3, 1, 1, 1, 2], 6
 function main(n, m) {
   let result = 0;
   let lt = 0;

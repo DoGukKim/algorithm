@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n^2)
 // Space: O(1)
-// Input: 128, 460, 603, 40, 521, 137, 123
 function main(n) {
   let result = 0;
   let max = -Infinity;

@@ -1,31 +1,54 @@
 // Title: 여행경로
-// Time: O()
-// Space: O()
+// Time: O(v+e)
+// Space: O(v+e)
 function main(tickets) {
-  const graph = {};
-  let result = [];
-  //   const visited = new Set();
+  tickets.sort();
 
+  const graph = {};
+  let remain = 0;
   for (let i = 0; i < tickets.length; i++) {
     const [f, d] = tickets[i];
-
     if (!(f in graph)) graph[f] = [];
     if (!(d in graph)) graph[d] = [];
-
     graph[f].push(d);
+    remain++;
   }
 
-  for (const k in graph) {
-    graph[k] = [...graph[k]].sort();
+  let result = [];
+  const visited = new Set();
+  function dfs(locate, remain, path) {
+    path.push(locate);
+
+    if (remain === 0) {
+      result = path;
+      return true;
+    }
+
+    for (let i = 0; i < graph[locate].length; i++) {
+      const pos = locate + "," + i;
+      if (!visited.has(pos)) {
+        path.push();
+        visited.add(pos);
+        if (dfs(graph[locate][i], remain - 1, path) === true) return true;
+        path.pop();
+        visited.delete(pos);
+      }
+    }
   }
 
-  //   console.log(graph);
-
-  // 티켓이 남아 있는데 티켓 소모가 안되는 경우 and
-  // 중복 티켓인 경우 처리 필요
-
+  dfs("ICN", remain, []);
   return result;
 }
+
+console.log(
+  main([
+    ["ICN", "A"],
+    ["A", "B"],
+    ["A", "C"],
+    ["C", "A"],
+    ["B", "D"],
+  ])
+);
 
 console.log(
   main([
@@ -37,10 +60,12 @@ console.log(
   ])
 );
 
-// console.log(
-//   main([
-//     ["ICN", "A"],
-//     ["ICN", "B"],
-//     ["B", "ICN"],
-//   ])
-// );
+console.log(
+  main([
+    ["ICN", "AAA"],
+    ["ICN", "AAA"],
+    ["ICN", "AAA"],
+    ["AAA", "ICN"],
+    ["AAA", "ICN"],
+  ])
+);

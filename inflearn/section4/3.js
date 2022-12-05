@@ -2,11 +2,6 @@
 // 방법 1
 // Time: O(n^3)
 // Space: O(n)
-// Input:
-// 4,
-// 3, 4, 1, 2
-// 4, 3, 2, 1
-// 3, 1, 4, 2
 function main(n, m) {
   const s = Array.from({ length: n }, (_, v) => v + 1);
   let result = 0;

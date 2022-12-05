@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n1 + n2)
 // Space: O(n1 + n2)
-// Input: [1, 3, 5], [2, 3, 6, 7, 9]
 function main(n1, n2) {
   const result = [];
 

@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(1)
-// Input: [1, 3, 1, 2, 3], 5
 function main(n, m) {
   let result = 0;
   let sum = 0;

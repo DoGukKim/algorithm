@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n*k)
 // Space: O(1)
-// Input: [12, 15, 11, 20, 25, 10, 20, 19, 13, 15], 3
 function main(n, k) {
   let result = -Infinity;
 

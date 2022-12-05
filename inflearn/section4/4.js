@@ -2,13 +2,6 @@
 // 방법 1
 // Time: O(n^2)
 // Space: O(1)
-// Input:
-// 6, 6
-// 2, 2
-// 4, 3
-// 4, 5
-// 10, 3
-// 28
 function main(n, m) {
   n.sort((a, b) => {
     if (a[0] === b[0]) return a[1] - b[1];

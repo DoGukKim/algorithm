@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O((t!*t)+(t!*s))
 // Space: O(t!)
-// Input: bacaAacba, abc
 function main(s, t) {
   const allPermutation = [];
 
@@ -31,7 +30,7 @@ function main(s, t) {
 
 // 방법 2
 // Time: O(s^2+t)
-// Space: O(1) -> since variables go out of scope, loop variables will destroyed.
+// Space: O(1) -> since variables out of scope, loop variables will destroyed.
 function main(s, t) {
   let result = 0;
 
@@ -62,12 +61,10 @@ function main(s, t) {
   return result;
 }
 
-console.log(main("bacaAacba", "abc")); // -> 3
-
 // 방법 3
 // Time: O(n^2)
 // Space: O(1)
-const main = (str1, str2) => {
+function main(str1, str2) {
   let result = 0;
 
   for (let i = 0; i < str1.length; i++) {
@@ -84,4 +81,4 @@ const main = (str1, str2) => {
   }
 
   return result;
-};
+}

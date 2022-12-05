@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n^2)
 // Space: O(n)
-// Input: 32, 55, 62, 20, 250, 370, 200, 30, 100
 function main(n) {
   const result = [];
 
@@ -17,7 +16,7 @@ function main(n) {
   }
 
   for (let i = 0; i < n.length; i++) {
-    let reverse = ""; // or we can using reverse method to n modify
+    let reverse = "";
 
     while (n[i] > 0) {
       reverse += n[i] % 10;

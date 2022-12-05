@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-// Input: AbaAeCe, baeeACA
 function main(s1, s2) {
   s1 = s1.split("").sort();
   s2 = s2.split("").sort();

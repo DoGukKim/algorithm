@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-// Input: [1, 3, 9, 5, 2], [3, 2, 5, 7, 8]
 function main(n, m) {
   n.sort((a, b) => a - b);
   m.sort((a, b) => a - b);
@@ -43,5 +42,4 @@ function main(n, m) {
   return result.sort((a, b) => a - b);
 }
 
-console.log(main([1, 3, 9, 5, 2], [3, 2, 5, 7, 8])); // -> [ 2, 3, 5 ]
 console.log(main([3, 2, 5, 7, 8], [1, 3, 9, 5, 2])); // -> [ 2, 3, 5 ]

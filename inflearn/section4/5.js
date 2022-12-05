@@ -2,8 +2,7 @@
 // 방법 1
 // Time: O(n^3)
 // Space: O(n)
-// Input: [13, 15, 34, 23, 45, 65, 33, 11, 26, 42], 3
-const main = (k, n) => {
+function main(k, n) {
   let result = [];
   const hash = {};
 
@@ -20,6 +19,34 @@ const main = (k, n) => {
   }
 
   return result.sort((a, b) => b - a)[k - 1];
-};
+}
 
-console.log(main(3, [13, 15, 34, 23, 45, 65, 33, 11, 26, 42]));
+// 방법 2
+// Time: O(n!)
+// Space: O(nC3)
+function main(k, n) {
+  const combinations = new Set();
+
+  function dfs(i, combination) {
+    // 만약 뽑는 카드가 3장으로 정해진게 아닌 n장일 경우는 재귀로 풀이 가능
+    if (combination.length === 3) {
+      const sum = combination.reduce((a, c) => a + c, 0);
+      combinations.add(sum);
+      return;
+    }
+
+    for (let j = i; j < n.length; j++) {
+      combination.push(n[j]);
+      dfs(j + 1, combination);
+      combination.pop();
+    }
+  }
+
+  for (let i = 0; i < n.length; i++) {
+    dfs(i, []);
+  }
+
+  return [...combinations].sort((a, b) => b - a)[k - 1];
+}
+
+main(3, [13, 15, 34, 23, 45, 65, 33, 11, 26, 42]);
