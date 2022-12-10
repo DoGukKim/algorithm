@@ -4,29 +4,27 @@ function main(n, edges) {
   const graph = {};
   for (let i = 0; i < edges.length; i++) {
     const [v, e] = edges[i];
+
     if (!(v in graph)) graph[v] = [];
     if (!(e in graph)) graph[e] = [];
 
     graph[v].push(e);
   }
-  // const graph = Array.from({ length: n + 1 }, () => Array());
 
+  const visited = Array.from({ length: n + 1 }, () => 0);
   let result = 0;
-  const visited = {};
-
   function dfs(v) {
     if (v === n) return result++;
 
     for (let i = 0; i < graph[v].length; i++) {
-      if (!visited[graph[v][i]]) {
-        visited[graph[v][i]] = true;
+      if (visited[graph[v][i]] === 0) {
+        visited[graph[v][i]] = 1;
         dfs(graph[v][i]);
-        visited[graph[v][i]] = false;
+        visited[graph[v][i]] = 0;
       }
     }
   }
-
-  visited[1] = true;
+  visited[1] = 1;
   dfs(1);
 
   return result;
