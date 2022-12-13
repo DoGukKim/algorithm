@@ -1,5 +1,4 @@
 // Title: 삽입 정렬
-// 방법 1
 // Time: O(n^2)
 // Space: O(1)
 function main(n) {
@@ -12,7 +11,7 @@ function main(n) {
     }
   }
 
-  return n;
+  console.log(n);
 }
 
-console.log(main([11, 7, 5, 6, 10, 9]));
+main([11, 7, 5, 6, 10, 9]);

@@ -13,14 +13,14 @@ function main(s) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
 // 방법 2
 // Time: O(n)
 // Space: O(n)
 function main(s) {
-  return [...new Set(s)].join("");
+  console.log([...new Set(s)].join(""));
 }
 
-console.log(main("ksekkset")); // -> kset
+main("ksekkset");

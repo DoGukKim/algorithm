@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(1)
-// Input: (()(()))(()
 function main(s) {
   let c = 0;
 
@@ -11,7 +10,7 @@ function main(s) {
     if (s[i] === ")") c--;
   }
 
-  return c !== 0 ? "NO" : "YES";
+  console.log(c !== 0 ? "NO" : "YES");
 }
 
 // 방법 2
@@ -28,10 +27,10 @@ function main(s) {
     }
   }
 
-  return stack.length ? "NO" : "YES";
+  console.log(stack.length ? "NO" : "YES");
 }
 
-console.log(main("(()(()))(()")); // -> NO
-console.log(main("()")); // -> YES
-console.log(main("())")); // -> NO
-console.log(main("()(")); // -> NO
+main("(()(()))(()");
+main("()");
+main("())");
+main("()(");

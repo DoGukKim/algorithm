@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(2^n)
 // Space: O(n)
-// Input: 7
 function main(n) {
   function dfs(m) {
     if (m > n) return;

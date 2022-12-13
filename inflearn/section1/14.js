@@ -1,10 +1,9 @@
 // Title: 가장 긴 문자열
-// 방법 1
 // Time: O(n)
 // Space: O(n)
 function main(words) {
-  let max = words[0].length;
   let result = "";
+  let max = words[0].length;
 
   for (let i = 1; i < words.length; i++) {
     if (max < words[i].length) {
@@ -13,7 +12,7 @@ function main(words) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main(["teacher", "time", "student", "beautiful", "good"])); // -> beautiful
+main(["teacher", "time", "student", "beautiful", "good"]);

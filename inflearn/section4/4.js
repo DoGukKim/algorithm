@@ -1,5 +1,4 @@
 // Title: 졸업 선물
-// 방법 1
 // Time: O(n^2)
 // Space: O(1)
 function main(n, m) {
@@ -29,18 +28,16 @@ function main(n, m) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(
-  main(
-    [
-      [6, 6],
-      [2, 2],
-      [4, 3],
-      [4, 5],
-      [10, 3],
-    ],
-    28
-  )
-); // -> 4
+main(
+  [
+    [6, 6],
+    [2, 2],
+    [4, 3],
+    [4, 5],
+    [10, 3],
+  ],
+  28
+);

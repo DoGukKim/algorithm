@@ -27,11 +27,11 @@ function main(n1, n2) {
     rp++;
   }
 
-  return result;
+  console.log(result);
 }
 
 // 방법 2
-// Time: O(min(n1,n2)^2) -> this solution is shifting worst case. it is O(n)
+// Time: O(min(n1,n2)^2)
 // Space: O(n1 + n2)
 function main(n1, n2) {
   const result = [];
@@ -44,6 +44,7 @@ function main(n1, n2) {
     }
   }
 
-  return [...result, ...n1, ...n2];
+  console.log([...result, ...n1, ...n2]);
 }
-console.log(main([1, 3, 5], [2, 3, 6, 7, 9])); // -> [1, 2, 3, 3, 5, 6, 7, 9]
+
+console.log(main([1, 3, 5], [2, 3, 6, 7, 9]));

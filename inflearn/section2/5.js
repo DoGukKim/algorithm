@@ -1,5 +1,4 @@
 // Title: 등수구하기
-// 방법 1
 // Time: O(n^2)
 // Space: O(n)
 function main(n) {
@@ -10,7 +9,7 @@ function main(n) {
     result.push(n.length - moreThanLess); // 전체 - 낮은 인원 = i 등수
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main([87, 89, 92, 100, 76])); // -> [ 4, 3, 2, 1, 5 ]
+main([87, 89, 92, 100, 76]);

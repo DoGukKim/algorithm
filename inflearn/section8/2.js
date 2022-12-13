@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-// Input: 11
 function main(n) {
   if (n <= 0) return "";
   return main(Math.floor(n / 2)) + String(n % 2);

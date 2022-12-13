@@ -1,5 +1,4 @@
 // Title: 가위 바위 보
-// 방법 1
 // Time: O(n)
 // Space: O(1)
 const main = (A, B) => {
@@ -21,4 +20,4 @@ const main = (A, B) => {
   }
 };
 
-console.log(main([2, 3, 3, 1, 3], [1, 1, 2, 2, 3]));
+main([2, 3, 3, 1, 3], [1, 1, 2, 2, 3]);

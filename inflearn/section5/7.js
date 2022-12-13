@@ -1,17 +1,20 @@
 // Title: 아나그램(1)
 // 방법 1
-// Time: O(n)
-// Space: O(n)
+// Time: O(n log n)
+// Space: O(1)
 function main(s1, s2) {
   s1 = s1.split("").sort();
   s2 = s2.split("").sort();
 
   for (let i = 0; i < s1.length; i++) {
-    if (s1[i] !== s2[i]) return "NO";
+    if (s1[i] !== s2[i]) {
+      console.log("NO");
+      return;
+    }
   }
 
-  return "YES";
-  // or return s1.join("") === s2.join("");
+  console.log("YES");
+  // or console.log(s1.join("") === s2.join(""));
 }
 
 // 방법 2
@@ -28,12 +31,14 @@ function main(s1, s2) {
     map.set(s2[i], map.get(s2[i]) - 1);
   }
 
-  for (const [k, v] of map) {
-    if (v !== 0) return "NO";
+  for (const [_, v] of map) {
+    if (v !== 0) {
+      console.log("NO");
+      return;
+    }
   }
-
-  return "YES";
+  console.log("YES");
 }
 
-console.log(main("AbaAeCe", "baeeACA")); // -> YES
-console.log(main("abaCC", "Caaab")); // -> NO
+main("AbaAeCe", "baeeACA");
+main("abaCC", "Caaab");

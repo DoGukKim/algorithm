@@ -1,6 +1,6 @@
 // Title: 공통 원소 구하기
 // 방법 1
-// Time: O(n)
+// Time: O(n log n)
 // Space: O(n)
 function main(n, m) {
   n.sort((a, b) => a - b);
@@ -20,11 +20,11 @@ function main(n, m) {
     } else lp++;
   }
 
-  return result;
+  console.log(result);
 }
 
 // 방법 2
-// Time: O(n)
+// Time: O(n log n)
 // Space: O(n)
 function main(n, m) {
   const map = new Map();
@@ -39,7 +39,7 @@ function main(n, m) {
     if (v > 1) result.push(k);
   }
 
-  return result.sort((a, b) => a - b);
+  console.log(result.sort((a, b) => a - b));
 }
 
-console.log(main([3, 2, 5, 7, 8], [1, 3, 9, 5, 2])); // -> [ 2, 3, 5 ]
+main([3, 2, 5, 7, 8], [1, 3, 9, 5, 2]);

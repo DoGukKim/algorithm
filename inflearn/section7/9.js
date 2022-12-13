@@ -1,7 +1,7 @@
-// 방법 1
+// Title: 결혼식
 // Time: O(n log n)
 // Space: O(n)
-const main = (n) => {
+function main(n) {
   n.sort((a, b) => {
     if (a[0] === b[0]) return a[1] - b[1];
     else return a[0] - b[0];
@@ -13,15 +13,13 @@ const main = (n) => {
     queue.push(n[i]);
   }
 
-  return queue.length;
-};
+  console.log(queue.length);
+}
 
-console.log(
-  main([
-    [14, 18],
-    [12, 15],
-    [15, 20],
-    [20, 30],
-    [5, 14],
-  ])
-);
+main([
+  [14, 18],
+  [12, 15],
+  [15, 20],
+  [20, 30],
+  [5, 14],
+]);

@@ -18,40 +18,7 @@ function main(n, m) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-// 방법 2
-// Time: O(n*m)
-// Space: O(1)
-function main() {
-  let result = 0;
-
-  let lp = 0;
-  let rp = lp + 1;
-  let sum = n[lp];
-
-  while (lp < n.length) {
-    sum += n[rp];
-    rp++;
-
-    if (sum > m) {
-      lp++;
-      rp = lp + 1;
-      sum = n[lp];
-    }
-
-    if (sum === m) {
-      lp++;
-      rp = lp + 1;
-      sum = n[lp];
-      result++;
-    }
-
-    if (rp > n.length) break;
-  }
-
-  return result;
-}
-
-console.log(main([1, 2, 1, 3, 1, 1, 1, 2], 6)); // -> 3
+main([1, 2, 1, 3, 1, 1, 1, 2], 6);

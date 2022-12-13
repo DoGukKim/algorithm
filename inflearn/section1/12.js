@@ -1,9 +1,8 @@
-// Title: 대문자 변환
-// 방법 1
+// Title: 대문자 통일
 // Time: O(n)
-// Space: O(n)
-const main = (word) => {
-  return word.toUpperCase();
+// Space: O(1)
+const main = (s) => {
+  console.log(s.toUpperCase());
 };
 
-console.log(main("ItisTimeToStudy")); // -> ITISTIMETOSTUDY
+main("ItisTimeToStudy");

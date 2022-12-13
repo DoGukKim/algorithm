@@ -1,8 +1,6 @@
 // Title: 장난 꾸러기 현수
-// 방법 1
-// Time: O(n)
+// Time: O(n log n)
 // Space: O(n)
-// Input: 120 125 152 130 135 135 143 127 160
 function main(n) {
   const result = [];
   const c = n.slice().sort((a, b) => a - b);
@@ -13,8 +11,8 @@ function main(n) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main([120, 125, 152, 130, 135, 135, 143, 127, 160])); // -> [3, 8]
-console.log(main([120, 130, 150, 150, 130, 150])); // -> [3, 5]
+main([120, 125, 152, 130, 135, 135, 143, 127, 160]);
+main([120, 130, 150, 150, 130, 150]);

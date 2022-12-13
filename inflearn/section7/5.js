@@ -17,7 +17,7 @@ function main(size, n) {
     memory[0] = n[i];
   }
 
-  return memory;
+  console.log(memory);
 }
 
-console.log(main(5, [1, 2, 3, 2, 6, 2, 3, 5, 7]));
+main(5, [1, 2, 3, 2, 6, 2, 3, 5, 7]);

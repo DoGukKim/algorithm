@@ -11,29 +11,7 @@ function main(n) {
     }
   }
 
-  return n;
+  console.log(n);
 }
 
-console.log(main([1, 2, 3, -3, -2, 5, 6, -6]));
-
-// 방법 2
-// Time: O(n^2)
-// Space: O(1)
-function main(n) {
-  let isSwap = true;
-
-  while (isSwap) {
-    isSwap = false;
-
-    for (let i = 0; i < n.length; i++) {
-      if (n[i] > n[i + 1]) {
-        [n[i], n[i + 1]] = [n[i + 1], n[i]];
-        swap = true;
-      }
-    }
-  }
-
-  return n;
-}
-
-console.log(main2([1, 2, 3, -3, -2, 5, 6, -6]));
+main([1, 2, 3, -3, -2, 5, 6, -6]);

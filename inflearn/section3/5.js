@@ -1,5 +1,4 @@
 // Title: 문자열 압축
-// 방법 1
 // Time: O(n)
 // Space: O(n)
 function main(s) {
@@ -16,7 +15,7 @@ function main(s) {
     } else acc++;
   }
 
-  return stack.join("");
+  console.log(stack.join(""));
 }
 
-console.log(main("KKHSSSSSSSE")); // -> K2HS7E
+main("KKHSSSSSSSE");

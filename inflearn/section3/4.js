@@ -1,7 +1,7 @@
-// 방법 1
+// Title: 가장 짧은 문자거리
 // Time O(n)
 // Space O(n)
-const main = (string, target) => {
+function main(string, target) {
   let result = [];
   let acc = 0;
 
@@ -27,7 +27,7 @@ const main = (string, target) => {
     }
   }
 
-  return result;
-};
+  console.log(result);
+}
 
-console.log(main("teachermode", "e"));
+main("teachermode", "e");

@@ -1,3 +1,4 @@
+// Title: 바둑이 승차
 // 방법 1
 // Time: O(2^n)
 // Space: O(n)

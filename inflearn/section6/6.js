@@ -1,5 +1,4 @@
 // Title: 공주 구하기
-// 방법 1
 // Time: O(n)
 // Space: O(n)
 function main(n, k) {
@@ -12,7 +11,7 @@ function main(n, k) {
     if (princes.length === 1) result = princes.shift();
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main(8, 3)); // -> 7
+main(8, 3);

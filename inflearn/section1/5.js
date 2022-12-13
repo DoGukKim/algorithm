@@ -1,6 +1,6 @@
 // Title: 최솟값 구하기
 // 방법 1
-// Time: O(n)
+// Time: O(1)
 // Space: O(1)
 function main(numbers) {
   let min = Infinity;
@@ -9,11 +9,18 @@ function main(numbers) {
     if (numbers[i] < min) min = numbers[i];
   }
 
-  return min;
+  console.log(min);
 }
 
 // 방법 2
-// Time: O(n^2)
+// Time: O(1)
+// Space: O(1)
+function main(numbers) {
+  console.log(Math.min(...numbers));
+}
+
+// 방법 3
+// Time: O(1)
 // Space: O(n)
 function main(numbers) {
   if (numbers.length === 1) return numbers[0];
@@ -21,4 +28,4 @@ function main(numbers) {
   return numbers[0] < min ? numbers[0] : min; // or Math.min(min, numbers[0])
 }
 
-console.log(main([5, 3, 7, 11, 2, 15, 17])); // -> 2
+main([5, 3, 7, 11, 2, 15, 17]);

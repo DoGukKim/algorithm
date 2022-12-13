@@ -1,5 +1,4 @@
 // Title: 뒤집은 소수
-// 방법 1
 // Time: O(n^2)
 // Space: O(n)
 function main(n) {
@@ -28,7 +27,7 @@ function main(n) {
     if (prime) result.push(temp);
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main([32, 55, 62, 20, 250, 370, 200, 30, 100])); // -> [ 23, 2, 73, 2, 3 ]
+main([32, 55, 62, 20, 250, 370, 200, 30, 100]);

@@ -3,7 +3,7 @@
 // Time: O(1)
 // Space: O(1)
 function main(a, b, c) {
-  return Math.min(a, b, c);
+  console.log(Math.min(a, b, c));
 }
 
 // 방법 2
@@ -16,7 +16,20 @@ function main(a, b, c) {
   if (b < min) min = b;
   if (c < min) min = c;
 
-  return min;
+  console.log(min);
 }
 
-console.log(main(6, 5, 11));
+// 방법 3
+// Time: O(1)
+// Space: O(1)
+function main(a, b, c) {
+  let result = Infinity;
+
+  for (const n of [a, b, c]) {
+    if (n < result) result = n;
+  }
+
+  console.log(result);
+}
+
+main(6, 5, 11);

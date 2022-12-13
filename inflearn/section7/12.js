@@ -1,8 +1,7 @@
-// 방법 1
-// Time: O(log n)
+// Title: 마구간 정하기
+// Time: O(n log n)
 // Space: O(1)
 const main = (n, m) => {
-  // 마구간 정렬
   n.sort((a, b) => a - b);
 
   let lp = 1; // 1인 이유는 마구간의 좌표가 1부터이기 때문에.
@@ -34,7 +33,7 @@ const main = (n, m) => {
     }
   }
 
-  return result;
+  console.log(result);
 };
 
-console.log(main([1, 2, 8, 4, 9], 3));
+main([1, 2, 8, 4, 9], 3);

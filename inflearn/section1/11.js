@@ -28,7 +28,7 @@ function main(s) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
 // 방법 3
@@ -42,7 +42,7 @@ function main(s) {
     if (s[i] === us[i]) result++;
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main("KoreaTimeGood")); // -> 3
+main("KoreaTimeGood");

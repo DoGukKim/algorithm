@@ -3,7 +3,7 @@
 // Time: O(1)
 // Space: O(1)
 function main(n) {
-  return (n + 1) * (n / 2);
+  console.log((n + 1) * (n / 2));
 }
 
 // 방법 2
@@ -16,7 +16,7 @@ function main(n) {
     result += i;
   }
 
-  return result;
+  console.log(result);
 }
 
 // 방법 3
@@ -24,8 +24,8 @@ function main(n) {
 // Space: O(n)
 function main(n) {
   if (n === 1) return 1;
-  return n + main(n - 1);
+  console.log(n + main(n - 1));
 }
 
-console.log(main(6)); // -> 21
-console.log(main(10)); // -> 55
+main(6);
+main(10);

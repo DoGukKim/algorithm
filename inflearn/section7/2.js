@@ -11,7 +11,7 @@ function main(n) {
     }
   }
 
-  return n;
+  console.log(n);
 }
 
 console.log(main([13, 5, 11, 7, 23, 15]));
@@ -33,5 +33,5 @@ function main(n) {
     }
   }
 
-  return n;
+  console.log(n);
 }

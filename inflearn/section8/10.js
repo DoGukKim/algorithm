@@ -1,3 +1,4 @@
+// Title: 순열 구하기
 // 방법 1
 // Time: O(n! * n)
 // Space: O(n^2)
@@ -11,7 +12,7 @@ const main = (n, m) => {
     }
 
     for (let i = 0; i < n.length; i++) {
-      if (permutation.includes(n[i])) continue; // permutation에 값이 있으면 불필요한 재귀를 호출하지 않기 위함
+      if (permutation.includes(n[i])) continue;
       permutation.push(n[i]);
       permute(permutation);
       permutation.pop();

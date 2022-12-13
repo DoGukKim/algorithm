@@ -1,5 +1,4 @@
 // Title: 격자판 최대합
-// 방법 1
 // Time: O(n^2)
 // Space: O(1)
 function main(grid) {
@@ -10,8 +9,8 @@ function main(grid) {
   let rightC = 0;
 
   for (let i = 0; i < grid.length; i++) {
-    row = 0; // 매 순환시 초기화
-    col = 0; // 매 순환시 초기화
+    row = 0;
+    col = 0;
 
     for (let j = 0; j < grid[0].length; j++) {
       row += grid[i][j]; // 행 누적
@@ -24,15 +23,13 @@ function main(grid) {
     result = Math.max(row, col, leftC, rightC);
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(
-  main([
-    [10, 13, 10, 12, 15],
-    [12, 39, 30, 23, 11],
-    [11, 25, 50, 53, 15],
-    [19, 27, 29, 37, 27],
-    [19, 13, 30, 13, 19],
-  ])
-); // -> 155
+main([
+  [10, 13, 10, 12, 15],
+  [12, 39, 30, 23, 11],
+  [11, 25, 50, 53, 15],
+  [19, 27, 29, 37, 27],
+  [19, 13, 30, 13, 19],
+]);

@@ -1,3 +1,4 @@
+// Title: 팩토리얼
 // 방법 1
 // Time: O(n)
 // Space: O(n)

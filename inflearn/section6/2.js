@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(n)
 // Space: O(n)
-// Input: (A(BC)D)EF(G(H)(IJ)K)LM(N)
 function main(s) {
   let result = "";
   const stack = [];
@@ -13,7 +12,7 @@ function main(s) {
     if (stack.length === 0 && s[i] !== ")") result += s[i];
   }
 
-  return result;
+  console.log(result);
 }
 
 // 방법 2
@@ -29,7 +28,7 @@ function main(s) {
     if (c === 0 && s[i] !== ")") result += s[i];
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main("(A(BC)D)EF(G(H)(IJ)K)LM(N)")); // -> EFLM
+main("(A(BC)D)EF(G(H)(IJ)K)LM(N)");

@@ -18,7 +18,7 @@ function main(s) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main("sTUdy")); // -> StuDY
+main("sTUdy");

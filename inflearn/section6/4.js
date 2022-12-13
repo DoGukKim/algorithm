@@ -1,5 +1,4 @@
 // Title: 후위식 연산
-// 방법 1
 // Time: O(n)
 // Space: O(n)
 function main(s) {
@@ -20,7 +19,7 @@ function main(s) {
     } else stack.push(Number(s[i]));
   }
 
-  return stack[0];
+  console.log(stack[0]);
 }
 
-console.log(main("352+*9-")); // -> 12
+main("352+*9-");

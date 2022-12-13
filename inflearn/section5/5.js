@@ -1,5 +1,4 @@
 // Title: 최대 매출
-// 방법 1
 // Time: O(n*k)
 // Space: O(1)
 function main(n, k) {
@@ -18,7 +17,7 @@ function main(n, k) {
     if (result < sum) result = sum;
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main([12, 15, 11, 20, 25, 10, 20, 19, 13, 15], 3)); // -> 56
+main([12, 15, 11, 20, 25, 10, 20, 19, 13, 15], 3);

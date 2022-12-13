@@ -1,7 +1,6 @@
 // Title: K번째 큰 수
-// 방법 1
 // Time: O(n^3)
-// Space: O(n)
+// Space: O(n!)
 function main(k, n) {
   let result = [];
   const hash = {};
@@ -18,17 +17,17 @@ function main(k, n) {
     }
   }
 
-  return result.sort((a, b) => b - a)[k - 1];
+  console.log(result.sort((a, b) => b - a)[k - 1]);
 }
 
 // 방법 2
 // Time: O(n!)
-// Space: O(nC3)
+// Space: O(n!)
 function main(k, n) {
   const combinations = new Set();
 
   function dfs(i, combination) {
-    // 만약 뽑는 카드가 3장으로 정해진게 아닌 n장일 경우는 재귀로 풀이 가능
+    // 만약 뽑는 카드가 3장으로 정해진게 아닌 n장일 경우는 재귀로 풀이
     if (combination.length === 3) {
       const sum = combination.reduce((a, c) => a + c, 0);
       combinations.add(sum);
@@ -46,7 +45,7 @@ function main(k, n) {
     dfs(i, []);
   }
 
-  return [...combinations].sort((a, b) => b - a)[k - 1];
+  console.log([...combinations].sort((a, b) => b - a)[k - 1]);
 }
 
 main(3, [13, 15, 34, 23, 45, 65, 33, 11, 26, 42]);

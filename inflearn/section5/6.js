@@ -1,5 +1,4 @@
 // Title: 학급 회장
-// 방법 1
 // Time: O(n)
 // Space: O(n)
 function main(s) {
@@ -22,4 +21,4 @@ function main(s) {
   return result;
 }
 
-console.log(main("BACBACCACCBDEDE")); // -> C
+main("BACBACCACCBDEDE");

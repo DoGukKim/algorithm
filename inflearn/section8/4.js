@@ -2,7 +2,6 @@
 // 방법 1
 // Time: O(2^n)
 // Space: O(n^2)
-// Input: 3
 function main(n) {
   const result = [];
 

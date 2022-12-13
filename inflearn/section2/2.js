@@ -1,5 +1,4 @@
 // Title: 보이는 학생
-// 방법 1
 // Time: O(n)
 // Space: O(n)
 function main(numbers) {
@@ -13,7 +12,7 @@ function main(numbers) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main([130, 135, 148, 140, 145, 150, 150, 153])); // -> 5
+main([130, 135, 148, 140, 145, 150, 150, 153]);

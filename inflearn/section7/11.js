@@ -1,4 +1,4 @@
-// 방법 1
+// Title: 뮤직 비디오
 // Time: O(log n)
 // Space: O(1)
 const main = (n, m) => {
@@ -32,7 +32,7 @@ const main = (n, m) => {
     }
   }
 
-  return result;
+  console.log(result);
 };
 
-console.log(main(9, 3));
+main(9, 3);

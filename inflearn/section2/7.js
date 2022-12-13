@@ -24,7 +24,7 @@ function main(grid) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
 // 방법 2
@@ -33,12 +33,12 @@ function main(grid) {
 function main(matrix) {
   const dx = [-1, 0, 1, 0];
   const dy = [0, 1, 0, -1];
-  let top = true;
+  let isPeak = true;
   let result = 0;
 
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[0].length; j++) {
-      top = true;
+      isPeak = true;
 
       for (let k = 0; k < 4; k++) {
         const nx = i + dx[k];
@@ -46,22 +46,22 @@ function main(matrix) {
         const xInBound = 0 <= nx && nx < matrix.length;
         const yInBound = 0 <= ny && ny < matrix[0].length;
 
-        if (xInBound && yInBound && matrix[i][j] <= matrix[nx][ny]) top = false;
+        if (xInBound && yInBound && matrix[i][j] <= matrix[nx][ny]) {
+          isPeak = false;
+        }
       }
 
-      if (top) result++;
+      if (isPeak) result++;
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(
-  main([
-    [5, 3, 7, 2, 3],
-    [3, 7, 1, 6, 1],
-    [7, 2, 5, 3, 4],
-    [4, 3, 6, 4, 1],
-    [8, 7, 3, 5, 2],
-  ])
-); // -> 10
+main([
+  [5, 3, 7, 2, 3],
+  [3, 7, 1, 6, 1],
+  [7, 2, 5, 3, 4],
+  [4, 3, 6, 4, 1],
+  [8, 7, 3, 5, 2],
+]);

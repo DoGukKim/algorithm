@@ -1,5 +1,4 @@
 // Title: 멘토링
-// 방법 1
 // Time: O(n^3)
 // Space: O(n)
 function main(n, m) {
@@ -18,13 +17,11 @@ function main(n, m) {
     result += n - 1 - maxRank;
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(
-  main(4, [
-    [3, 4, 1, 2],
-    [4, 3, 2, 1],
-    [3, 1, 4, 2],
-  ])
-); // -> 3
+main(4, [
+  [3, 4, 1, 2],
+  [4, 3, 2, 1],
+  [3, 1, 4, 2],
+]);

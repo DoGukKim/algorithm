@@ -1,5 +1,4 @@
 // Title: 쇠막대기
-// 방법 1
 // Time: O(n)
 // Space: O(n)
 function main(s) {
@@ -15,7 +14,7 @@ function main(s) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main("()(((()())(())()))(())")); // -> 24
+main("()(((()())(())()))(())");

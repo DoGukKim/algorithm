@@ -1,5 +1,4 @@
 // Title: 큰 수 출력하기
-// 방법 1
 // Time: O(n)
 // Space: O(n)
 function main(numbers) {
@@ -11,7 +10,7 @@ function main(numbers) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main([7, 3, 9, 5, 6, 12]));
+main([7, 3, 9, 5, 6, 12]);

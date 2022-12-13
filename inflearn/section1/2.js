@@ -1,11 +1,11 @@
 // Title: 삼각형 판별하기
 // 방법 1
-// Time: O(n)
+// Time: O(1)
 // Space: O(1)
 function main(a, b, c) {
   const max = Math.max(a, b, c);
-  return a + b + c - max <= max ? "NO" : "YES";
+  console.log(max < a + b + c - max ? "YES" : "NO");
 }
 
-console.log(main(6, 7, 11)); // -> YES
-console.log(main(13, 33, 17)); // -> NO
+main(6, 7, 11);
+main(13, 33, 17);

@@ -1,5 +1,4 @@
 // Title: 연속부분수열(2)
-// 방법 1
 // Time: O(n)
 // Space: O(1)
 function main(n, m) {
@@ -17,7 +16,7 @@ function main(n, m) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main([1, 3, 1, 2, 3], 5)); // -> 10
+main([1, 3, 1, 2, 3], 5);

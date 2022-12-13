@@ -1,5 +1,4 @@
 // Title: 자릿수의 합
-// 방법 1
 // Time: O(n^2)
 // Space: O(1)
 function main(n) {
@@ -21,7 +20,7 @@ function main(n) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(main([128, 460, 603, 40, 521, 137, 123])); // -> 137
+main([128, 460, 603, 40, 521, 137, 123]);

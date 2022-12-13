@@ -1,8 +1,6 @@
 // Title: 회의실 배정
-// 방법 1
 // Time: O(n)
 // Space: O(1)
-// Input:[1,4], [2,3], [3,5], [4,6], [5,7]
 function main(n) {
   n.sort((a, b) => {
     if (a[1] === b[1]) return a[0] - b[0];
@@ -19,23 +17,19 @@ function main(n) {
     }
   }
 
-  return result;
+  console.log(result);
 }
 
-console.log(
-  main([
-    [1, 4],
-    [2, 3],
-    [3, 5],
-    [4, 6],
-    [5, 7],
-  ])
-); // -> 3
+main([
+  [1, 4],
+  [2, 3],
+  [3, 5],
+  [4, 6],
+  [5, 7],
+]);
 
-console.log(
-  main([
-    [3, 3],
-    [1, 3],
-    [2, 3],
-  ])
-); // -> 2
+main([
+  [3, 3],
+  [1, 3],
+  [2, 3],
+]);
