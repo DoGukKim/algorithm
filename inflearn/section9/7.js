@@ -1,4 +1,4 @@
-function main2(grid) {
+function main(grid) {
   const dx = [-1, -1, 0, 1, 1, 1, 0, -1];
   const dy = [0, 1, 1, 1, 0, -1, -1, -1];
 
@@ -26,5 +26,17 @@ function main2(grid) {
     }
   }
 
-  return result;
+  console.log(result);
 }
+
+const grid = [
+  [1, 1, 0, 0, 0, 1, 0],
+  [0, 1, 1, 0, 1, 1, 0],
+  [0, 1, 0, 0, 0, 0, 0],
+  [0, 0, 0, 1, 0, 1, 1],
+  [1, 1, 0, 1, 1, 0, 0],
+  [1, 0, 0, 0, 1, 0, 0],
+  [1, 0, 1, 0, 1, 0, 0],
+];
+
+main(grid);

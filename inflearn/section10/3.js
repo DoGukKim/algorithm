@@ -1,19 +1,21 @@
+// Title: 최장증가수열
 // TIme: O(n^2)
 // Space: O(n)
-const main = (n) => {
-  let dp = Array.from({ length: n.length }, () => 1);
-  let longest = 0;
+function main(n) {
+  const dy = Array.from({ length: n.length }, () => 0);
+
+  dy[0] = 1;
 
   for (let i = 1; i < n.length; i++) {
     for (let j = 0; j < i; j++) {
       if (n[j] < n[i]) {
-        dp[i] = Math.max(dp[i], dp[j] + 1);
-        longest = Math.max(longest, dp[i]);
-      }
+        dy[i] = Math.max(dy[i], dy[j] + 1);
+      } else dy[i] = 1;
     }
   }
 
-  return longest;
-};
+  console.log(dy);
+  console.log(Math.max(...dy));
+}
 
-console.log(main([5, 3, 7, 8, 6, 2, 9, 4]));
+main([5, 3, 7, 8, 6, 2, 9, 4]);

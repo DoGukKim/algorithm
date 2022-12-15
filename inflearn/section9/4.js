@@ -1,5 +1,6 @@
-// Time: O(n^2)
-// Space: O(n)
+// Title: 미로탐색
+// Time: O(v*e)
+// Space: O(v+e)
 function main(grid) {
   const dr = [-1, 0, 1, 0];
   const dc = [0, 1, 0, -1];
@@ -26,7 +27,7 @@ function main(grid) {
   grid[0][0] = 1;
   dfs(0, 0);
 
-  return result;
+  console.log(result);
 }
 
 const grid = [
@@ -39,4 +40,4 @@ const grid = [
   [1, 0, 0, 0, 0, 0, 0],
 ];
 
-console.log(main(grid)); // -> 8
+main(grid);

@@ -1,3 +1,4 @@
+// Title: 경로 탐색(인접행렬)
 // Time: O(v*e)
 // Space: O(v+e)
 function main(n, edges) {
@@ -41,4 +42,4 @@ const edges = [
   [4, 5],
 ];
 
-console.log(main(5, edges));
+main(5, edges);

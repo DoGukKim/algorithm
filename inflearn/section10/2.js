@@ -1,17 +1,15 @@
 // Time: O(n)
 // Space: O(n)
-const main = (n) => {
-  function dfs(num, memo = {}) {
-    if (num in memo) return memo[num];
-    if (num < 0) return 0;
-    if (num === 0) return 1;
+function main(n) {
+  const dy = Array.from({ length: n + 2 }, () => 0);
+  dy[1] = 1;
+  dy[2] = 2;
 
-    memo[num] = dfs(num - 1) + dfs(num - 2);
-
-    return memo[num];
+  for (let i = 3; i <= n + 1; i++) {
+    dy[i] = dy[i - 2] + dy[i - 1];
   }
 
-  return dfs(n + 1);
-};
+  console.log(dy[n + 1]);
+}
 
-console.log(main(7));
+main(7);
