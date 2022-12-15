@@ -1,8 +1,7 @@
 // Title: 최대점수 구하기
-// 방법 1
 // Time: O(2^n)
 // Space: O(n)
-const main = (m, ps, pt) => {
+function main(m, ps, pt) {
   let result = -Infinity;
 
   function dfs(level, time, point) {
@@ -17,7 +16,7 @@ const main = (m, ps, pt) => {
   }
   dfs(0, 0, 0);
 
-  return result;
-};
+  console.log(result);
+}
 
-console.log(main(20, [10, 25, 15, 6, 7], [5, 12, 8, 3, 4]));
+main(20, [10, 25, 15, 6, 7], [5, 12, 8, 3, 4]);

@@ -1,7 +1,27 @@
 // Title: 부분집합 구하기(DFS)
 // 방법 1
+// Time: O(n^n)
+// Space: O(n!)
+function main(n) {
+  const allSubset = [];
+
+  function dfs(j, subset) {
+    for (let i = j; i <= n; i++) {
+      subset.push(i);
+      allSubset.push([...subset]);
+      dfs(i + 1, subset);
+      subset.pop();
+    }
+  }
+
+  dfs(1, []);
+
+  console.log(allSubset);
+}
+
+// 방법 2
 // Time: O(2^n)
-// Space: O(n^2)
+// Space: O(n!)
 function main(n) {
   const result = [];
 
@@ -21,7 +41,7 @@ function main(n) {
   }
   dfs(1, []);
 
-  return result;
+  console.log(result);
 }
 // 재귀 그려보기
 //
@@ -32,33 +52,25 @@ function main(n) {
 //              /   \         /   \       /   \        /  \
 // 3        [1,2,3] [1,2]  [1,3]  [1]   [2,3] [2]    [3]   []
 
-// 방법 2
-// Time: O(2^n)
-// Space: O(n^2) -> n (stack frame) * n - 1 (without element sliced array)
+// 방법 3
+// Time: O(n!)
+// Space: O(n!)
 function main(n) {
-  const arr = Array.from({ length: n }, (_, val) => val + 1);
+  function dfs(m) {
+    if (m > n) return [[]]; // 요소가 없는 집합 반환
 
-  function dfs(numbers) {
-    if (numbers.length === 0) return [[]]; // 요소가 없는 집합 반환
-
-    const subsetWithoutElement = dfs(numbers.slice(1)); // 재귀에서 반환된 부분집합들
+    const subsetWithoutElement = dfs(m + 1); // 재귀에서 반환된 부분집합들
     const subsetWithElement = [];
 
     for (let i = 0; i < subsetWithoutElement.length; i++) {
-      const subset = [numbers[0], ...subsetWithoutElement[i]]; // 각 요소가 포함되어 있는 집합
+      const subset = [m, ...subsetWithoutElement[i]]; // 각 요소가 포함되어 있는 집합
       subsetWithElement.push(subset); // 포함되어 있는 집합을 삽입
     }
 
     return [...subsetWithoutElement, ...subsetWithElement]; // 포함되어 있는 집합과, 그렇지 않은 집합을 반환
   }
 
-  return dfs(arr);
+  console.log(dfs(1));
 }
 
-console.log(main(3));
-
-//   with                           withOut
-// 1 [[1,2,3],[1,2],[1,3],[2,3]]    [[],[3],[2],[1]]
-// 2 [[2,3]]                        [[],[3],[2]]
-// 3 [[3]]                          [[]]
-//   [[]]
+main(3);

@@ -1,33 +1,49 @@
 // Title: 중복순열 구하기
 // 방법 1
-// Time: O(n^m)
+// Time: O(n^n)
 // Space: O(n^2)
-const main = (n, m) => {
+function main(n, m) {
   const result = [];
 
-  function permute(permutation) {
-    if (permutation.length === m) {
-      result.push([...permutation]);
+  function dfs(p) {
+    if (p.length === m) {
+      result.push([...p]);
       return;
     }
 
     for (let i = 0; i < n.length; i++) {
-      permutation.push(n[i]);
-      permute(permutation);
-      permutation.pop();
+      p.push(n[i]);
+      dfs(p);
+      p.pop();
     }
   }
-  permute([]);
+  dfs([]);
 
-  return [result, result.length];
-};
+  console.log([result, result.length]);
+}
 
-console.log(main([1, 2, 3], 2));
-// [
-//     [ 1, 1 ], [ 1, 2 ],
-//     [ 1, 3 ], [ 2, 1 ],
-//     [ 2, 2 ], [ 2, 3 ],
-//     [ 3, 1 ], [ 3, 2 ],
-//     [ 3, 3 ]
-//  ],
-//  9
+// 방법 2
+// Time: O(n^n)
+// Space: O(n^2)
+function main(n, m) {
+  const p = Array.from({ length: m }, () => 0);
+  const result = [];
+
+  function dfs(l) {
+    if (l === m) {
+      result.push(p.slice());
+      return;
+    }
+
+    for (let i = 0; i < n.length; i++) {
+      p[l] = n[i];
+      dfs(l + 1);
+    }
+  }
+
+  dfs(0);
+
+  console.log(result, result.length);
+}
+
+main([1, 2, 3], 2);

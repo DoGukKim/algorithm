@@ -1,5 +1,4 @@
 // Title: 재귀함수를 이용한 이진수 출력
-// 방법 1
 // Time: O(n)
 // Space: O(n)
 function main(n) {
@@ -7,4 +6,4 @@ function main(n) {
   return main(Math.floor(n / 2)) + String(n % 2);
 }
 
-console.log(main(11)); // -> 1011
+console.log(main(11));

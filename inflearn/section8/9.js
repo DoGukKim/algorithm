@@ -1,29 +1,22 @@
 // Title: 동전교환
-// 빙법 1
-// m: targetSum, n: numbers
-// Time: O(n^m^2)
-// Space: O(m^2)
-const main = (targetSum, numbers) => {
-  if (targetSum === 0) return [];
-  if (targetSum < 0) return null;
+// Time: O(n^n)
+// Space: O(n)
+function main(n, m) {
+  function dfs(sum, cnt) {
+    if (sum === m) return cnt;
 
-  let shortestCombination = null;
+    let min = Infinity;
 
-  for (let i = 0; i < numbers.length; i++) {
-    const remainderCombination = main(targetSum - numbers[i], numbers);
-
-    if (remainderCombination !== null) {
-      const combination = [...remainderCombination, numbers[i]];
-      if (
-        shortestCombination === null ||
-        combination.length < shortestCombination.length
-      ) {
-        shortestCombination = combination;
-      }
+    for (let i = 0; i < n.length; i++) {
+      if (sum + n[i] > m) continue;
+      const minCnt = dfs(sum + n[i], cnt + 1);
+      if (minCnt < min) min = minCnt;
     }
+
+    return min;
   }
 
-  return shortestCombination;
-};
+  console.log(dfs(0, 0));
+}
 
-console.log(main(15, [1, 2, 5]));
+main([1, 2, 5], 15);

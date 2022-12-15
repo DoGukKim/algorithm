@@ -2,35 +2,37 @@
 // 방법 1
 // Time: O(2^n)
 // Space: O(n)
-function main(n) {
-  function dfs(m) {
-    if (m > n) return;
+function main() {
+  function dfs(n) {
+    if (n > 7) return null;
 
-    console.log(m); // preOrder
-    dfs(m * 2);
-    console.log(m); // inOrder
-    dfs(m * 2 + 1);
-    console.log(m); // postOrder
+    console.log(n); // preOrder
+    dfs(n * 2);
+    console.log(n); // inOrder
+    dfs(n * 2 + 1);
+    console.log(n); // postOrder
   }
+
   dfs(1);
 }
 
 // 방식 2
 // Time: O(2^n)
 // Space: O(n)
-function main(n) {
-  const preOrder = (node) => {
-    return node ? node + preOrder(tree[node][0]) + preOrder(tree[node][1]) : "";
+function main() {
+  const preOrder = (n) => {
+    if (n > 7) return "";
+    return n + preOrder(n * 2) + preOrder(n * 2 + 1);
   };
 
-  const inOrder = (node) => {
-    return node ? inOrder(tree[node][0]) + node + inOrder(tree[node][1]) : "";
+  const inOrder = (n) => {
+    if (n > 7) return "";
+    return inOrder(n * 2) + n + inOrder(n * 2 + 1);
   };
 
-  const postOrder = (node) => {
-    return node
-      ? postOrder(tree[node][0]) + postOrder(tree[node][1]) + node
-      : "";
+  const postOrder = (n) => {
+    if (n > 7) return "";
+    return postOrder(n * 2) + postOrder(n * 2 + 1) + n;
   };
 
   console.log(preOrder(1)); // 전위순회
@@ -38,4 +40,4 @@ function main(n) {
   console.log(postOrder(1)); // 후위순회
 }
 
-console.log(main(7));
+main();

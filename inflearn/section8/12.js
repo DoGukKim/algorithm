@@ -1,23 +1,22 @@
 // Title: 조합의 경우수
-// 방법 1
 // Time: O(2^n*r)
 // Space: O(n*r)
-const main = (n, r) => {
+function main(n, r) {
   if (n === r || r === 0) return 1;
   return main(n - 1, r - 1) + main(n - 1, r);
-};
+}
 
-console.log(main(5, 3));
+main(5, 3);
 
 // 방법 2
 // Time: O(n*r)
 // Space: O(n+r)
-const memo = (n, r, memo = {}) => {
+function main(n, r, memo = {}) {
   const key = n + "," + r;
   if (key in memo) return memo[key];
   if (n === r || r === 0) return 1;
-  memo[key] = memo(n - 1, r - 1, memo) + memo(n - 1, r, memo);
+  memo[key] = main(n - 1, r - 1, memo) + main(n - 1, r, memo);
   return memo[key];
-};
+}
 
-console.log(memo(33, 19));
+main(33, 19);

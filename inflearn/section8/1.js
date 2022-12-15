@@ -8,7 +8,8 @@ function main(n) {
     console.log(c);
     dfs(c + 1);
   }
+
   dfs(1);
 }
 
-console.log(main(3));
+main(3);
