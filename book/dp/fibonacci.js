@@ -25,3 +25,21 @@ console.log(main(6));
 // { '3': 2, '4': 3 } 4번째 수열의 값 저장
 // { '3': 2, '4': 3, '5': 5 } 5번째 수열의 값 저장
 // -> 8
+
+// 상향식
+// Time: O(n)
+// Space: O(n)
+function main(n) {
+  const dp = Array.from({ length: n }, () => 0);
+
+  dp[0] = 0;
+  dp[1] = 1;
+
+  for (let i = 2; i < n; i++) {
+    dp[i] = dp[i - 2] + dp[i - 1];
+  }
+
+  console.log(dp[n - 1]);
+}
+
+main(6);
