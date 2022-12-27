@@ -1,5 +1,5 @@
 // Title: 약수
-// Time: O(1)
+// Time: O(n)
 // Space: O(1)
 let input = require("fs")
   .readFileSync("./input.txt")
