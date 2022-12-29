@@ -1,8 +1,11 @@
-// const input = require("fs").readFileSync("./input.txt").toString().trim();
+// const input = require("fs")
+//   .readFileSync(__dirname + "./input.txt")
+//   .toString()
+//   .trim();
 // console.log(input);
 
-// const input = require("fs")
-//   .readFileSync("./input.txt")
+// let input = require("fs")
+//   .readFileSync(__dirname + "./input.txt")
 //   .toString()
 //   .trim()
 //   .split("\n");
