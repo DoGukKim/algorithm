@@ -1,4 +1,5 @@
 // Title: 팩토리얼
+// 방법1
 // Time: O(n)
 // Space: O(n)
 const main = (n) => {
@@ -7,3 +8,20 @@ const main = (n) => {
 };
 
 console.log(main(5));
+
+// 방법2
+// Time: O(n)
+// Space: O(n)
+function main(n) {
+  const dp = Array.from({ length: n + 1 }, () => 0);
+  dp[1] = 1;
+  dp[2] = 2;
+
+  for (let i = 3; i <= n; i++) {
+    dp[i] = i * dp[i - 1];
+  }
+
+  console.log(dp[n]);
+}
+
+main(5);

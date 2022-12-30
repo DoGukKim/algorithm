@@ -1,22 +1,18 @@
 // Title: 부분집합 구하기(DFS)
 // 방법 1
 // Time: O(n^n)
-// Space: O(n!)
+// Space: O(n)
 function main(n) {
-  const allSubset = [];
-
-  function dfs(j, subset) {
+  function dfs(j, sub) {
     for (let i = j; i <= n; i++) {
-      subset.push(i);
-      allSubset.push([...subset]);
-      dfs(i + 1, subset);
-      subset.pop();
+      sub.push(i);
+      console.log(sub.join(""));
+      dfs(i + 1, sub);
+      sub.pop();
     }
   }
 
   dfs(1, []);
-
-  console.log(allSubset);
 }
 
 // 방법 2
