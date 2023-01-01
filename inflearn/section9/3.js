@@ -1,9 +1,12 @@
 // Title: 경로 탐색(인접리스트)
 // Time: O(v*e)
 // Space: O(v+e)
-function main(n, edges) {
+function main(n, m, edges) {
   const graph = {};
-  for (let i = 0; i < edges.length; i++) {
+  const ch = Array.from({ length: n + 1 }, () => 0);
+  let result = 0;
+
+  for (let i = 0; i < m; i++) {
     const [v, e] = edges[i];
 
     if (!(v in graph)) graph[v] = [];
@@ -12,23 +15,24 @@ function main(n, edges) {
     graph[v].push(e);
   }
 
-  const visited = Array.from({ length: n + 1 }, () => 0);
-  let result = 0;
   function dfs(v) {
-    if (v === n) return result++;
+    if (v === n) {
+      result++;
+      return;
+    }
 
     for (let i = 0; i < graph[v].length; i++) {
-      if (visited[graph[v][i]] === 0) {
-        visited[graph[v][i]] = 1;
+      if (ch[graph[v][i]] === 0) {
+        ch[graph[v][i]] = 1;
         dfs(graph[v][i]);
-        visited[graph[v][i]] = 0;
+        ch[graph[v][i]] = 0;
       }
     }
   }
-  visited[1] = 1;
+  ch[1] = 1;
   dfs(1);
 
-  return result;
+  console.log(result);
 }
 
 const edges = [
@@ -43,4 +47,4 @@ const edges = [
   [4, 5],
 ];
 
-console.log(main(5, edges));
+main(5, 9, edges);

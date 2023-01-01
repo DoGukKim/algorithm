@@ -1,27 +1,31 @@
-function main(grid) {
+// Title: 섬나라 아일랜드(DFS)
+// Time: O((v*e)*아일랜드 수)
+// Space: O(v+e)
+function main(n, mx) {
   const dx = [-1, -1, 0, 1, 1, 1, 0, -1];
   const dy = [0, 1, 1, 1, 0, -1, -1, -1];
+  let result = 0;
 
   function dfs(x, y) {
-    grid[x][y] = 0;
+    mx[x][y] = 0;
 
     for (let i = 0; i < 8; i++) {
       const nx = x + dx[i];
       const ny = y + dy[i];
-      const xInBound = 0 <= nx && nx < grid.length;
-      const yOutBound = 0 <= ny && ny < grid[0].length;
-      if (xInBound && yOutBound && grid[nx][ny] === 1) {
+      const rowInBound = 0 <= nx && nx < n;
+      const columInBound = 0 <= ny && ny < n;
+
+      if (rowInBound && columInBound && mx[nx][ny] === 1) {
         dfs(nx, ny);
       }
     }
   }
 
-  let result = 0;
-  for (let x = 0; x < grid.length; x++) {
-    for (let y = 0; y < grid[0].length; y++) {
-      if (grid[x][y] === 1) {
-        result++;
+  for (let x = 0; x < n; x++) {
+    for (let y = 0; y < n; y++) {
+      if (mx[x][y] === 1) {
         dfs(x, y);
+        result++;
       }
     }
   }
@@ -29,7 +33,7 @@ function main(grid) {
   console.log(result);
 }
 
-const grid = [
+const matrix = [
   [1, 1, 0, 0, 0, 1, 0],
   [0, 1, 1, 0, 1, 1, 0],
   [0, 1, 0, 0, 0, 0, 0],
@@ -39,4 +43,4 @@ const grid = [
   [1, 0, 1, 0, 1, 0, 0],
 ];
 
-main(grid);
+main(7, matrix);
