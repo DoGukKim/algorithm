@@ -1,24 +1,48 @@
-const input = require("fs")
-  .readFileSync("./input.txt")
+// Title: 1, 2, 3 더하기
+// Time: O(t*n)
+// Space: O(n)
+let input = require("fs")
+  .readFileSync(__dirname + "/input.txt")
   .toString()
   .trim()
   .split("\n");
+const t = input.shift();
+input = input.map(Number);
 
-input.shift();
-
-// 1,2,3 더하기
-// Time: O(3^n)
-// Space: O(n)
-const main = (n) => {
-  for (let i = 0; i < n.length; i++) {
-    console.log(dfs(n[i]));
+// 방법1
+let result = "";
+for (let i = 0; i < t; i++) {
+  const n = input[i];
+  const dp = Array.from({ length: n + 1 }, () => 0);
+  dp[1] = 1;
+  dp[2] = 2;
+  dp[3] = 4;
+  for (let j = 4; j <= n; j++) {
+    dp[j] = dp[j - 1] + dp[j - 2] + dp[j - 3];
   }
+  result += `${dp[n]}\n`;
+}
 
-  function dfs(num) {
-    if (num < 0) return 0;
-    if (num === 0) return 1;
-    return dfs(num - 1) + dfs(num - 2) + dfs(num - 3);
-  }
-};
+console.log(result);
 
-main(input);
+// 방법2
+// let result = "";
+// for (let i = 0; i < t; i++) {
+//   const n = input[i];
+//   result += `${dfs(n)}\n`;
+// }
+
+// console.log(result);
+
+// function dfs(n, memo = {}) {
+//   if (memo[n]) return memo[n];
+//   if (n === 0) return 1;
+
+//   for (let i = 1; i <= 3; i++) {
+//     if (n - i < 0) continue;
+//     const m = dfs(n - i, memo);
+//     memo[n] = (memo[n] || 0) + m;
+//   }
+
+//   return memo[n];
+// }
