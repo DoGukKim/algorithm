@@ -1,32 +1,30 @@
 // Title: 계단오르기
 // 방법 1
 // Time: O(n)
-// Space: O(n)
-function main(n, memo = {}) {
-  if (memo[n]) return memo[n];
-  if (n < 0) return 0;
-  if (n === 0) return 1;
-  memo[n] = main(n - 1, memo) + main(n - 2, memo);
-  return memo[n];
+// Space: O(1)
+function main(n) {
+  const dp = Array.from({ length: 46 }, () => 0);
+  dp[1] = 1;
+  dp[2] = 2;
+
+  for (let i = 3; i <= n; i++) {
+    dp[i] = dp[i - 1] + dp[i - 2];
+  }
+
+  console.log(dp[n]);
 }
 
-console.log(main(7));
-console.log(main(100)); // 573147844013817200000
+main(7);
 
 // 방법 2
 // Time: O(n)
 // Space: O(n)
-function main(n) {
-  const dy = Array.from({ length: n + 1 }, () => 0);
-  dy[1] = 1;
-  dy[2] = 2;
-
-  for (let i = 3; i <= n; i++) {
-    dy[i] = dy[i - 1] + dy[i - 2];
-  }
-
-  console.log(dy[n]);
+function main(n, memo = Array.from({ length: 46 }, () => 0)) {
+  if (memo[n]) return memo[n];
+  if (n === 0) return 1;
+  if (n < 0) return 0;
+  memo[n] = main(n - 1, memo) + main(n - 2, memo);
+  return memo[n];
 }
 
-main(7);
-main(100);
+console.log(main(45));
