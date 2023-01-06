@@ -38,7 +38,9 @@ function getNumberOfCase(m, n) {
   return dp;
 }
 
-// 시간초과
+// 방법2
+// Time: O(t*mn)
+// Space: O(t*m)
 // let result = "";
 // for (let i = 0; i < t; i++) {
 //   const [n, m] = input[i];
@@ -48,6 +50,7 @@ function getNumberOfCase(m, n) {
 
 // function dfs(m, n, memo = {}) {
 //   const mn = m + "," + n;
+//   if (memo[mn]) return memo[mn];
 //   if (m === n) return 1;
 //   if (n === 1) return m;
 //   memo[mn] = dfs(m - 1, n - 1, memo) + dfs(m - 1, n, memo);
