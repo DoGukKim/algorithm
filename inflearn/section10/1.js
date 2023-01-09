@@ -19,6 +19,7 @@ main(7);
 // 방법 2
 // Time: O(n)
 // Space: O(n)
+// 입력 값이 큰 경우 재귀로 해결할 수 없을 수 있다.
 function main(n, memo = Array.from({ length: 46 }, () => 0)) {
   if (memo[n]) return memo[n];
   if (n === 0) return 1;
@@ -27,4 +28,4 @@ function main(n, memo = Array.from({ length: 46 }, () => 0)) {
   return memo[n];
 }
 
-console.log(main(45));
+console.log(main(100));

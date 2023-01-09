@@ -1,15 +1,18 @@
 // Time: O(n)
-// Space: O(n)
+// Space: O(1)
 function main(n) {
-  const dy = Array.from({ length: n + 2 }, () => 0);
-  dy[1] = 1;
-  dy[2] = 2;
+  const dp = Array.from({ length: 47 }, () => 0);
+  dp[1] = 1;
+  dp[2] = 2;
 
   for (let i = 3; i <= n + 1; i++) {
-    dy[i] = dy[i - 2] + dy[i - 1];
+    dp[i] = dp[i - 1] + dp[i - 2];
   }
 
-  console.log(dy[n + 1]);
+  console.log(dp[n + 1]);
 }
 
 main(7);
+
+// 이 문제 또한 계단 문제와 마찬가지로 DFS 활용 가능
+// 단, 입력 값이 높아지면 오버 플로우 발생할 수 있음
