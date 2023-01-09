@@ -23,4 +23,12 @@ function main(n, c = 1) {
   main(n, c + 1);
 }
 
+// 방법3
+function main(n) {
+  if (n === 0) return 1;
+  const remain = main(n - 1);
+  console.log(remain);
+  return remain + 1;
+}
+
 main(3);
