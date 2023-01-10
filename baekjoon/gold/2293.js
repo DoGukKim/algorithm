@@ -16,7 +16,6 @@ for (let i = 0; i < n; i++) {
   for (let j = input[i]; j <= k; j++) {
     dp[j] += dp[j - input[i]];
   }
-  console.log(dp);
 }
 
 console.log(dp[k]);

@@ -1,4 +1,4 @@
-// Title: 동전 1
+// Title: 동전 2
 // Time: O(n*k)
 // Space: O(k)
 let input = require("fs")
@@ -9,14 +9,13 @@ let input = require("fs")
 
 const [n, k] = input.shift().split(" ").map(Number);
 input = input.map(Number);
-const dp = Array.from({ length: 10001 }, () => 0);
-dp[0] = 1;
+const dp = Array.from({ length: 10001 }, () => Infinity);
+dp[0] = 0;
 
 for (let i = 0; i < n; i++) {
-  for (let j = input[i]; j <= k; j++) {
-    dp[j] += dp[j - input[i]];
+  for (let j = input[i]; j <= 10000; j++) {
+    dp[j] = Math.min(dp[j], dp[j - input[i]] + 1);
   }
-  console.log(dp);
 }
 
-console.log(dp[k]);
+console.log(dp[k] === Infinity ? "-1" : dp[k]);
