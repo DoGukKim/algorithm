@@ -1,5 +1,5 @@
 // Title: 팩토리얼
-// 방법1
+// 방법 1
 // Time: O(n)
 // Space: O(n)
 const main = (n) => {
@@ -9,7 +9,7 @@ const main = (n) => {
 
 console.log(main(5));
 
-// 방법2
+// 방법 2
 // Time: O(n)
 // Space: O(n)
 function main(n) {

@@ -1,22 +1,29 @@
 // Title: 최대점수 구하기
-// Time: O(2^n)
+// Time: O(n^n)
 // Space: O(n)
-function main(m, ps, pt) {
+function main(n, m, q) {
   let result = -Infinity;
 
-  function dfs(level, time, point) {
-    if (time > m) return;
-    if (level === ps.length) {
-      result = Math.max(result, point);
-      return;
+  function dfs(j, t, sum) {
+    for (let i = j; i < n; i++) {
+      const [score, time] = q[i];
+      if (t + time > m) continue;
+      const max = dfs(i + 1, t + time, sum + score);
+      if (result < max) result = max;
     }
 
-    dfs(level + 1, time + pt[level], point + ps[level]);
-    dfs(level + 1, time, point);
+    return sum;
   }
-  dfs(0, 0, 0);
 
+  dfs(0, 0, 0);
   console.log(result);
 }
 
-main(20, [10, 25, 15, 6, 7], [5, 12, 8, 3, 4]);
+const q = [
+  [10, 5],
+  [25, 12],
+  [15, 8],
+  [6, 3],
+  [7, 4],
+];
+main(5, 20, q);
