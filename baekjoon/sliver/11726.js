@@ -1,3 +1,6 @@
+// Title: 2 * n 타일링
+// Time: O(n)
+// Space: O(n)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()
@@ -9,7 +12,7 @@ dp[2] = 2;
 dp[3] = 3;
 
 for (let i = 4; i <= 1000; i++) {
-  dp[i] = dp[i - 1] + dp[i - 2];
+  dp[i] = (dp[i - 1] + dp[i - 2]) % 10007;
 }
 
-console.log(dp[input] % 10007);
+console.log(dp[input]);
