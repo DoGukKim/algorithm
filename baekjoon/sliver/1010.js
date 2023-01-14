@@ -18,11 +18,7 @@ for (let i = 0; i < t; i++) {
 console.log(result);
 
 function getNumberOfCase(m, n) {
-  const dp = Array.from({ length: 30 }, () =>
-    Array(30)
-      .fill(0)
-      .map((_, i) => (i === 0 ? 1 : 0))
-  );
+  const dp = Array.from({ length: 30 }, () => Array(30).fill(0));
 
   dp[1][1] = 1;
   dp[2][1] = 2;
@@ -31,6 +27,10 @@ function getNumberOfCase(m, n) {
   for (let i = 3; i <= 29; i++) {
     for (let j = 1; j <= i; j++) {
       if (dp[m][n] !== 0) break;
+      if (j === 1) {
+        dp[i][j] = i;
+        continue;
+      }
       dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
     }
   }
