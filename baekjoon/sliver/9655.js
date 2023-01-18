@@ -9,8 +9,8 @@ input = Number(input);
 console.log(input % 2 !== 0 ? "SK" : "CY");
 
 // 방법2
-// Time: O(1)
-// Space: O(1)
+// Time: O(n)
+// Space: O(n)
 // const dp = Array.from({ length: 1001 }, () => 0);
 // dp[1] = 1;
 // dp[2] = 2;
