@@ -1,57 +1,51 @@
 // Title: 단지번호붙이기
-// Time: O(4^n*m)
-// Space: O(n*m)
-const input = require("fs")
-  .readFileSync("/dev/stdin")
+// Time: O(v*e)
+// Space: O(v)
+let input = require("fs")
+  .readFileSync(__dirname + "/input.txt")
   .toString()
   .trim()
   .split("\n");
+const n = Number(input.shift());
+input = input.map((i) => i.split("").map(Number));
+const dx = [-1, 0, 1, 0];
+const dy = [0, 1, 0, -1];
+const a = [];
 
-// 지도 크기 제거 후 변환
-input.shift();
-let matrix = input.map((i) => i.split(""));
-
-let result = 0;
-const stack = [];
-const visited = new Set();
-
-for (let r = 0; r < matrix.length; r++) {
-  for (let c = 0; c < matrix[0].length; c++) {
-    if (matrix[r][c] === "1") {
-      const count = dfs(r, c);
-      // 탐색 후 도출된 집의 수가 0보다 크면 단지 추가 및 집의 수 저장
-      if (count > 0) {
-        stack.push(count);
-        result++;
-      }
+for (let x = 0; x < n; x++) {
+  for (let y = 0; y < n; y++) {
+    if (input[x][y] === 1) {
+      input[x][y] = 0;
+      const count = dfs(x, y);
+      a.push(count);
     }
   }
 }
 
-function dfs(r, c) {
-  const rowInBound = 0 <= r && r < matrix.length;
-  const columInBound = 0 <= c && c < matrix[0].length;
-  if (!rowInBound || !columInBound) return 0;
-  if (matrix[r][c] === "0") return 0;
-
-  const pos = r + "," + c;
-  if (visited.has(pos)) return 0;
-
-  visited.add(pos);
-
-  let count = 1;
-
-  count += dfs(r - 1, c);
-  count += dfs(r, c + 1);
-  count += dfs(r + 1, c);
-  count += dfs(r, c - 1);
-
-  return count;
+let result = `${a.length}\n`;
+a.sort((a, b) => a - b);
+for (let i = 0; i < a.length; i++) {
+  result += `${a[i]}\n`;
 }
-
-stack.sort((a, b) => a - b);
-
 console.log(result);
-for (let i = 0; i < stack.length; i++) {
-  console.log(stack[i]);
+
+function dfs(x, y) {
+  let cnt = 1;
+  const stack = [[x, y]];
+
+  while (stack.length) {
+    const [cx, cy] = stack.pop();
+
+    for (let i = 0; i < 4; i++) {
+      const nx = cx + dx[i];
+      const ny = cy + dy[i];
+      if (0 <= nx && nx < n && 0 <= ny && ny < n && input[nx][ny] === 1) {
+        stack.push([nx, ny]);
+        input[nx][ny] = 0;
+        cnt++;
+      }
+    }
+  }
+
+  return cnt;
 }
