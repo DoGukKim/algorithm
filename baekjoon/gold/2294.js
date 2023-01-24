@@ -9,7 +9,7 @@ let input = require("fs")
 
 const [n, k] = input.shift().split(" ").map(Number);
 input = input.map(Number);
-const dp = Array.from({ length: 10001 }, () => Infinity);
+const dp = Array.from({ length: 10001 }, () => 2 ** 31);
 dp[0] = 0;
 
 for (let i = 0; i < n; i++) {
@@ -18,4 +18,4 @@ for (let i = 0; i < n; i++) {
   }
 }
 
-console.log(dp[k] === Infinity ? "-1" : dp[k]);
+console.log(dp[k] === 2 ** 31 ? "-1" : dp[k]);
