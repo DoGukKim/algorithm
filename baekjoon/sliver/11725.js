@@ -1,5 +1,5 @@
 // Title: 트리의 부모 찾기
-// Time: O(v*e)
+// Time: O(ve)
 // Space: O(v+e)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
@@ -9,7 +9,6 @@ let input = require("fs")
 const n = Number(input.shift());
 input = input.map((i) => i.split(" ").map(Number));
 const p = Array.from({ length: n + 1 }, () => 0);
-const stack = [1];
 const graph = {};
 for (let i = 0; i < input.length; i++) {
   const [v, e] = input[i];
@@ -19,13 +18,14 @@ for (let i = 0; i < input.length; i++) {
   graph[e].push(v);
 }
 
+const stack = ["1"];
 while (stack.length) {
-  const cur = stack.pop();
-
-  for (let i = 0; i < graph[cur].length; i++) {
-    if (p[graph[cur][i]] !== 0) continue;
-    p[graph[cur][i]] = cur;
-    stack.push(graph[cur][i]);
+  const v = stack.pop();
+  for (let i = 0; i < graph[v].length; i++) {
+    if (p[graph[v][i]] === 0) {
+      p[graph[v][i]] = v;
+      stack.push(graph[v][i]);
+    }
   }
 }
 

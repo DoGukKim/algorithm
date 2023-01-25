@@ -1,21 +1,18 @@
 // Title: 바이러스
-// Time: O(v+e)
-// Space: O(n)
-const input = require("fs")
-  .readFileSync("/dev/stdin")
+// Time: O(ve)
+// Space: O(v+e)
+let input = require("fs")
+  .readFileSync(__dirname + "/input.txt")
   .toString()
   .trim()
   .split("\n");
-
-// 총 컴퓨터 수 및 쌍의 개수 제거
-input.shift();
-input.shift();
-
-// 그래프 형성
+const n = Number(input.shift());
+const m = Number(input.shift());
+input = input.map((i) => i.split(" ").map(Number));
+const ch = Array.from({ length: n + 1 }, () => 0);
 const graph = {};
-for (let i = 0; i < input.length; i++) {
-  const [v, e] = input[i].split(" ");
-
+for (let i = 0; i < m; i++) {
+  const [v, e] = input[i];
   if (!(v in graph)) graph[v] = [];
   if (!(e in graph)) graph[e] = [];
 
@@ -23,20 +20,34 @@ for (let i = 0; i < input.length; i++) {
   graph[e].push(v);
 }
 
-// DFS
 let result = 0;
-const visited = new Set();
-const stack = ["1"];
+ch[1] = 1;
+dfs(1);
+console.log(result);
 
-while (stack.length) {
-  const current = stack.pop();
-  if (visited.has(current)) continue;
-  if (current !== "1") result++;
-  visited.add(current);
-
-  for (let i = 0; i < graph[current].length; i++) {
-    stack.push(graph[current][i]);
+function dfs(v) {
+  for (let i = 0; i < graph[v].length; i++) {
+    if (ch[graph[v][i]] === 0) {
+      result++;
+      ch[graph[v][i]] = 1;
+      dfs(graph[v][i]);
+    }
   }
 }
 
-console.log(result);
+// BFS
+// let result = 0;
+// const queue = ["1"];
+// ch[1] = 1;
+// while (queue.length) {
+//   const v = queue.shift();
+
+//   for (let i = 0; i < graph[v].length; i++) {
+//     if (ch[graph[v][i]] === 0) {
+//       result++;
+//       ch[graph[v][i]] = 1;
+//       queue.push(graph[v][i]);
+//     }
+//   }
+// }
+// console.log(result);
