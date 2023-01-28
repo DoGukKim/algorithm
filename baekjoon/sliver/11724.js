@@ -9,12 +9,14 @@ let input = require("fs")
 
 const [n, m] = input.shift().split(" ").map(Number);
 input = input.map((i) => i.split(" ").map(Number));
-const graph = Array.from({ length: n + 1 }, () => Array(n + 1).fill(0));
 const ch = Array.from({ length: n + 1 }, () => 0);
+const graph = {};
 for (let i = 0; i < m; i++) {
   const [v, e] = input[i];
-  graph[v][e] = 1;
-  graph[e][v] = 1;
+  if (!(v in graph)) graph[v] = [];
+  if (!(e in graph)) graph[e] = [];
+  graph[v].push(e);
+  graph[e].push(v);
 }
 
 let result = 0;
@@ -29,9 +31,10 @@ console.log(result);
 
 function dfs(v) {
   ch[v] = 1;
-  for (let i = 1; i <= n; i++) {
-    if (ch[i] === 0 && graph[v][i] === 1) {
-      dfs(i);
+
+  for (let i = 0; graph[v] && i < graph[v].length; i++) {
+    if (ch[graph[v][i]] === 0) {
+      dfs(graph[v][i]);
     }
   }
 }

@@ -1,6 +1,6 @@
 // Title: 효율적인 해킹
-// Time: O(v^2*e)
-// Space: O(v+e)
+// Time: O(v^2e)
+// Space: O(v^2+e)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()
@@ -11,11 +11,9 @@ const [n, m] = input[0];
 const h = Array.from({ length: n + 1 }, () => 0);
 let max = 0;
 const graph = {};
-for (let i = 1; i <= n; i++) {
-  graph[i] = [];
-}
 for (let i = 1; i <= m; i++) {
   const [a, b] = input[i];
+  if (!(b in graph)) graph[b] = [];
   graph[b].push(a);
 }
 
@@ -39,6 +37,7 @@ function dfs(v, ch) {
 
   while (stack.length) {
     const c = stack.pop();
+    if (!(c in graph)) continue;
     for (let i = 0; i < graph[c].length; i++) {
       if (ch[graph[c][i]] === 0) {
         cnt++;
