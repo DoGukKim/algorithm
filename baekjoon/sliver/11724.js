@@ -1,6 +1,6 @@
 // Title: 연결 요소의 개수
-// Time: O(ve)
-// Space: O(v+e)
+// Time: O(n+m)
+// Space: O(nm)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()

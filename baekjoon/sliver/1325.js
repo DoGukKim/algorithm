@@ -1,6 +1,6 @@
 // Title: 효율적인 해킹
-// Time: O(v^2e)
-// Space: O(v^2+e)
+// Time: O(n^2+m)
+// Space: (n^2)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()

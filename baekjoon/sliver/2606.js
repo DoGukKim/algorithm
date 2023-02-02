@@ -1,6 +1,6 @@
 // Title: 바이러스
-// Time: O(ve)
-// Space: O(v+e)
+// Time: O(n+m)
+// Space: O(n+m)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()

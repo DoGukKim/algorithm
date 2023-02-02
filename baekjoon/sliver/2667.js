@@ -1,6 +1,6 @@
 // Title: 단지번호붙이기
-// Time: O(v*e)
-// Space: O(v)
+// Time: O(n^2)
+// Space: O(n^2)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()

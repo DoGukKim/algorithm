@@ -1,6 +1,6 @@
 // Title: 트리의 부모 찾기
-// Time: O(ve)
-// Space: O(v+e)
+// Time: O(n)
+// Space: O(n)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()
