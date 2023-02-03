@@ -1,6 +1,6 @@
 // Title: 안전 영역
-// Time: O(ve)
-// Space: O(v+e^2)
+// Time: O(n^2)
+// Space: O(n^2)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()
