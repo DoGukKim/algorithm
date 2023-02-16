@@ -1,4 +1,6 @@
 // Title: 다리 놓기
+// Time: O(t*mn)
+// Space: O(t*mn)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()
@@ -7,9 +9,6 @@ let input = require("fs")
 const t = Number(input.shift());
 input = input.map((i) => i.split(" ").map(Number));
 
-// 방법1
-// Time: O(t*mn)
-// Space: O(t)
 let result = "";
 for (let i = 0; i < t; i++) {
   const [n, m] = input[i];
@@ -37,22 +36,3 @@ function getNumberOfCase(m, n) {
 
   return dp;
 }
-
-// 방법2
-// Time: O(t*mn)
-// Space: O(t*m)
-// let result = "";
-// for (let i = 0; i < t; i++) {
-//   const [n, m] = input[i];
-//   result += `${dfs(m, n)}\n`;
-// }
-// console.log(result);
-
-// function dfs(m, n, memo = {}) {
-//   const mn = m + "," + n;
-//   if (memo[mn]) return memo[mn];
-//   if (m === n) return 1;
-//   if (n === 1) return m;
-//   memo[mn] = dfs(m - 1, n - 1, memo) + dfs(m - 1, n, memo);
-//   return memo[mn];
-// }
