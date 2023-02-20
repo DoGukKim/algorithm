@@ -1,3 +1,6 @@
+// Title: 알고 스팟
+// Time: O(nm)
+// Space: O(nm)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()
@@ -13,16 +16,15 @@ const dir = [
   [0, -1],
 ];
 
-let result = Infinity;
 const queue = [[0, 0, 0]];
+input[0][0] = 2;
+
 while (queue.length) {
   const [x, y, cnt] = queue.shift();
   if (x === n - 1 && y === m - 1) {
-    if (cnt < result) result = cnt;
-    continue;
+    console.log(cnt);
+    return;
   }
-
-  input[x][y] = 2;
 
   for (let i = 0; i < 4; i++) {
     const [dx, dy] = dir[i];
@@ -31,12 +33,13 @@ while (queue.length) {
     if (0 <= nx && nx < n && 0 <= ny && ny < m && input[nx][ny] !== 2) {
       if (input[nx][ny] === 1) {
         queue.push([nx, ny, cnt + 1]);
-        continue;
+        input[nx][ny] = 2;
+      } else {
+        queue.push([nx, ny, cnt]);
+        input[nx][ny] = 2;
       }
-
-      queue.push([nx, ny, cnt]);
     }
   }
-}
 
-console.log(result);
+  queue.sort((a, b) => a[2] - b[2]);
+}
