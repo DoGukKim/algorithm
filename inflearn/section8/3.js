@@ -1,7 +1,8 @@
 // Title: 이진트리 순회(깊이우선탐색)
 // 방법 1
-// Time: O(2^n)
-// Space: O(n)
+// 만약 n 값이 주어지고 2배씩 재귀호출을 하면 아래와 같다.
+// Time: O(2^log n)
+// Space: O(log n)
 function main() {
   function dfs(n) {
     if (n > 7) return null;
@@ -17,8 +18,6 @@ function main() {
 }
 
 // 방식 2
-// Time: O(2^n)
-// Space: O(n)
 function main() {
   const preOrder = (n) => {
     if (n > 7) return "";
