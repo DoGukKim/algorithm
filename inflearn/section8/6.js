@@ -1,19 +1,5 @@
 // Title: 바둑이 승차
-// 방법 1 (그리디)
-// Time: O(n log n)
-// Space: O(1)
-function main(c, n, dogs) {
-  let result = 0;
-  dogs.sort((a, b) => b - a); // 무게가 무거운 바둑이 순으로 정렬
-
-  for (let i = 0; i < n; i++) {
-    if (result + dogs[i] < c) result += dogs[i];
-  }
-
-  console.log(result);
-}
-
-// 방법 2 (재귀)
+// 방법 1 (재귀)
 // 만약 풀이 제한시간이 1초로 정해져 있다면,
 // 입력값 n이 30으로 올때 해당 방법으로 풀 수 없다.
 // Time: O(2^n)
