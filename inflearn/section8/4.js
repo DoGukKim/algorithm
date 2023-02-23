@@ -1,5 +1,5 @@
 // Title: 부분집합 구하기(DFS)
-// Time: O(n^2)
+// Time: O(n^n)
 // Space: O(n)
 function main(n) {
   dfs(1, []);
