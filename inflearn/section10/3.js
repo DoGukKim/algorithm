@@ -16,7 +16,7 @@ function main(n, numbers) {
   }
 }
 
-// TIme: O(n)
+// TIme: O(n^2)
 // Space: O(n)
 function main(n, numbers) {
   const dp = Array.from({ length: n + 1 }, () => 0);
