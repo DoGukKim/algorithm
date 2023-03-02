@@ -19,4 +19,11 @@ for (let x = 0; x <= m - 8; x++) {
 }
 console.log(result);
 
-function drawCount(r, c) {}
+function drawCount(r, c) {
+  let count = 0;
+  const cur = input[r][c];
+  for (let x = r; x < r + 8; x += 2) {
+    for (let y = r; y < c + 8; y += 2) {}
+  }
+  return count;
+}
