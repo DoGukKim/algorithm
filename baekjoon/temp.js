@@ -1,4 +1,4 @@
-// const input = require("fs")
+// let input = require("fs")
 //   .readFileSync(__dirname + "/input.txt")
 //   .toString()
 //   .trim();
