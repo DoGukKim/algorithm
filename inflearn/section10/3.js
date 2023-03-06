@@ -19,22 +19,23 @@ function main(n, numbers) {
 // TIme: O(n^2)
 // Space: O(n)
 function main(n, numbers) {
-  const dp = Array.from({ length: n + 1 }, () => 0);
-  dp[n] = 1;
+  let result = 0;
+  const dp = Array.from({ length: n }, () => 0);
+  dp[0] = 1;
 
-  for (let i = n - 1; i >= 0; i--) {
+  for (let i = 1; i < n; i++) {
     let max = 0;
 
-    for (let j = i; j < n; j++) {
-      if (numbers[i] < numbers[j] && max < dp[j]) max = dp[j];
+    for (let j = i - 1; j >= 0; j--) {
+      if (numbers[j] < numbers[i] && max < dp[j]) max = dp[j];
     }
 
     dp[i] = max + 1;
+    if (result < dp[i]) result = dp[i];
   }
 
-  console.log(dp[0]);
+  console.log(result);
 }
-
 // TestCases
 // main(5, [2, 1, 3, 4, 5]);
 // main(9, [2, 7, 5, 8, 6, 4, 7, 12, 3]);
