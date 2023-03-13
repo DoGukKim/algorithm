@@ -3,7 +3,7 @@
 // Time: O(1)
 // Space: O(1)
 function main(n) {
-  console.log((n + 1) * (n / 2));
+  console.log((n + 1) * (n / 2)); // 또는 console.log((n ** 2 + n) / 2);
 }
 
 // 방법 2
@@ -23,8 +23,13 @@ function main(n) {
 // Time: O(n)
 // Space: O(n)
 function main(n) {
-  if (n === 1) return 1;
-  console.log(n + main(n - 1));
+  const result = dfs(n);
+  console.log(result);
+
+  function dfs(num) {
+    if (num === 1) return 1;
+    return dfs(num - 1) + num;
+  }
 }
 
 main(6);

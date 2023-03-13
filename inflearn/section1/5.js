@@ -1,4 +1,5 @@
 // Title: 최솟값 구하기
+// 7개가 주어지므로 시간 복잡도는 항상 상수시간을 나타냅니다.
 // 방법 1
 // Time: O(1)
 // Space: O(1)
@@ -21,7 +22,7 @@ function main(numbers) {
 
 // 방법 3
 // Time: O(1)
-// Space: O(n)
+// Space: O(1)
 function main(numbers) {
   if (numbers.length === 1) return numbers[0];
   const min = main(numbers.slice(1));

@@ -8,7 +8,10 @@ function main(s) {
   for (let i = 0; i < s.length; i++) {
     if (s[i] === "A") {
       result += "#";
-    } else result += s[i];
+      continue;
+    }
+
+    result += s[i];
   }
 
   console.log(result);
@@ -20,15 +23,3 @@ function main(s) {
 function main(s) {
   console.log(s.split("A").join("#"));
 }
-
-// 방법 3
-// Time: O(n^2)
-// Space: O(n)
-function main(s) {
-  if (s.length === 0) return "";
-
-  const word = main(s.slice(1));
-  return s[0] === "A" ? "#" + word : s[0] + word;
-}
-
-main("BANANA");

@@ -1,5 +1,4 @@
 // Title: 삼각형 판별하기
-// 방법 1
 // Time: O(1)
 // Space: O(1)
 function main(a, b, c) {

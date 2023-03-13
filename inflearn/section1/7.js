@@ -1,14 +1,13 @@
 // Title: 10부제
+// 7개 자연수가 주어지기 때문에 항상 상수시간을 나타냅니다.
 // 방법 1
 // Time: O(1)
 // Space: O(1)
-function main(n, cars) {
+function main(day, cars) {
   let result = 0;
 
-  for (let i = 0; i < cars.length; i++) {
-    if (cars[i] % 10 === n) {
-      result++;
-    }
+  for (let i = 0; i < 7; i++) {
+    if (cars[i] % 10 === day) result++;
   }
 
   console.log(result);
@@ -16,7 +15,7 @@ function main(n, cars) {
 
 // 방법 2
 // Time: O(1)
-// Space: O(n)
+// Space: O(1)
 function main(n, cars) {
   if (cars.length === 0) return 0;
 
