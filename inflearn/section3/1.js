@@ -1,7 +1,6 @@
-// Title: 팰린드롬(1)
-// 방법 1
+// Title: 팰린드롬
 // Time: O(n)
-// Space: O(1)
+// Space: O(n)
 function main(s) {
   s = s.toLowerCase();
 
@@ -13,26 +12,6 @@ function main(s) {
   }
 
   console.log("YES");
-}
-
-// 방법 2
-// Time: O(n)
-// Space: O(1)
-function main(s) {
-  s = s.toLowerCase();
-
-  let lp = 0;
-  let rp = s.length - 1;
-  let isPalindrome = true;
-
-  while (lp <= rp) {
-    if (s[lp++] !== s[rp--]) {
-      isPalindrome = false;
-      break;
-    }
-  }
-
-  console.log(isPalindrome ? "YES" : "NO");
 }
 
 main("gooG");

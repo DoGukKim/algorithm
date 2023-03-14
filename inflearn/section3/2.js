@@ -1,6 +1,6 @@
-// Title: 팰린드롬(2)
+// Title: 유효한 팰린드롬
 // Time: O(n)
-// Space: O(1)
+// Space: O(n)
 const main = (s) => {
   s = s.toLowerCase().replace(/[^a-z]/g, "");
 
