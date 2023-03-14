@@ -5,9 +5,7 @@ function main(numbers) {
   const result = [numbers[0]];
 
   for (let i = 1; i < numbers.length; i++) {
-    if (numbers[i - 1] < numbers[i]) {
-      result.push(numbers[i]);
-    }
+    if (numbers[i - 1] < numbers[i]) result.push(numbers[i]);
   }
 
   console.log(result);

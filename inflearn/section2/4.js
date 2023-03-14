@@ -3,13 +3,16 @@
 // Space: O(1)
 function main(n) {
   let result = 0;
-  let acc = 1;
+  let acc = 0;
 
   for (let i = 0; i < n.length; i++) {
     if (n[i] === 1) {
-      result += acc;
       acc++;
-    } else acc = 1;
+      result += acc;
+      continue;
+    }
+
+    acc = 0;
   }
 
   console.log(result);

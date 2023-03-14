@@ -1,14 +1,14 @@
 // Title: 보이는 학생
 // Time: O(n)
-// Space: O(n)
-function main(numbers) {
+// Space: O(1)
+function main(students) {
   let result = 1;
-  let min = numbers[0];
+  let min = students[0];
 
-  for (let i = 1; i < numbers.length; i++) {
-    if (min < numbers[i]) {
+  for (let i = 1; i < students.length; i++) {
+    if (students[i] > min) {
+      min = students[i];
       result++;
-      min = numbers[i];
     }
   }
 

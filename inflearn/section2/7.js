@@ -1,64 +1,36 @@
 // Title: 봉우리
-// 방법 1
 // Time: O(n^2)
 // Space: O(1)
-function main(grid) {
+function main(n, matrix) {
   let result = 0;
+  const dir = [
+    [-1, 0],
+    [0, 1],
+    [1, 0],
+    [0, -1],
+  ];
 
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[0].length; j++) {
-      const current = grid[i][j];
+  for (let x = 0; x < n; x++) {
+    for (let y = 0; y < n; y++) {
+      let flag = true; // 봉우리 가능 플래그
 
-      const top = grid[i - 1] ? grid[i - 1][j] : 0;
-      const right = grid[i][j + 1] ? grid[i][j + 1] : 0;
-      const bottom = grid[i + 1] ? grid[i + 1][j] : 0;
-      const left = grid[i][j - 1] ? grid[i][j - 1] : 0;
-
-      if (
-        current > top &&
-        current > right &&
-        current > bottom &&
-        current > left
-      )
-        result++;
-    }
-  }
-
-  console.log(result);
-}
-
-// 방법 2
-// Time: O(n^2)
-// Space: O(1)
-function main(matrix) {
-  const dx = [-1, 0, 1, 0];
-  const dy = [0, 1, 0, -1];
-  let isPeak = true;
-  let result = 0;
-
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[0].length; j++) {
-      isPeak = true;
-
-      for (let k = 0; k < 4; k++) {
-        const nx = i + dx[k];
-        const ny = j + dy[k];
-        const xInBound = 0 <= nx && nx < matrix.length;
-        const yInBound = 0 <= ny && ny < matrix[0].length;
-
-        if (xInBound && yInBound && matrix[i][j] <= matrix[nx][ny]) {
-          isPeak = false;
+      for (let i = 0; i < 4; i++) {
+        const [dx, dy] = dir[i];
+        const nx = x + dx;
+        const ny = y + dy;
+        if (0 <= nx && nx < n && 0 <= ny && ny < n) {
+          if (matrix[x][y] < matrix[nx][ny]) flag = false;
         }
       }
 
-      if (isPeak) result++;
+      if (flag) result++;
     }
   }
 
   console.log(result);
 }
 
-main([
+main(5, [
   [5, 3, 7, 2, 3],
   [3, 7, 1, 6, 1],
   [7, 2, 5, 3, 4],

@@ -1,32 +1,30 @@
 // Title: 격자판 최대합
 // Time: O(n^2)
 // Space: O(1)
-function main(grid) {
+function main(n, matrix) {
   let result = 0;
-  let row = 0;
-  let col = 0;
-  let leftC = 0;
-  let rightC = 0;
+  let leftCross = 0;
+  let rightCross = 0;
 
-  for (let i = 0; i < grid.length; i++) {
-    row = 0;
-    col = 0;
+  for (let x = 0; x < n; x++) {
+    let row = 0;
+    let colum = 0;
 
-    for (let j = 0; j < grid[0].length; j++) {
-      row += grid[i][j]; // 행 누적
-      col += grid[j][i]; // 열 누적
+    for (let y = 0; y < n; y++) {
+      row += matrix[x][y];
+      colum += matrix[y][x];
     }
 
-    leftC += grid[i][i]; // 왼 대각 누적
-    rightC += grid[i][grid.length - 1 - i]; // 오른 대각 누적
+    leftCross += matrix[x][x];
+    rightCross += matrix[x][n - 1 - x];
 
-    result = Math.max(row, col, leftC, rightC);
+    result = Math.max(row, colum, leftCross, rightCross);
   }
 
   console.log(result);
 }
 
-main([
+main(5, [
   [10, 13, 10, 12, 15],
   [12, 39, 30, 23, 11],
   [11, 25, 50, 53, 15],
