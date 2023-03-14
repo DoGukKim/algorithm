@@ -1,24 +1,21 @@
 // Title: 대소문자 변환
-// 방법 1
-// Time: O(n^2)
+// Time: O(n)
 // Space: O(n)
-function main(s) {
+function main(str) {
   let result = "";
 
-  for (let i = 0; i < s.length; i++) {
-    const upper = s[i].toUpperCase();
-    const lower = s[i].toLowerCase();
-
-    if (s[i] === lower) {
-      result += upper;
-    }
-
-    if (s[i] === upper) {
+  for (let i = 0; i < str.length; i++) {
+    const upper = str[i].toUpperCase();
+    const lower = str[i].toLowerCase();
+    if (str[i] === upper) {
       result += lower;
+      continue;
     }
+
+    result += upper;
   }
 
   console.log(result);
 }
 
-main("sTUdy");
+main("StuDY");

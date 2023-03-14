@@ -23,3 +23,5 @@ function main(s) {
 function main(s) {
   console.log(s.split("A").join("#"));
 }
+
+main("BANANA");
