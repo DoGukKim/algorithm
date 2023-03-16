@@ -1,26 +1,23 @@
 // Title: 멘토링
-// Time: O(n^3)
-// Space: O(n)
-function main(n, m) {
-  const s = Array.from({ length: n }, (_, v) => v + 1);
+// Time: O(nm^2)
+// Space: O(1)
+function main(n, m, matrix) {
   let result = 0;
 
-  for (let i = 0; i < n; i++) {
-    let maxRank = -Infinity;
-    for (let j = 0; j < m.length; j++) {
-      const rank = m[j].indexOf(s[i]);
-      if (rank > maxRank) maxRank = rank;
+  for (let i = 1; i <= n; i++) {
+    let minRank = 0;
+    for (let j = 0; j < m; j++) {
+      const currentRank = matrix[j].indexOf(i) + 1;
+      if (minRank < currentRank) minRank = currentRank;
     }
 
-    // 학생들의 수 - 자신의 최대 마지막 랭크
-    // 예: 나를 제외한(-1) 3명 중 최대 마지막 랭크 3를 빼면 멘토가 될 수 있는 경우 0이 도출
-    result += n - 1 - maxRank;
+    result += n - minRank;
   }
 
   console.log(result);
 }
 
-main(4, [
+main(4, 3, [
   [3, 4, 1, 2],
   [4, 3, 2, 1],
   [3, 1, 4, 2],

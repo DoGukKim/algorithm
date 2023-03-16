@@ -1,25 +1,14 @@
 // Title: 뒤집은 소수
-// Time: O(n^2)
-// Space: O(n)
-function main(n) {
+// Time: O(nm)
+// Space: O(nm)
+function main(n, numbers) {
   const result = [];
-
-  function isPrime(n) {
-    if (n < 2) return false;
-
-    for (let i = 2; i < Math.sqrt(Math.floor(n / 2)); i++) {
-      if (n % i === 0) return false;
-    }
-
-    return true;
-  }
-
-  for (let i = 0; i < n.length; i++) {
+  for (let i = 0; i < n; i++) {
     let reverse = "";
 
-    while (n[i] > 0) {
-      reverse += n[i] % 10;
-      n[i] = Math.floor(n[i] / 10);
+    while (numbers[i] > 0) {
+      reverse += numbers[i] % 10;
+      numbers[i] = Math.floor(numbers[i] / 10);
     }
 
     const temp = parseInt(reverse);
@@ -27,7 +16,17 @@ function main(n) {
     if (prime) result.push(temp);
   }
 
-  console.log(result);
+  console.log(result.join(" "));
+
+  function isPrime(num) {
+    if (num < 2) return false;
+
+    for (let i = 2; i < Math.sqrt(Math.floor(num / 2)); i++) {
+      if (num % i === 0) return false;
+    }
+
+    return true;
+  }
 }
 
-main([32, 55, 62, 20, 250, 370, 200, 30, 100]);
+main(9, [32, 55, 62, 20, 250, 370, 200, 30, 100]);
