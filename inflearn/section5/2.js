@@ -1,45 +1,51 @@
 // Title: 공통 원소 구하기
 // 방법 1
-// Time: O(n log n)
-// Space: O(n)
-function main(n, m) {
-  n.sort((a, b) => a - b);
-  m.sort((a, b) => a - b);
+// Time: O(nlogn+mlogm)
+// Space: O(n+m)
+function main(n, n1, m, m1) {
+  n1.sort((a, b) => a - b);
+  m1.sort((a, b) => a - b);
 
-  const result = [];
-  let lp = 0;
-  let rp = 0;
+  let result = "";
+  let lt = 0;
+  let rt = 0;
 
-  while (lp < n.length && rp < m.length) {
-    if (n[lp] === m[rp]) {
-      result.push(m[rp]);
-      rp++;
-      lp++;
-    } else if (m[rp] < n[lp]) {
-      rp++;
-    } else lp++;
+  while (lt < n && rt < m) {
+    if (n1[lt] === m1[rt]) {
+      result += `${n1[lt]} `;
+      lt++;
+      rt++;
+      continue;
+    }
+
+    if (n1[lt] > m1[rt]) {
+      rt++;
+    } else {
+      lt++;
+    }
   }
 
   console.log(result);
 }
 
 // 방법 2
-// Time: O(n log n)
-// Space: O(n)
-function main(n, m) {
-  const map = new Map();
-  const nm = [...n, ...m];
+// Time: O((n+m)log(n+m))
+// Space: O(n+m)
+function main(n, n1, m, m1) {
+  const assemble = [...n1, ...m1].sort((a, b) => a - b);
+  const hash = new Map();
+  let result = "";
 
-  for (let i = 0; i < nm.length; i++) {
-    map.set(nm[i], (map.get(nm[i]) || 0) + 1);
+  for (let i = 0; i < n + m; i++) {
+    if (hash.get(assemble[i])) {
+      result += `${assemble[i]} `;
+      continue;
+    }
+
+    hash.set(assemble[i], true);
   }
 
-  const result = [];
-  for (const [k, v] of map) {
-    if (v > 1) result.push(k);
-  }
-
-  console.log(result.sort((a, b) => a - b));
+  console.log(result);
 }
 
-main([3, 2, 5, 7, 8], [1, 3, 9, 5, 2]);
+main(5, [3, 2, 5, 7, 8], 5, [1, 3, 9, 5, 2]);

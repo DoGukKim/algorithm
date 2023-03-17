@@ -1,50 +1,30 @@
 // Title: 두 배열 합치기
-// 방법 1
-// Time: O(n1 + n2)
-// Space: O(n1 + n2)
-function main(n1, n2) {
+// Time: O(n+m)
+// Space: O(n+m)
+function main(n, n1, m, m1) {
   const result = [];
+  let lt = 0;
+  let rt = 0;
 
-  let lp = 0;
-  let rp = 0;
-
-  while (lp < n1.length && rp < n2.length) {
-    if (n1[lp] < n2[rp]) {
-      result.push(n1[lp]);
-      lp++;
+  while (lt < n && rt < m) {
+    if (n1[lt] < m1[rt]) {
+      result.push(n1[lt]);
+      lt++;
     } else {
-      result.push(n2[rp]);
-      rp++;
+      result.push(m1[rt]);
+      rt++;
     }
   }
 
-  while (lp < n1.length) {
-    result.push(n1[lp]);
-    lp++;
+  while (lt < n) {
+    result.push(n1[lt++]);
   }
-  while (rp < n2.length) {
-    result.push(n2[rp]);
-    rp++;
+
+  while (rt < m) {
+    result.push(m1[rt++]);
   }
 
   console.log(result);
 }
 
-// 방법 2
-// Time: O(min(n1,n2)^2)
-// Space: O(n1 + n2)
-function main(n1, n2) {
-  const result = [];
-
-  while (n1.length && n2.length) {
-    if (n1[0] < n2[0]) {
-      result.push(n1.shift());
-    } else {
-      result.push(n2.shift());
-    }
-  }
-
-  console.log([...result, ...n1, ...n2]);
-}
-
-console.log(main([1, 3, 5], [2, 3, 6, 7, 9]));
+main(3, [1, 3, 5], 5, [2, 3, 6, 7, 9]);

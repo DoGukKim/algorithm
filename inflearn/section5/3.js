@@ -1,24 +1,22 @@
-// Title: 연속부분수열(1)
-// 방법 1
-// Time: O(n*m) -> if n have only 1 like [1,1,1,1...]
+// Title: 연속부분수열
+// Time: O(n)
 // Space: O(1)
-function main(n, m) {
+function main(n, m, numbers) {
   let result = 0;
-  let lt = 0;
+  let rt = 0;
   let sum = 0;
 
-  for (let rp = 0; rp < n.length; rp++) {
-    sum += n[rp];
+  for (let lt = 0; lt < n; lt++) {
+    while (sum < m && rt < n) {
+      sum += numbers[rt];
+      rt++;
+    }
 
     if (sum === m) result++;
-
-    while (sum >= m) {
-      sum -= n[lt++];
-      if (sum === m) result++;
-    }
+    sum -= numbers[lt];
   }
 
   console.log(result);
 }
 
-main([1, 2, 1, 3, 1, 1, 1, 2], 6);
+main(8, 6, [1, 2, 1, 3, 1, 1, 1, 2]);
