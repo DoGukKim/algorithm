@@ -1,24 +1,16 @@
 // Title: 학급 회장
 // Time: O(n)
 // Space: O(n)
-function main(s) {
+function main(n, str) {
   const map = new Map();
+  let max = 0;
 
-  for (let i = 0; i < s.length; i++) {
-    map.set(s[i], (map.get(s[i]) || 0) + 1);
+  for (let i = 0; i < n; i++) {
+    map.set(str[i], (map.get(str[i]) || 0) + 1);
+    max = Math.max(max, map.get(str[i]));
   }
 
-  let result = "";
-  let max = -Infinity;
-
-  for (const [k, v] of map) {
-    if (max < v) {
-      max = v;
-      result = k;
-    }
-  }
-
-  return result;
+  for (const [k, v] of map) if (max === v) console.log(k);
 }
 
-main("BACBACCACCBDEDE");
+main(15, "BACBACCACCBDEDE");

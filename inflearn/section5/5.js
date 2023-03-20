@@ -1,23 +1,22 @@
 // Title: 최대 매출
-// Time: O(n*k)
+// Time: O(n)
 // Space: O(1)
-function main(n, k) {
-  let result = -Infinity;
+function main(n, m, list) {
+  let result = 0;
+  let sum = 0;
+  let lt = 0;
 
-  for (let lp = 0; lp < n.length; lp++) {
-    let c = k;
-    let sum = 0;
-    let rp = lp;
+  for (let rt = 0; rt < n; rt++) {
+    sum += list[rt];
 
-    while (c--) {
-      sum += n[rp];
-      rp++;
+    while (rt - lt > m - 1) {
+      sum -= list[lt++];
     }
 
-    if (result < sum) result = sum;
+    result = Math.max(result, sum);
   }
 
   console.log(result);
 }
 
-main([12, 15, 11, 20, 25, 10, 20, 19, 13, 15], 3);
+main(10, 3, [12, 15, 11, 20, 25, 10, 20, 19, 13, 15]);
