@@ -1,17 +1,21 @@
 // Title: 공주 구하기
-// Time: O(n)
+// Time: O(nk)
 // Space: O(n)
 function main(n, k) {
-  const princes = Array.from({ length: n }, (_, i) => i + 1);
-  let result = 0;
+  const queue = Array.from({ length: n }, (_, i) => i + 1);
 
-  while (princes.length) {
-    for (let i = 1; i < k; i++) princes.push(princes.shift());
-    princes.shift();
-    if (princes.length === 1) result = princes.shift();
+  while (queue.length !== 1) {
+    let rt = 0;
+
+    while (rt < k - 1) {
+      queue.push(queue.shift());
+      rt++;
+    }
+
+    queue.shift();
   }
 
-  console.log(result);
+  console.log(queue[0]);
 }
 
 main(8, 3);
