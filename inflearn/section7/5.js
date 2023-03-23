@@ -1,23 +1,31 @@
-// Title: Least Recently Used
-// 방법 1
-// Time: O(n*m)
-// Space: O(m)
-function main(size, n) {
-  const memory = Array.from({ length: size }, () => 0);
+// Title: LRU
+// Time: O(n*s)
+// Space: O(s)
+function main(s, n, data) {
+  const cash = Array.from({ length: s }, () => 0);
 
-  for (let i = 0; i < n.length; i++) {
-    const cashIndex = memory.indexOf(n[i]);
+  for (let i = 0; i < n; i++) {
+    const index = cash.indexOf(data[i]);
 
-    if (cashIndex !== -1)
-      // 캐시가 있으면
-      for (let j = cashIndex; j >= 1; j--) memory[j] = memory[j - 1];
-    // 캐시가 없으면
-    else for (let j = memory.length - 1; j >= 1; j--) memory[j] = memory[j - 1];
+    if (index !== -1) {
+      hit(index, data[index]);
+      continue;
+    }
 
-    memory[0] = n[i];
+    miss(data[i]);
   }
 
-  console.log(memory);
+  console.log(cash);
+
+  function hit(idx, d) {
+    for (let i = idx; i > 0; i--) cash[i] = cash[i - 1];
+    cash[0] = d;
+  }
+
+  function miss(d) {
+    for (let i = s - 1; i > 0; i--) cash[i] = cash[i - 1];
+    cash[0] = d;
+  }
 }
 
-main(5, [1, 2, 3, 2, 6, 2, 3, 5, 7]);
+main(5, 9, [1, 2, 3, 2, 6, 2, 3, 5, 7]);

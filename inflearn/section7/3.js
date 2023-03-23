@@ -1,5 +1,4 @@
 // Title: Special Sort
-// 방법 1
 // Time: O(n^2)
 // Space: O(1)
 function main(n) {

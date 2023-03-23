@@ -2,19 +2,16 @@
 // 방법 1
 // Time: O(n^2)
 // Space: O(1)
-function main(n) {
-  for (let i = 0; i < n.length - 1; i++) {
-    for (let j = 0; j < n.length - i - 1; j++) {
-      if (n[j] > n[j + 1]) {
-        [n[j], n[j + 1]] = [n[j + 1], n[j]];
-      }
+function main(n, numbers) {
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (numbers[j] > numbers[j + 1])
+        [numbers[j], numbers[j + 1]] = [numbers[j + 1], numbers[j]];
     }
   }
 
-  console.log(n);
+  console.log(numbers);
 }
-
-console.log(main([13, 5, 11, 7, 23, 15]));
 
 // 방법 2
 // Time: O(n^2)
@@ -35,3 +32,5 @@ function main(n) {
 
   console.log(n);
 }
+
+main(6, [13, 5, 11, 7, 23, 15]);

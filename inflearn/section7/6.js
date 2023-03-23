@@ -1,18 +1,15 @@
 // Title: 장난 꾸러기 현수
 // Time: O(n log n)
 // Space: O(n)
-function main(n) {
+function main(n, students) {
   const result = [];
-  const c = n.slice().sort((a, b) => a - b);
+  const sorted = students.slice().sort((a, b) => a - b);
 
-  for (let i = 0; i < c.length; i++) {
-    if (c[i] !== n[i]) {
-      result.push(i + 1);
-    }
+  for (let i = 0; i < n; i++) {
+    if (students[i] !== sorted[i]) result.push(i + 1);
   }
 
-  console.log(result);
+  console.log(result[0], result[1]);
 }
 
-main([120, 125, 152, 130, 135, 135, 143, 127, 160]);
-main([120, 130, 150, 150, 130, 150]);
+main(9, [120, 125, 152, 130, 135, 135, 143, 127, 160]);
