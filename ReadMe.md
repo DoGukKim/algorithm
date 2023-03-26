@@ -4,9 +4,9 @@
 
 ## 플랫폼 목록
 
-- [프로그래머스](programmers)
-- [인프런](inflearn)
 - [백준](baekjoon)
+- [인프런](inflearn)
+- [프로그래머스](programmers)
 - [책](book)
 - [LeetCode](leetcode)
 - [Youtube](youtube)
