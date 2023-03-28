@@ -36,3 +36,7 @@ const main = (n, m) => {
 };
 
 main(9, 3);
+
+function main(n, m, songs) {}
+
+main(9, 3, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
