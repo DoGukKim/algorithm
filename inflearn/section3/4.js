@@ -40,7 +40,7 @@ function main(s, t) {
 
     for (const i of [curIndex - 1, curIndex + 1]) {
       if (dist[i] !== Infinity) continue;
-      if (i < 0 || i > s.length) continue;
+      if (i < 0 || i > s.length - 1) continue;
       dist[i] = Math.min(dist[i], dis + 1);
       queue.push([i, dis + 1]);
     }
