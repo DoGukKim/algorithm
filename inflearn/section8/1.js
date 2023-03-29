@@ -1,5 +1,5 @@
 // Title: 재귀 함수
-// 방법1
+// 방법 1
 // Time: O(n)
 // Space: O(n)
 function main(n) {
@@ -13,7 +13,7 @@ function main(n) {
   dfs(1);
 }
 
-// 방법2
+// 방법 2
 // Time: O(n)
 // Space: O(n)
 function main(n, c = 1) {
@@ -23,7 +23,7 @@ function main(n, c = 1) {
   main(n, c + 1);
 }
 
-// 방법3
+// 방법 3
 function main(n) {
   if (n === 0) return 1;
   const remain = main(n - 1);

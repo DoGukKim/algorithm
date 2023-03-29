@@ -1,10 +1,18 @@
 // Title: 미로탐색
-// Time: O(v*e)
-// Space: O(v+e)
+// Time: O(1)
+// Space: O(1)
 function main(mx) {
-  const dx = [1, 0, -1, 0];
-  const dy = [0, 1, 0, -1];
+  const dist = [
+    [-1, 0],
+    [0, 1],
+    [1, 0],
+    [0, -1],
+  ];
+
   let result = 0;
+  mx[0][0] = 1;
+  dfs(0, 0);
+  console.log(result);
 
   function dfs(x, y) {
     if (x === 6 && y === 6) {
@@ -13,22 +21,16 @@ function main(mx) {
     }
 
     for (let i = 0; i < 4; i++) {
-      const nx = x + dx[i];
-      const ny = y + dy[i];
-      const rowInBound = 0 <= nx && nx < 7;
-      const columInBound = 0 <= ny && ny < 7;
-
-      if (rowInBound && columInBound && mx[nx][ny] === 0) {
+      const [dx, dy] = dist[i];
+      const nx = x + dx;
+      const ny = y + dy;
+      if (0 <= nx && nx < 7 && 0 <= ny && ny < 7 && mx[nx][ny] === 0) {
         mx[x][y] = 1;
         dfs(nx, ny);
         mx[x][y] = 0;
       }
     }
   }
-  mx[0][0] = 1;
-  dfs(0, 0);
-
-  console.log(result);
 }
 
 const matrix = [

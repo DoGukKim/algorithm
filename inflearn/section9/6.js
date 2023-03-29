@@ -1,6 +1,6 @@
 // Title: 송아지 찾기(BFS)
-// Time: O()
-// Space: O()
+// Time: O(se)
+// Space: O(s+e)
 function main(s, e) {
   const dist = Array.from({ length: 10002 }, () => -1);
 

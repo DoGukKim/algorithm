@@ -1,5 +1,5 @@
 // Title: 합이 같은 부분집합
-// 방법 1
+// 방법1
 // Time: O(n^n)
 // Space: O(n)
 function main(n, set) {
@@ -19,7 +19,7 @@ function main(n, set) {
 main(6, [1, 3, 5, 6, 7, 10]);
 main(3, [2, 5, 6]);
 
-// 방법 2
+// 방법2
 // Time: O(2^n)
 // Space: O(n)
 function main(n) {

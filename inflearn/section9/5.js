@@ -1,6 +1,6 @@
 // Title: 이진트리 넓이우선탐색(BFS)
-// Time: O(v+e)
-// Space: O(v+e)
+// Time: O(nm)
+// Space: O(n+m)
 const main = (root) => {
   const result = [];
   const queue = [root];
@@ -15,7 +15,7 @@ const main = (root) => {
     }
   }
 
-  console.log(result);
+  console.log(result.join(" "));
 };
 
 main(1);
