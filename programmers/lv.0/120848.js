@@ -1,19 +1,17 @@
 // Title: 팩토리얼
-// 방법 1
 // Time: O(n)
-// Space: O(1)
-// Input: 3628800
+// Space: O(n)
 function solution(n) {
-  if (n === 1) return 1;
-
-  let sum = 2;
-  let m = 3;
-
-  while (sum < n) {
-    if (sum * m > n) break;
-    sum *= m;
-    m++;
+  const dp = Array.from({ length: 11 }, () => 0);
+  dp[1] = 1;
+  dp[2] = 2;
+  for (let i = 3; i <= 10; i++) {
+    dp[i] = dp[i - 1] * i;
   }
 
-  return m - 1;
-} // -> 10
+  for (let i = 10; i >= 0; i--) {
+    if (dp[i] <= n) {
+      return i;
+    }
+  }
+}

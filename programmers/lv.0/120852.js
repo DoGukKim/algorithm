@@ -1,35 +1,24 @@
 // Title: 소인수분해
-// 방법 1
-// Time: O(n)
+// Time: O(nm)
 // Space: O(n)
-// Input: 12
 function solution(n) {
   if (isPrime(n)) return [n];
 
-  let d = 2;
-  const s = new Set();
+  const divisors = [];
+  for (let i = 2; i <= n; i++) {
+    if (n % i === 0) divisors.push(i);
+  }
 
-  while (n !== 1) {
-    if ((n / d) % 1 !== 0) {
-      d++;
-      continue;
+  const result = [];
+  for (let i = 0; i < divisors.length; i++) {
+    if (isPrime(divisors[i])) result.push(divisors[i]);
+  }
+  return result;
+
+  function isPrime(num) {
+    for (let i = 2; i < num; i++) {
+      if (num % i === 0) return false;
     }
-
-    n = n / d;
-    s.add(d);
+    return true;
   }
-
-  return [...s];
 }
-
-const isPrime = (n) => {
-  if (n <= 1) return false;
-
-  for (let i = 2; i < Math.ceil(Math.sqrt(n)); i++) {
-    if (n % i === 0) return false;
-  }
-
-  return true;
-}; // -> [2, 3]
-
-console.log(solution(12));

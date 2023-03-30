@@ -1,22 +1,19 @@
 // Title: 합성수 찾기
-// 방법 1
-// Time: O(n*m) -> m = i
+// Time: O(nm)
 // Space: O(1)
-// Input: 10
 function solution(n) {
   let result = 0;
-
   for (let i = 4; i <= n; i++) {
-    let c = 1;
-
-    for (let j = 2; j <= i; j++) {
-      if ((i / j) % 1 === 0) {
-        c++;
-      }
+    if (!isPrime(i)) {
+      result++;
     }
-
-    if (c >= 3) result++;
   }
-
   return result;
-} // -> 5
+
+  function isPrime(num) {
+    for (let i = 2; i < num; i++) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+}
