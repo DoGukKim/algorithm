@@ -1,28 +1,33 @@
 // Title: 구슬을 나누는 경우의 수
 // 방법 1
-// Time: O(2^n*m)
+// Time: O(n)
 // Space: O(n)
-// Input: 3, 2
 function solution(balls, share) {
-  function dfs(b, s) {
-    if (b === s || s === 0) return 1;
-    return dfs(b - 1, s - 1) + dfs(b - 1, s);
-  }
-
   return dfs(balls, share);
-} // -> 3
+
+  function dfs(n, r, memo = {}) {
+    const key = n + "+" + r;
+    if (memo[key]) return memo[key];
+    if (n === r) return 1;
+    if (r === 1) return n;
+    memo[key] = dfs(n - 1, r - 1, memo) + dfs(n - 1, r, memo);
+    return memo[key];
+  }
+}
 
 // 방법 2
-// Time: O(n+m)
-// Space: O(n+m)
+// Time: O(n)
+// Space: O(n)
 function solution(balls, share) {
-  const p = Array.from({ length: balls }, (_, v) => v + 1).reduce(
+  const ballsFact = Array.from({ length: share }, (_, i) => balls - i).reduce(
     (a, c) => a * c
   );
-  const f = Array.from({ length: share }, (_, v) => v + 1).reduce(
+
+  const shareFact = Array.from({ length: share }, (_, i) => i + 1).reduce(
     (a, c) => a * c
   );
-  return p / f;
+
+  return Math.round(ballsFact / shareFact);
 }
 
 console.log(solution(3, 2)); // -> 3
