@@ -1,16 +1,13 @@
 // Title: 특이한 정렬
-// 방법 1
 // Time: O(n log n)
-// Space: O(1)
-// Input: [1, 2, 3, 4, 5, 6], 4
+// Space: O(n log n)
 function solution(numlist, n) {
-  return numlist.sort((a, b) => {
-    const [aDiff, bDiff] = [Math.abs(a - n), Math.abs(b - n)];
+  numlist = numlist.map((i) => [i, Math.abs(n - i)]);
 
-    if (aDiff === bDiff) {
-      return b - a;
-    }
-
-    return aDiff - bDiff;
+  numlist.sort((a, b) => {
+    if (a[1] === b[1]) return b[0] - a[0];
+    return a[1] - b[1];
   });
-} // -> [ 4, 5, 3, 6, 2, 1 ]
+
+  return numlist.map((i) => i[0]);
+}

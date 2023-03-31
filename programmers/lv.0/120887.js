@@ -1,21 +1,21 @@
 // Title: k의 개수
-// 방법 1
-// Time: O(n^2)
+// Time: O(nm)
 // Space: O(1)
-// Input: 1, 13, 1
 function solution(i, j, k) {
   let result = 0;
-
-  while (i <= j) {
-    let t = i;
-
-    while (t) {
-      if (t % 10 === k) result++;
-      t = Math.floor(t / 10);
-    }
-
-    i++;
+  for (let s = i; s <= j; s++) {
+    result += countK(s);
   }
 
   return result;
-} // -> 6
+
+  function countK(num) {
+    let cnt = 0;
+    while (num) {
+      if (num % 10 === k) cnt++;
+
+      num = Math.floor(num / 10);
+    }
+    return cnt;
+  }
+}
