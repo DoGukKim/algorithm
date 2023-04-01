@@ -1,11 +1,6 @@
 // Title: 겹치는 선분의 길이
-// 방법 1
 // Time: O(n * s + e)
 // Space: O(min(s) + max(e))
-// InputA: [[0, 1], [2, 5], [3, 9]]; -> 2
-// InputB: [[0, 5], [3, 9], [1, 10]]; -> 8
-// InputC: [[-1, 1], [1, 3], [3, 9]]; -> 0
-// InputD: [[0, 2], [-3, -1], [-2, 1]]; -> 2
 function solution(lines) {
   let min = Infinity;
   let max = -Infinity;
