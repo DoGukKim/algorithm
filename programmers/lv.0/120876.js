@@ -1,6 +1,6 @@
 // Title: 겹치는 선분의 길이
-// Time: O(n * s + e)
-// Space: O(min(s) + max(e))
+// Time: O(min to max)
+// Space: O(min to max)
 function solution(lines) {
   let min = Infinity;
   let max = -Infinity;
@@ -28,29 +28,3 @@ function solution(lines) {
   // 1보다 크면 겹치는 것들을 필터링해 반환
   return [...map].filter((i) => i[1] > 1).length;
 }
-
-const lines = [
-  [0, 1],
-  [2, 5],
-  [3, 9],
-];
-
-const lines2 = [
-  [0, 5],
-  [3, 9],
-  [1, 10],
-];
-
-const lines3 = [
-  [-1, 1],
-  [1, 3],
-  [3, 9],
-];
-
-const lines4 = [
-  [0, 2],
-  [-3, -1],
-  [-2, 1],
-];
-
-console.log(solution(lines));
