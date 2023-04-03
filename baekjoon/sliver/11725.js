@@ -1,14 +1,13 @@
 // Title: 트리의 부모 찾기
-// Time: O(n)
-// Space: O(n)
+// Time: O(n+m)
+// Space: O(n+m)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()
   .trim()
   .split("\n");
-const n = Number(input.shift());
-input = input.map((i) => i.split(" ").map(Number));
-const p = Array.from({ length: n + 1 }, () => 0);
+const n = Number(input[0]);
+input = input.slice(1).map((i) => i.split(" ").map(Number));
 const graph = {};
 for (let i = 0; i < input.length; i++) {
   const [v, e] = input[i];
@@ -18,19 +17,23 @@ for (let i = 0; i < input.length; i++) {
   graph[e].push(v);
 }
 
-const stack = ["1"];
-while (stack.length) {
-  const v = stack.pop();
-  for (let i = 0; i < graph[v].length; i++) {
-    if (p[graph[v][i]] === 0) {
-      p[graph[v][i]] = v;
-      stack.push(graph[v][i]);
+const eachNodeParents = Array.from({ length: n + 1 }, () => 0);
+dfs("1");
+let result = "";
+for (let i = 2; i <= n; i++) result += `${eachNodeParents[i]}\n`;
+console.log(result);
+
+function dfs(v) {
+  const stack = [v];
+
+  while (stack.length) {
+    const v = stack.pop();
+
+    for (let i = 0; i < graph[v].length; i++) {
+      if (eachNodeParents[graph[v][i]] === 0) {
+        eachNodeParents[graph[v][i]] = v;
+        stack.push(graph[v][i]);
+      }
     }
   }
 }
-
-let result = "";
-for (let i = 2; i < p.length; i++) {
-  result += `${p[i]}\n`;
-}
-console.log(result);
