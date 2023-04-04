@@ -8,48 +8,51 @@ let input = require("fs")
   .split("\n");
 const n = Number(input.shift());
 input = input.map((i) => i.split(" ").map(Number));
-let result = 0;
-const dx = [-1, 0, 1, 0];
-const dy = [0, 1, 0, -1];
-
-for (let i = 0; i <= 100; i++) {
-  let cnt = 0;
+const dir = [
+  [-1, 0],
+  [0, 1],
+  [1, 0],
+  [0, -1],
+];
+let result = 1;
+for (let i = 1; i <= 100; i++) {
   const ch = Array.from({ length: n }, () => Array(n).fill(0));
+  let cnt = 0;
 
   for (let x = 0; x < n; x++) {
     for (let y = 0; y < n; y++) {
-      if (input[x][y] > i && ch[x][y] === 0) {
-        ch[x][y] = 1;
-        bfs(x, y, i, ch);
+      if (ch[x][y] === 0 && input[x][y] > i) {
         cnt++;
+        ch[x][y] = 1;
+        dfs(x, y, i, ch);
       }
     }
   }
 
   if (result < cnt) result = cnt;
 }
-
 console.log(result);
 
-function bfs(x, y, m, ch) {
-  const queue = [[x, y]];
+function dfs(x, y, rain, ch) {
+  const stack = [[x, y]];
 
-  while (queue.length) {
-    const [cx, cy] = queue.shift();
+  while (stack.length) {
+    const [x, y] = stack.pop();
 
     for (let i = 0; i < 4; i++) {
-      const nx = cx + dx[i];
-      const ny = cy + dy[i];
+      const [dx, dy] = dir[i];
+      const nx = x + dx;
+      const ny = y + dy;
       if (
         0 <= nx &&
         nx < n &&
         0 <= ny &&
         ny < n &&
-        input[nx][ny] > m &&
-        ch[nx][ny] === 0
+        ch[nx][ny] === 0 &&
+        input[nx][ny] > rain
       ) {
         ch[nx][ny] = 1;
-        queue.push([nx, ny]);
+        stack.push([nx, ny]);
       }
     }
   }

@@ -1,47 +1,45 @@
 // Title: 토마토
 // Time: O(nm)
 // Space: O(nm)
-const input = require("fs")
-  .readFileSync("/dev/stdin")
+let input = require("fs")
+  .readFileSync(__dirname + "/input.txt")
   .toString()
   .trim()
   .split("\n");
-
-const [m, n] = input.shift().split(" ");
-const graph = input.map((i) => i.split(" "));
-const dr = [-1, 0, 1, 0];
-const dc = [0, 1, 0, -1];
+const [m, n] = input.shift().split(" ").map(Number);
+input = input.map((i) => i.split(" ").map(Number));
+let rawTomato = 0;
 const queue = [];
-let index = 0;
-let result = 0;
-let unripeTomato = 0;
-
-for (let r = 0; r < n; r++) {
-  for (let c = 0; c < m; c++) {
-    if (graph[r][c] === "0") unripeTomato++;
-    if (graph[r][c] === "1") {
-      queue.push([r, c, 0]);
-    }
+for (let x = 0; x < n; x++) {
+  for (let y = 0; y < m; y++) {
+    if (input[x][y] === 1) queue.push([x, y, 0]);
+    if (input[x][y] === 0) rawTomato++;
   }
 }
+
+let result = 0;
+let index = 0;
+const dir = [
+  [-1, 0],
+  [0, 1],
+  [1, 0],
+  [0, -1],
+];
 
 while (queue.length > index) {
-  const [r, c, d] = queue[index++];
+  const [x, y, day] = queue[index++];
+  result = day;
 
   for (let i = 0; i < 4; i++) {
-    const nr = r + dr[i];
-    const nc = c + dc[i];
-    const rowInBound = 0 <= nr && nr < n;
-    const columInBound = 0 <= nc && nc < m;
-
-    if (rowInBound && columInBound && graph[nr][nc] === "0") {
-      graph[nr][nc] = "1";
-      queue.push([nr, nc, d + 1]);
-      unripeTomato--;
+    const [dx, dy] = dir[i];
+    const nx = x + dx;
+    const ny = y + dy;
+    if (0 <= nx && nx < n && 0 <= ny && ny < m && input[nx][ny] === 0) {
+      input[nx][ny] = day + 1;
+      queue.push([nx, ny, day + 1]);
+      rawTomato--;
     }
   }
-
-  result = d;
 }
 
-console.log(unripeTomato > 0 ? -1 : result);
+console.log(rawTomato > 0 ? -1 : result);

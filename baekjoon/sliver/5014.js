@@ -1,6 +1,6 @@
 // Title: 스타트링크
-// Time: O(n)
-// Space: O(n)
+// Time: O(F)
+// Space: O(F)
 const input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()
