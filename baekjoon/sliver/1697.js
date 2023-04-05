@@ -1,22 +1,23 @@
 // Title: 숨바꼭질
 // Time: O(n)
 // Space: O(n)
-const input = require("fs").readFileSync("/dev/stdin").toString().trim();
-
-const [n, k] = input.split(" ").map(Number);
-const dist = Array.from({ length: 100002 }, () => -1);
-
-const queue = [n];
+let input = require("fs")
+  .readFileSync(__dirname + "/input.txt")
+  .toString()
+  .trim();
+input = input.split(" ").map(Number);
+const [n, k] = input;
+const dist = Array.from({ length: 100001 }, () => -1);
 dist[n] = 0;
-
+const queue = [n];
 while (dist[k] === -1) {
-  const d = queue.shift();
+  const cur = queue.shift();
 
-  for (const nx of [d - 1, d + 1, 2 * d]) {
-    if (dist[nx] !== -1) continue;
-    if (nx < 0 || nx > 100000) continue;
-    dist[nx] = dist[d] + 1;
-    queue.push(nx);
+  for (const next of [cur - 1, cur + 1, cur * 2]) {
+    if (dist[next] !== -1) continue;
+    if (next < 0 || next > 100000) continue;
+    dist[next] = dist[cur] + 1;
+    queue.push(next);
   }
 }
 
