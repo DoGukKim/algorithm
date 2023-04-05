@@ -1,5 +1,5 @@
-<p align='center' width="300">
-  <image src="./algo.png" alt='알고리즘 이미지' />
+<p align='center'>
+  <image src="./algo.png" alt='알고리즘 이미지' width="300" />
 </p>
 
 <p align='center' font-weight='600'>
