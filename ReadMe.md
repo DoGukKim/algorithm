@@ -1,5 +1,5 @@
 <p align='center'>
-![50638-algorithm](https://user-images.githubusercontent.com/59882993/229998591-037e13ed-fc6e-4f52-ba82-8c190c9b7641.gif)
+  <image src="https://user-images.githubusercontent.com/59882993/229998591-037e13ed-fc6e-4f52-ba82-8c190c9b7641.gif" />
 </p>
 
 
