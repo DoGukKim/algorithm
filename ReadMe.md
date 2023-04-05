@@ -2,6 +2,8 @@
 <iframe src="https://embed.lottiefiles.com/animation/50638"></iframe>
 </p>
 
+![50638-algorithm](https://user-images.githubusercontent.com/59882993/229998591-037e13ed-fc6e-4f52-ba82-8c190c9b7641.gif)
+
 <p align='center' font-weight='600'>
 알고리즘 풀이 모음
 </p>
