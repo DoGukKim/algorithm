@@ -6,59 +6,65 @@ let input = require("fs")
   .toString()
   .trim()
   .split("\n");
-const [m, n, k] = input.shift().split(" ").map(Number);
 input = input.map((i) => i.split(" ").map(Number));
-const mx = Array.from({ length: m }, () => Array(n).fill(0));
-const dx = [-1, 0, 1, 0];
-const dy = [0, 1, 0, -1];
-
+const [m, n, k] = input.shift();
+const paper = Array.from({ length: m }, () => Array(n).fill(0));
 for (let i = 0; i < k; i++) {
-  const [ly, lx, ry, rx] = input[i];
-  for (let x = 0; x < m; x++) {
-    for (let y = 0; y < n; y++) {
-      if (lx <= x && x <= rx - 1 && ly <= y && y <= ry - 1) {
-        mx[x][y] = 1;
-      }
-    }
-  }
+  const [Ay, Ax, By, Bx] = input[i];
+  paintSquare(Ax, Ay, Bx, By);
 }
 
-const all = [];
+const direction = [
+  [-1, 0],
+  [0, 1],
+  [1, 0],
+  [0, -1],
+];
+const squares = [];
 for (let x = 0; x < m; x++) {
   for (let y = 0; y < n; y++) {
-    if (mx[x][y] === 0) {
-      mx[x][y] = 2;
-      const cnt = dfs(x, y);
-      all.push(cnt);
+    if (paper[x][y] === 0) {
+      const count = dfs(x, y);
+      squares.push(count);
     }
   }
 }
-all.sort((a, b) => a - b);
 
+squares.sort((a, b) => a - b);
 let result = "";
-result += `${all.length} \n`;
-for (let i = 0; i < all.length; i++) {
-  result += `${all[i]} `;
+result += `${squares.length}\n`;
+for (let i = 0; i < squares.length; i++) {
+  result += `${squares[i]} `;
 }
 console.log(result);
 
 function dfs(x, y) {
   const stack = [[x, y]];
-  let cnt = 1;
+  let count = 1;
+  paper[x][y] = 1;
 
   while (stack.length) {
     const [x, y] = stack.pop();
 
     for (let i = 0; i < 4; i++) {
-      const nx = x + dx[i];
-      const ny = y + dy[i];
-      if (0 <= nx && nx < m && 0 <= ny && ny < n && mx[nx][ny] === 0) {
-        cnt++;
-        mx[nx][ny] = 2;
+      const [dx, dy] = direction[i];
+      const nx = x + dx;
+      const ny = y + dy;
+      if (0 <= nx && nx < m && 0 <= ny && ny < n && paper[nx][ny] === 0) {
+        paper[nx][ny] = 1;
+        count++;
         stack.push([nx, ny]);
       }
     }
   }
 
-  return cnt;
+  return count;
+}
+
+function paintSquare(Ax, Ay, Bx, By) {
+  for (let x = Ax; x < Bx; x++) {
+    for (let y = Ay; y < By; y++) {
+      paper[x][y] = 1;
+    }
+  }
 }
