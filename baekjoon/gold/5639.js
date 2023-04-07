@@ -1,13 +1,12 @@
 // Title: 이진 검색 트리
 // Time: O(n log n)
-// Space: O(n log n)
+// Space: O(n)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()
   .trim()
   .split("\n");
 input = input.map(Number);
-
 let result = "";
 dfs(0, input.length);
 console.log(result);
