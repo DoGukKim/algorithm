@@ -8,51 +8,53 @@ let input = require("fs")
   .split("\n");
 const [n, m] = input.shift().split(" ").map(Number);
 input = input.map((i) => i.split(""));
-const map = {
-  W: 0,
-  B: 0,
-};
-const dir = [
+const direction = [
   [-1, 0],
   [0, 1],
   [1, 0],
   [0, -1],
 ];
+const map = {
+  W: 0,
+  B: 0,
+};
+
 for (let x = 0; x < m; x++) {
   for (let y = 0; y < n; y++) {
-    if (input[x][y] !== "C") {
-      const team = input[x][y];
-      input[x][y] = "C";
-      const power = dfs(x, y, team);
-      map[team] += power;
+    if (input[x][y] !== "D") {
+      const { currentTeam, power } = dfs(x, y, input[x][y]);
+      map[currentTeam] += power;
     }
   }
 }
 
-let result = "";
-for (const key in map) {
-  result += `${map[key]} `;
-}
-console.log(result);
+console.log(`${map["W"]} ${map["B"]}`);
 
-function dfs(x, y, team) {
-  const stack = [[x, y, team]];
-  let cnt = 1;
+function dfs(x, y, currentTeam) {
+  input[x][y] = "D";
+  const stack = [[x, y]];
+  let count = 1;
 
   while (stack.length) {
-    const [x, y, team] = stack.pop();
+    const [x, y] = stack.pop();
 
     for (let i = 0; i < 4; i++) {
-      const [dx, dy] = dir[i];
+      const [dx, dy] = direction[i];
       const nx = x + dx;
       const ny = y + dy;
-      if (0 <= nx && nx < m && 0 <= ny && ny < n && input[nx][ny] === team) {
-        input[nx][ny] = "C";
-        cnt++;
-        stack.push([nx, ny, team]);
+      if (
+        0 <= nx &&
+        nx < m &&
+        0 <= ny &&
+        ny < n &&
+        input[nx][ny] === currentTeam
+      ) {
+        input[nx][ny] = "D";
+        stack.push([nx, ny]);
+        count++;
       }
     }
   }
 
-  return cnt ** 2;
+  return { currentTeam, power: count ** 2 };
 }

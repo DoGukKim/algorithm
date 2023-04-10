@@ -1,5 +1,5 @@
 // Title: 알고 스팟
-// Time: O(nm)
+// Time: O(nm log(nm))
 // Space: O(nm)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
