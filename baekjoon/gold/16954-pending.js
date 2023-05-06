@@ -6,6 +6,7 @@ let input = require("fs")
 input = input.map((i) => i.split(""));
 
 const direction = [
+  [0, 0], // 움직이지 않을 경우
   [-1, 0],
   [-1, 1],
   [0, 1],
@@ -16,67 +17,56 @@ const direction = [
   [-1, -1],
 ];
 
-input[7][0] = "C";
-const walls = [];
+const wall = [];
 for (let x = 7; x >= 0; x--) {
   for (let y = 0; y < 8; y++) {
-    if (input[x][y] === "#") walls.push([x, y]);
+    if (input[x][y] === "#") wall.push([x, y]);
   }
 }
 
-let prevCharPosition = [[7, 0]];
+let queue = [[7, 0]];
+while (queue.length) {
+  const [x, y] = queue.shift();
+  if (x === 0 && y === 7) {
+    console.log("1");
+    return;
+  }
 
-while (true) {
-  // c moving
-  const curCharPosition = prevCharPosition;
-  const [goal, arr] = move(curCharPosition);
-  if (goal) return console.log("1");
-  prevCharPosition = arr;
+  for (let i = 0; i < 9; i++) {
+    const [dx, dy] = direction[i];
+    const nx = x + dx;
+    const ny = y + dy;
 
-  // wall moving
-  const isDead = dropWalls();
-  console.log(input.map((i) => i.join("")));
-  if (isDead) return console.log("0");
-}
-
-function move(position, arr = []) {
-  while (position.length) {
-    const [x, y] = position.shift();
-
-    for (let i = 0; i < 8; i++) {
-      const [dx, dy] = direction[i];
-      const nx = x + dx;
-      const ny = y + dy;
-      if (0 <= nx && nx < 8 && 0 <= ny && ny < 8 && input[nx][ny] === ".") {
-        if (nx === 7 && ny === 7) return [true, arr];
-        input[nx][ny] = "V";
-        arr.push([nx, ny]);
-      }
+    if (0 <= nx && nx < 8 && 0 <= ny && ny < 8 && input[nx][ny] === ".") {
+      queue.push([nx, ny]);
     }
   }
 
-  return [false, arr];
+  const result = dropdownWall(queue);
+  queue = result;
+  console.log(queue);
 }
 
-function dropWalls() {
-  let len = walls.length;
+console.log("0");
+
+function dropdownWall(queue) {
+  let len = wall.length;
+  let newQueue = [];
+
   for (let i = 0; i < len; i++) {
-    const [x, y] = walls.shift();
-    const nx = x + 1;
-    if (input[nx][y] === "C") {
-      return true;
-    }
+    const [x, y] = wall.shift();
 
-    if (nx > 7) {
+    if (x + 1 > 7) {
       input[x][y] = ".";
       continue;
     }
 
-    const prev = input[x - 1][y];
-    input[nx][y] = "#";
+    const prev = input[x - 1]?.[y] ?? ".";
+    input[x + 1][y] = "#";
     input[x][y] = prev;
-    walls.push([nx, y]);
+
+    newQueue = queue.filter((i) => i[0] !== x + 1 && i[1] !== y);
   }
 
-  return false;
+  return newQueue;
 }
