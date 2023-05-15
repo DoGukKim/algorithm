@@ -1,4 +1,4 @@
-// Title: l특별한 이차원 배열 2
+// Title: 특별한 이차원 배열 2
 // Time: O(n^2)
 // Space: O(1)
 function solution(arr) {
