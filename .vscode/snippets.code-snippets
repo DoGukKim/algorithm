@@ -1,0 +1,8 @@
+{
+  "Print to console": {
+    "scope": "javascript",
+    "prefix": "matter",
+    "body": ["// title: ${1:문제이름}", "// time: O($2)", "// space: O($3)"],
+    "description": "frontmatter for algorithm"
+  }
+}
