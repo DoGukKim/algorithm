@@ -10,27 +10,23 @@ let result = "";
 
 for (let i = 0; i < n; i++) {
   const word = input[i].split("").sort();
-  const ch = Array.from({ length: word.length }, () => 0);
-  const map = {};
-  dfs(word, ch, [], map);
+  dfs(word, 0);
 }
 
 console.log(result);
 
-function dfs(word, ch, permute) {
-  if (permute.length === word.length) {
-    result += `${permute.join("")}\n`;
+function dfs(word, i) {
+  if (i === word.length - 1) {
+    result += `${word.join("")}\n`;
     return;
   }
 
-  for (let i = 0; i < word.length; i++) {
-    if (ch[i] === 1) continue;
+  for (let j = i; j < word.length; j++) {
+    if (j !== i && word[i] === word[j]) continue;
 
-    ch[i] = 1;
-    permute.push(word[i]);
-    dfs(word, ch, permute);
-    permute.pop();
-    ch[i] = 0;
+    [word[i], word[j]] = [word[j], word[i]];
+    dfs(word, i + 1);
+    [word[j], word[i]] = [word[i], word[j]];
   }
 }
 
