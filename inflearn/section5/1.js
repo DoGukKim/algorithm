@@ -27,4 +27,10 @@ function main(n, n1, m, m1) {
   console.log(result);
 }
 
+// Time: O(n+m * n+m log n+m)
+// Space: O(n+m)
+function main(_, n1, _, m1) {
+  return n1.concat(m1).sort((a, b) => a - b);
+}
+
 main(3, [1, 3, 5], 5, [2, 3, 6, 7, 9]);
