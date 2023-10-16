@@ -38,3 +38,26 @@ console.log(result);
 // [1,2,3,4,5]
 // [5,4,3,2,1]
 // [1]
+
+// refactoring version
+// let currentMaxHeight = 0;
+// let acc = 0;
+// let result = 0;
+
+// for (let i = 0; i < n; i++) {
+//   if (currentMaxHeight < input[i]) {
+//     result = Math.max(result, acc);
+//     currentMaxHeight = input[i];
+//     acc = 0;
+//     continue;
+//   }
+
+//   acc++;
+
+//   if (i === n - 1 && acc > 0) {
+//     result = Math.max(result, acc);
+//     break;
+//   }
+// }
+
+// console.log(result);
