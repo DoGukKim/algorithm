@@ -1,31 +1,35 @@
+// title: 문제이름
+// time: O()
+// space: O()
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString()
   .trim();
 
+let dotCount = 0;
+let currentXCount = 0;
 let result = "";
 
-for (const poly of ["AAAA", "BB"]) {
-  let recent = "";
-  let acc = 0;
+for (let i = 0; i < input.length; i++) {
+  if (input[i] === "X") {
+    currentXCount++;
+    continue;
+  }
 
-  for (let i = 0; i < input.length; i++) {
-    if (input[i] === "X" || input[i] === ".") {
-      if (acc === 4) {
-        continue;
-      }
-      if (recent === "") {
-        recent = input[i];
-        acc++;
-        continue;
+  if (input[i] === ".") {
+    if (currentXCount > 0 && currentXCount % 2 === 0) {
+      if (currentXCount > 2) {
+        result += `${"AAAA".repeat(Math.floor(currentXCount / 4))}`;
+        currentXCount = Math.floor(currentXCount / 4);
       }
 
-      if (recent === input[i]) acc++;
-
-      if (recent !== input[i]) {
-        recent = input[i];
-        acc = 0;
-      }
+      result += `${"BB".repeat(Math.floor(currentXCount / 2))}`;
+      currentXCount = 0;
     }
+
+    result += ".";
+    dotCount++;
   }
 }
+
+console.log(result);
