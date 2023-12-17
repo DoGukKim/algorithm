@@ -1,5 +1,21 @@
-/* 
-정렬을 수행해야 할 것 같은데, 또 계산이 생각보다 복잡해지네..
-다솜이는 무조건 첫 번째이고,
-5,7,7 일때 어떻게 해야 최소를 얻을 수 있나..
-*/
+let input = require("fs")
+  .readFileSync(__dirname + "/input.txt")
+  .toString()
+  .trim()
+  .split("\n");
+input = input.map(Number);
+const n = input[0];
+const sortedArr = [input[1], ...input.slice(2).sort((a, b) => b - a)];
+const max = sortedArr[1];
+let result = 0;
+
+while (sortedArr[0] < max) {
+  for (let i = 1; i < n; i++) {
+    sortedArr[i] -= 1;
+    sortedArr[0] += 1;
+    result++;
+    if (sortedArr[0] === max) break;
+  }
+}
+
+console.log(result);
