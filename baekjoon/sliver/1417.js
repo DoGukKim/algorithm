@@ -1,5 +1,5 @@
 // title: 국회의원 선거
-// time: O(n+m)
+// time: O(nm)
 // space: O(n)
 let input = require("fs")
   .readFileSync(__dirname + "/input.txt")
